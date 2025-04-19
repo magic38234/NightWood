@@ -424,6 +424,29 @@ footer {
   background-color: #fafafa;
 }
 
+
+.product-card {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.6s ease-out;
+}
+
+.product-card.animate-up {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.product-card.animate-left {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+  .product-card {
+    transform: translateX(-50px);
+  }
+}
+
 </style>
 </head>
 <body>
@@ -531,5 +554,31 @@ footer {
     });
   
   </script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".product-card");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (window.innerWidth <= 768) {
+            entry.target.classList.add("animate-left");
+          } else {
+            entry.target.classList.add("animate-up");
+          }
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    cards.forEach(card => {
+      observer.observe(card);
+    });
+  });
+</script>
+
 </body>
 </html>
