@@ -143,6 +143,72 @@
       margin: auto;
     }
   </style>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+}
+.order-container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+.order-form,
+.cart-summary {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 12px;
+  color: white;
+}
+.order-form input,
+.order-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+.order-form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+.order-form button {
+  background: #d742f4;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+}
+.order-form button:hover {
+  background: #b837d3;
+}
+.cart-summary h3 {
+  margin-top: 0;
+}
+@media (max-width: 768px) {
+  .order-container {
+    flex-direction: column;
+    padding: 16px;
+  }
+  .order-form,
+  .cart-summary {
+    padding: 16px;
+  }
+  .order-form button {
+    font-size: 18px;
+  }
+}
+</style>
+
 </head>
 <body>
 
