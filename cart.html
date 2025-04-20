@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="lt">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Night Wood Užsakymo Forma</title>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Night Wood Užsakymo Forma</title>
+<style>
     * {
       margin: 0;
       padding: 0;
@@ -347,38 +348,201 @@ body {
     margin-top: 20px;
   }
 }
-</style>
 
+.checkout-form select {
+  padding: 12px 16px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 1rem;
+  appearance: none;
+  transition: background 0.3s ease;
+}
+.checkout-form select:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+  outline: none;
+}
+
+/* Стильный кастомный select */
+.checkout-form select {
+  padding: 14px 18px;
+  border: none;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1rem;
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.checkout-form select:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+  outline: none;
+}
+
+/* Адаптация для мобилок */
+@media (max-width: 480px) {
+  .checkout-form select {
+    font-size: 0.95rem;
+    padding: 12px;
+  }
+}
+
+#bankSelectGroup {
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+#bankSelectGroup select {
+  padding: 14px 18px;
+  border: none;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #0a0a0a;
+  font-size: 1rem;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+#bankSelectGroup select:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+  outline: none;
+}
+
+select {
+  background-color: #1e1e1e;
+  color: #fff;
+  padding: 12px;
+  border: 1px solid #444;
+  border-radius: 10px;
+  font-size: 16px;
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 18px;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+select:focus {
+  border-color: #a855f7;
+  outline: none;
+}
+
+.custom-bank-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.bank-button {
+  flex: 1 1 45%;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: white;
+  padding: 0.9rem 1rem;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.bank-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.bank-button.active {
+  background: linear-gradient(to right, #a760ff, #e86fff);
+  border-color: white;
+  color: white;
+}
+
+@media (max-width: 480px) {
+  .bank-button {
+    flex: 1 1 100%;
+  }
+}
+
+.custom-payment-methods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.payment-button {
+  flex: 1 1 30%;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: white;
+  font-weight: bold;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  text-align: center;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.payment-button:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.payment-button.active {
+  background: linear-gradient(to right, #a760ff, #e86fff);
+  border-color: white;
+}
+
+@media (max-width: 480px) {
+  .payment-button {
+    flex: 1 1 100%;
+  }
+}
+</style>
 </head>
 <body>
-
 <header>
-  <div class="logo">
-    <img src="https://i.postimg.cc/xTbFtq6w/IMG-0546.png" alt="Logo">
-  </div>
-  <div class="burger" id="burgerBtn">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</header>
-
-<div id="menuOverlay">
-  <a href="/index.html">Pagrindinis</a>
-  <a href="/catalog.html">Katalogas</a>
-  <a href="#">Apie mus</a>
-  <a href="#">Kontaktai</a>
-  <div class="contact">Tel.: +370 640 81 312</div>
-  <div class="social-icons">
-    <a href="https://www.facebook.com/NightWood.lt" target="_blank">
-      <img src="https://i.postimg.cc/G3Z9ZSj4/icons8-facebook-50.png" alt="Facebook">
-    </a>
-    <a href="https://www.instagram.com/nightwood.lt/" target="_blank">
-      <img src="https://i.postimg.cc/Cdy7WHcW/icons8-instagram-50.png" alt="Instagram">
-    </a>
-  </div>
+<div class="logo">
+<img alt="Logo" src="https://i.postimg.cc/xTbFtq6w/IMG-0546.png"/>
 </div>
-
+<div class="burger" id="burgerBtn">
+<span></span>
+<span></span>
+<span></span>
+</div>
+</header>
+<div id="menuOverlay">
+<a href="/index.html">Pagrindinis</a>
+<a href="/catalog.html">Katalogas</a>
+<a href="#">Apie mus</a>
+<a href="#">Kontaktai</a>
+<div class="contact">Tel.: +370 640 81 312</div>
+<div class="social-icons">
+<a href="https://www.facebook.com/NightWood.lt" target="_blank">
+<img alt="Facebook" src="https://i.postimg.cc/G3Z9ZSj4/icons8-facebook-50.png"/>
+</a>
+<a href="https://www.instagram.com/nightwood.lt/" target="_blank">
+<img alt="Instagram" src="https://i.postimg.cc/Cdy7WHcW/icons8-instagram-50.png"/>
+</a>
+</div>
+</div>
 <script>
   const burger = document.getElementById('burgerBtn');
   const menu = document.getElementById('menuOverlay');
@@ -397,53 +561,49 @@ body {
     });
   });
 </script>
-
-
 <section class="checkout-wrapper">
-  <div class="checkout-grid">
-    <div class="checkout-form-container">
-      <h2>Užsakymo forma</h2>
-      <form class="checkout-form">
-        <div class="form-group">
-          <label for="vardas">Vardas</label>
-          <input type="text" id="vardas" placeholder="Įveskite vardą" required>
-        </div>
-        <div class="form-group">
-          <label for="pavarde">Pavardė</label>
-          <input type="text" id="pavarde" placeholder="Įveskite pavardę" required>
-        </div>
-        <div class="form-group">
-          <label for="tel">Telefono numeris</label>
-          <input type="tel" id="tel" placeholder="+370..." required>
-        </div>
-        <div class="form-group">
-          <label for="email">El. paštas</label>
-          <input type="email" id="email" placeholder="el.pastas@example.com" required>
-        </div>
-        <div class="form-group">
-          <label for="adresas">Pristatymo adresas</label>
-          <input type="text" id="adresas" placeholder="Gatvė, miestas, pašto kodas" required>
-        </div>
-        <div class="form-group">
-          <label for="komentaras">Komentaras (nebūtina)</label>
-          <textarea id="komentaras" rows="3" placeholder="Turite papildomos informacijos?"></textarea>
-        </div>
-        <button class="checkout-submit" type="submit">Pateikti užsakymą</button>
-      </form>
-    </div>
-
-    <div class="checkout-cart">
-      <h2>Jūsų krepšelis</h2>
-      <div id="checkoutCartItems"></div>
-      <hr>
-      <div class="cart-total">
-        <strong>Iš viso:</strong>
-        <strong>€<span id="checkoutCartTotal">0</span></strong>
-      </div>
-    </div>
-  </div>
+<div class="checkout-grid">
+<div class="checkout-form-container">
+<h2>Užsakymo forma</h2>
+<form class="checkout-form">
+<div class="form-group">
+<label for="vardas">Vardas</label>
+<input id="vardas" placeholder="Įveskite vardą" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="pavarde">Pavardė</label>
+<input id="pavarde" placeholder="Įveskite pavardę" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="tel">Telefono numeris</label>
+<input id="tel" placeholder="+370..." required="" type="tel"/>
+</div>
+<div class="form-group">
+<label for="email">El. paštas</label>
+<input id="email" placeholder="el.pastas@example.com" required="" type="email"/>
+</div>
+<div class="form-group">
+<label for="adresas">Pristatymo adresas</label>
+<input id="adresas" placeholder="Gatvė, miestas, pašto kodas" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="komentaras">Komentaras (nebūtina)</label>
+<textarea id="komentaras" placeholder="Turite papildomos informacijos?" rows="3"></textarea>
+</div>
+<div class="form-group"><label for="mokejimas">Mokėjimo būdas</label><div class="custom-payment-methods"><button class="payment-button" data-value="bank" type="button">Bankinis pavedimas</button><button class="payment-button" data-value="card" type="button">Mokėjimas kortele</button></div><input id="selectedPayment" name="mokejimas" type="hidden"/></div><div class="form-group" id="bankSelectGroup" style="display:none;"><label for="bankas">Pasirinkite banką</label><div class="custom-bank-options"><button class="bank-button" data-value="seb" type="button">SEB</button><button class="bank-button" data-value="swedbank" type="button">Swedbank</button><button class="bank-button" data-value="luminor" type="button">Luminor</button><button class="bank-button" data-value="citadele" type="button">Citadele</button><button class="bank-button" data-value="revolut" type="button">Revolut</button></div><input id="selectedBank" name="bank" type="hidden"/></div><button class="checkout-submit" type="submit">Pateikti užsakymą</button>
+</form>
+</div>
+<div class="checkout-cart">
+<h2>Jūsų krepšelis</h2>
+<div id="checkoutCartItems"></div>
+<hr/>
+<div class="cart-total">
+<strong>Iš viso:</strong>
+<strong>€<span id="checkoutCartTotal">0</span></strong>
+</div>
+</div>
+</div>
 </section>
-
 <style>
   .checkout-wrapper {
     padding: 6rem 2rem 4rem;
@@ -705,8 +865,6 @@ body {
   }
 }
 </style>
-
-
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const cartData = JSON.parse(localStorage.getItem("nightwood_cart") || "[]");
@@ -730,6 +888,63 @@ document.addEventListener("DOMContentLoaded", () => {
   totalEl.textContent = total.toFixed(2);
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const methodSelect = document.getElementById("mokejimas");
+  const bankGroup = document.getElementById("bankSelectGroup");
 
-</body>
+  methodSelect.addEventListener("change", () => {
+    if (methodSelect.value === "bank") {
+      bankGroup.style.display = "flex";
+    } else {
+      bankGroup.style.display = "none";
+    }
+  });
+});
+</script><script>
+document.addEventListener("DOMContentLoaded", () => {
+  const methodSelect = document.getElementById("mokejimas");
+  const bankGroup = document.getElementById("bankSelectGroup");
+  const bankButtons = document.querySelectorAll(".bank-button");
+  const hiddenBankInput = document.getElementById("selectedBank");
+
+  methodSelect.addEventListener("change", () => {
+    if (methodSelect.value === "bank") {
+      bankGroup.style.display = "flex";
+    } else {
+      bankGroup.style.display = "none";
+      hiddenBankInput.value = "";
+      bankButtons.forEach(btn => btn.classList.remove("active"));
+    }
+  });
+
+  bankButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      bankButtons.forEach(btn => btn.classList.remove("active"));
+      button.classList.add("active");
+      hiddenBankInput.value = button.dataset.value;
+    });
+  });
+});
+</script><script>
+document.addEventListener("DOMContentLoaded", () => {
+  const paymentButtons = document.querySelectorAll(".payment-button");
+  const selectedPayment = document.getElementById("selectedPayment");
+  const bankGroup = document.getElementById("bankSelectGroup");
+
+  paymentButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      paymentButtons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      selectedPayment.value = btn.dataset.value;
+
+      if (btn.dataset.value === "bank") {
+        bankGroup.style.display = "flex";
+      } else {
+        bankGroup.style.display = "none";
+      }
+    });
+  });
+});
+</script></body>
 </html>
