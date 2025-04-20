@@ -211,40 +211,55 @@
 <section class="section">
   <h2 style="text-align:center; margin-bottom: 3rem;">Mūsų produktai</h2>
   <div class="products">
-    <div class="product-card">
-      <img src="https://i.postimg.cc/tCWG7rGn/440132346-847674780712524-8695788779793653024-n.jpg" alt="Padėklas" />
-      <div class="info">
-        <h3>Padėklas su graviruote</h3>
-        <p>Stilingas ir natūralus akcentas jūsų stalo serviravimui.</p>
-      </div>
-      <div class="product-footer">
-        <div style="color:#ccc; font-size: 0.95rem; margin-bottom: 0.5rem;">€ 46</div>
-        <button class="buy-button">PIRKTI</button>
-      </div>
-    </div>
-    <div class="product-card">
-      <img src="https://i.postimg.cc/DzrprDyR/mangalas.jpg" alt="Mangalas" />
-      <div class="info">
-        <h3>Metaliniai mangalai</h3>
-        <p>Tvirtas dizainas ir puikus funkcionalumas lauko kepimui.</p>
-      </div>
-      <div class="product-footer">
-        <div style="color:#ccc; font-size: 0.95rem; margin-bottom: 0.5rem;">€ 550</div>
-        <button class="buy-button">PIRKTI</button>
-      </div>
-    </div>
-    <div class="product-card">
-      <img src="https://i.postimg.cc/QdDG7pj4/1453368273-121412851-1263882373960351-7394105723998329079-n.jpg" alt="Padėklas" />
-      <div class="info">
-        <h3>Paprastas padėklas</h3>
-        <p>Stilingas ir natūralus akcentas jūsų stalo serviravimui.</p>
-      </div>
-      <div class="product-footer">
-        <div style="color:#ccc; font-size: 0.95rem; margin-bottom: 0.5rem;">€ 30</div>
-        <button class="buy-button">PIRKTI</button>
-      </div>
+
+<div class="product-card">
+  <img src="https://i.postimg.cc/tCWG7rGn/440132346-847674780712524-8695788779793653024-n.jpg" alt="Padėklas" />
+  <div class="info">
+    <h3>Padėklas su graviruote</h3>
+    <p>Stilingas ir natūralus akcentas jūsų stalo serviravimui.</p>
+  </div>
+  <div class="product-footer">
+    <div style="color:#ccc; font-size: 0.95rem; margin-bottom: 0.5rem;">€ 46</div>
+    <div style="display: flex; gap: 0.5rem; justify-content: center;">
+      <button class="buy-button">PIRKTI</button>
+      <button class="buy-button add-to-cart">PRIDĖTI</button>
     </div>
   </div>
+</div>
+
+
+<div class="product-card">
+  <img src="https://i.postimg.cc/DzrprDyR/mangalas.jpg" alt="Mangalas" />
+  <div class="info">
+    <h3>Metaliniai mangalai</h3>
+    <p>Tvirtas dizainas ir puikus funkcionalumas lauko kepimui.</p>
+  </div>
+  <div class="product-footer">
+    <div style="color:#ccc; font-size: 0.95rem; margin-bottom: 0.5rem;">€ 550</div>
+    <div style="display: flex; gap: 0.5rem; justify-content: center;">
+      <button class="buy-button">PIRKTI</button>
+      <button class="buy-button add-to-cart">PRIDĖTI</button>
+    </div>
+  </div>
+</div>
+
+
+<div class="product-card">
+  <img src="https://i.postimg.cc/QdDG7pj4/1453368273-121412851-1263882373960351-7394105723998329079-n.jpg" alt="Padėklas" />
+  <div class="info">
+    <h3>Paprastas padėklas</h3>
+    <p>Stilingas ir natūralus akcentas jūsų stalo serviravimui.</p>
+  </div>
+  <div class="product-footer">
+    <div style="color:#ccc; font-size: 0.95rem; margin-bottom: 0.5rem;">€ 30</div>
+    <div style="display: flex; gap: 0.5rem; justify-content: center;">
+      <button class="buy-button">PIRKTI</button>
+      <button class="buy-button add-to-cart">PRIDĖTI</button>
+    </div>
+  </div>
+</div>
+
+</div>
 </section>
 <footer>
   © 2025 Night Wood. Visos teisės saugomos.
@@ -274,6 +289,14 @@
   document.querySelectorAll('.product-card').forEach(card => {
     observer.observe(card);
   });
+
+document.querySelectorAll('.add-to-cart').forEach(button => {
+  button.addEventListener('click', () => {
+    const productCard = button.closest('.product-card');
+    const title = productCard.querySelector('h3').innerText;
+    alert(`Prekė „${title}“ pridėta į krepšelį!`);
+  });
+});
 </script>
 
 
