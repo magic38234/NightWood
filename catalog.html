@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="lt">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- saved from url=(0046)http://127.0.0.1:5500/catalog_modern_cart.html -->
+<html lang="lt"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Night Wood Katalogas</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -19,7 +19,7 @@
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background: linear-gradient(120deg, rgba(0,0,0,0.7), rgba(25,0,40,0.7));
+    background: linear-gradient(120deg, rgba(0, 0, 0, 0.911), rgba(25,0,40,0.7));
     z-index: 0;
   }
   header, .section, footer { position: relative; z-index: 1; }
@@ -27,7 +27,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 15px;
     position: fixed;
     top: 0;
     width: 100%;
@@ -184,12 +184,794 @@
       transform: translateX(0);
     }
   }
+
+.cart-icon {
+  cursor: pointer;
+  font-size: 1.2rem;
+  background: rgba(255,255,255,0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+  color: white;
+  position: fixed;
+  top: 20px;
+  right: 80px;
+  z-index: 10003;
+}
+
+.cart-icon:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.cart-modal {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  width: 320px;
+  max-height: 70vh;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(6px);
+  padding: 1rem;
+  border-radius: 16px;
+  z-index: 10002;
+  color: white;
+  display: none;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.cart-modal h2 {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.cart-modal ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cart-modal li {
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 0.5rem;
+}
+
+.cart-total {
+  margin-top: 1rem;
+  font-weight: bold;
+  text-align: right;
+}
+
+.close-cart {
+  margin-top: 1rem;
+  background: #feebe2;
+  color: #000;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+
+.cart-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.6);
+  backdrop-filter: blur(3px);
+  z-index: 10001;
+  display: none;
+}
+
+.cart-panel {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 360px;
+  height: 100vh;
+  background: #111;
+  color: #fff;
+  z-index: 10002;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.4s ease;
+  padding: 1rem;
+}
+
+.cart-panel.open {
+  right: 0;
+}
+
+.cart-overlay.visible {
+  display: block;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #444;
+  padding-bottom: 0.5rem;
+}
+
+.cart-body {
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 1rem;
+}
+
+.cart-body ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cart-body li {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  align-items: center;
+  border-bottom: 1px solid #222;
+  padding-bottom: 0.75rem;
+}
+
+.cart-body img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.item-info {
+  flex: 1;
+}
+
+.item-info h4 {
+  font-size: 0.95rem;
+  margin: 0 0 0.3rem 0;
+}
+
+.item-info .price {
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+.cart-footer {
+  padding-top: 1rem;
+  border-top: 1px solid #444;
+}
+
+.total-line {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.checkout-btn {
+  width: 100%;
+  background: white;
+  color: black;
+  font-weight: 600;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 999px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.checkout-btn:hover {
+  background: #f0f0f0;
+}
+
+.close-cart {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+
+.cart-img {
+  width: 34px;
+  height: 34px;
+  display: block;
+}
+
+.cart-count-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #ff4f81;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
+  line-height: 1;
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.5);
+}
+
+
+/* 📦 Увеличим иконку корзины */
+.cart-icon {
+  padding: 0.5rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 20px;
+  right: 80px;
+  z-index: 10003;
+}
+
+.cart-icon img.cart-img {
+  width: 30px;
+  height: 30px;
+}
+
+/* 🧼 Кнопки в оверлее выровнены */
+.cart-panel .checkout-btn,
+.cart-panel .close-cart {
+  margin-top: 0.5rem;
+}
+
+/* 📱 Адаптация под мобильные */
+@media (max-width: 768px) {
+  .section {
+    padding: 4rem 1rem 2rem;
+  }
+
+  .cart-panel {
+    width: 100%;
+    right: -100%;
+  }
+
+  .cart-panel.open {
+    right: 0;
+  }
+
+  .cart-icon {
+    right: 20px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .cart-icon img.cart-img {
+    width: 26px;
+    height: 26px;
+  }
+
+  .product-footer {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .buy-button {
+    width: 100%;
+  }
+
+  .checkout-btn {
+    font-size: 1rem;
+  }
+}
+
+
+/* === Top Icons Group === */
+.top-icons {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 12px;
+  padding: 8px 12px;
+  height: 50px;
+  z-index: 1000;
+}
+
+.cart-container {
+  position: relative;
+}
+
+.cart-icon.cart-img {
+  width: 28px;
+  height: 28px;
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* === Burger Menu === */
+.burger-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.burger-menu span {
+  display: block;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .top-icons {
+    top: 10px;
+    right: 10px;
+    padding: 6px 10px;
+    height: 44px;
+    gap: 10px;
+  }
+
+  .cart-icon.cart-img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .burger-menu {
+    width: 22px;
+    height: 18px;
+  }
+
+  .cart-count {
+    width: 16px;
+    height: 16px;
+    font-size: 10px;
+    top: -5px;
+    right: -5px;
+  }
+}
+
 </style>
+<style type="text/css" id="operaUserStyle">
+.cart-img {
+  width: 34px;
+  height: 34px;
+  display: block;
+}
+
+.cart-count-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #ff4f81;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
+  line-height: 1;
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.5);
+}
+
+
+/* 📦 Увеличим иконку корзины */
+.cart-icon {
+  padding: 0.5rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 20px;
+  right: 80px;
+  z-index: 10003;
+}
+
+.cart-icon img.cart-img {
+  width: 30px;
+  height: 30px;
+}
+
+/* 🧼 Кнопки в оверлее выровнены */
+.cart-panel .checkout-btn,
+.cart-panel .close-cart {
+  margin-top: 0.5rem;
+}
+
+/* 📱 Адаптация под мобильные */
+@media (max-width: 768px) {
+  .section {
+    padding: 4rem 1rem 2rem;
+  }
+
+  .cart-panel {
+    width: 100%;
+    right: -100%;
+  }
+
+  .cart-panel.open {
+    right: 0;
+  }
+
+  .cart-icon {
+    right: 20px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .cart-icon img.cart-img {
+    width: 26px;
+    height: 26px;
+  }
+
+  .product-footer {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .buy-button {
+    width: 100%;
+  }
+
+  .checkout-btn {
+    font-size: 1rem;
+  }
+}
+
+
+/* === Top Icons Group === */
+.top-icons {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 12px;
+  padding: 8px 12px;
+  height: 50px;
+  z-index: 1000;
+}
+
+.cart-container {
+  position: relative;
+}
+
+.cart-icon.cart-img {
+  width: 28px;
+  height: 28px;
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* === Burger Menu === */
+.burger-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.burger-menu span {
+  display: block;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .top-icons {
+    top: 10px;
+    right: 10px;
+    padding: 6px 10px;
+    height: 44px;
+    gap: 10px;
+  }
+
+  .cart-icon.cart-img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .burger-menu {
+    width: 22px;
+    height: 18px;
+  }
+
+  .cart-count {
+    width: 16px;
+    height: 16px;
+    font-size: 10px;
+    top: -5px;
+    right: -5px;
+  }
+}
+
+</style><style type="text/css">
+.cart-img {
+  width: 34px;
+  height: 34px;
+  display: block;
+}
+
+.cart-count-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #ff4f81;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
+  line-height: 1;
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.5);
+}
+
+
+/* 📦 Увеличим иконку корзины */
+.cart-icon {
+  padding: 0.5rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 20px;
+  right: 80px;
+  z-index: 10003;
+}
+
+.cart-icon img.cart-img {
+  width: 30px;
+  height: 30px;
+}
+
+/* 🧼 Кнопки в оверлее выровнены */
+.cart-panel .checkout-btn,
+.cart-panel .close-cart {
+  margin-top: 0.5rem;
+}
+
+/* 📱 Адаптация под мобильные */
+@media (max-width: 768px) {
+  .section {
+    padding: 4rem 1rem 2rem;
+  }
+
+  .cart-panel {
+    width: 100%;
+    right: -100%;
+  }
+
+  .cart-panel.open {
+    right: 0;
+  }
+
+  .cart-icon {
+    right: 20px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .cart-icon img.cart-img {
+    width: 26px;
+    height: 26px;
+  }
+
+  .product-footer {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .buy-button {
+    width: 100%;
+  }
+
+  .checkout-btn {
+    font-size: 1rem;
+  }
+}
+
+
+/* === Top Icons Group === */
+.top-icons {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 12px;
+  padding: 8px 12px;
+  height: 50px;
+  z-index: 1000;
+}
+
+.cart-container {
+  position: relative;
+}
+
+.cart-icon.cart-img {
+  width: 28px;
+  height: 28px;
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* === Burger Menu === */
+.burger-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.burger-menu span {
+  display: block;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .top-icons {
+    top: 10px;
+    right: 10px;
+    padding: 6px 10px;
+    height: 44px;
+    gap: 10px;
+  }
+
+  .cart-icon.cart-img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .burger-menu {
+    width: 22px;
+    height: 18px;
+  }
+
+  .cart-count {
+    width: 16px;
+    height: 16px;
+    font-size: 10px;
+    top: -5px;
+    right: -5px;
+  }
+}
+
+</style>
+<style>
+  /* Скрыть дублирующийся счётчик в бургер-меню */
+  .burger-menu .cart-count {
+    display: none;
+  }
+
+  /* Подогнать по размеру бургер и корзину */
+  .header-icons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .cart-icon, .burger-menu-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cart-count {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background-color: #ff3366;
+    color: white;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 50%;
+  }
+
+  /* Мобильная адаптация */
+  @media (max-width: 768px) {
+    .cart-icon img,
+    .burger-menu-icon img {
+      width: 28px;
+      height: 28px;
+    }
+
+    .cart-count {
+      top: -4px;
+      right: -4px;
+      font-size: 10px;
+    }
+  }
+</style>
+
 </head>
 <body>
+
+<div class="top-icons">
+
+  </div>
+  <div class="burger-menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
 <header>
   <div class="logo">
-    <img src="https://i.postimg.cc/xTbFtq6w/IMG-0546.png" alt="Logo" />
+    <div class="cart-icon" id="cartIcon">
+      <img src="https://i.postimg.cc/9fs6JGmx/icons8-bag-50.png" alt="cart" class="cart-img">
+      <span class="cart-count-badge" id="cartCount">0</span>
+    </div>
+    <img src="https://i.postimg.cc/xTbFtq6w/IMG-0546.png" alt="Logo">
   </div>
   <div class="burger" id="burgerBtn">
     <span></span>
@@ -198,22 +980,22 @@
   </div>
 </header>
 <div id="menuOverlay">
-  <a href="/index.html">Pagrindinis</a>
-  <a href="/catalog.html">Katalogas</a>
-  <a href="#">Apie mus</a>
-  <a href="#">Kontaktai</a>
+  <a href="http://127.0.0.1:5500/index.html">Pagrindinis</a>
+  <a href="http://127.0.0.1:5500/catalog.html">Katalogas</a>
+  <a href="http://127.0.0.1:5500/catalog_modern_cart.html#">Apie mus</a>
+  <a href="http://127.0.0.1:5500/catalog_modern_cart.html#">Kontaktai</a>
   <div class="contact">Tel.: +370 640 81 312</div>
   <div class="social-icons">
-    <a href="https://www.facebook.com/NightWood.lt" target="_blank"><img src="https://i.postimg.cc/G3Z9ZSj4/icons8-facebook-50.png" alt="Facebook" /></a>
-    <a href="https://www.instagram.com/nightwood.lt/" target="_blank"><img src="https://i.postimg.cc/Cdy7WHcW/icons8-instagram-50.png" alt="Instagram" /></a>
+    <a href="https://www.facebook.com/NightWood.lt" target="_blank"><img src="https://i.postimg.cc/G3Z9ZSj4/icons8-facebook-50.png" alt="Facebook"></a>
+    <a href="https://www.instagram.com/nightwood.lt/" target="_blank"><img src="https://i.postimg.cc/Cdy7WHcW/icons8-instagram-50.png" alt="Instagram"></a>
   </div>
 </div>
 <section class="section">
   <h2 style="text-align:center; margin-bottom: 3rem;">Mūsų produktai</h2>
   <div class="products">
 
-<div class="product-card">
-  <img src="https://i.postimg.cc/tCWG7rGn/440132346-847674780712524-8695788779793653024-n.jpg" alt="Padėklas" />
+<div class="product-card visible">
+  <img src="https://i.postimg.cc/tCWG7rGn/440132346-847674780712524-8695788779793653024-n.jpg" alt="Padėklas">
   <div class="info">
     <h3>Padėklas su graviruote</h3>
     <p>Stilingas ir natūralus akcentas jūsų stalo serviravimui.</p>
@@ -228,8 +1010,8 @@
 </div>
 
 
-<div class="product-card">
-  <img src="https://i.postimg.cc/DzrprDyR/mangalas.jpg" alt="Mangalas" />
+<div class="product-card visible">
+  <img src="https://i.postimg.cc/DzrprDyR/mangalas.jpg" alt="Mangalas">
   <div class="info">
     <h3>Metaliniai mangalai</h3>
     <p>Tvirtas dizainas ir puikus funkcionalumas lauko kepimui.</p>
@@ -244,8 +1026,8 @@
 </div>
 
 
-<div class="product-card">
-  <img src="https://i.postimg.cc/QdDG7pj4/1453368273-121412851-1263882373960351-7394105723998329079-n.jpg" alt="Padėklas" />
+<div class="product-card visible">
+  <img src="https://i.postimg.cc/QdDG7pj4/1453368273-121412851-1263882373960351-7394105723998329079-n.jpg" alt="Padėklas">
   <div class="info">
     <h3>Paprastas padėklas</h3>
     <p>Stilingas ir natūralus akcentas jūsų stalo serviravimui.</p>
@@ -266,39 +1048,166 @@
 </footer>
 
 
+
+
+
+
+
+<div class="cart-overlay" id="cartOverlay"></div>
+<div class="cart-panel" id="cartPanel">
+  <div class="cart-header">
+    <h2>Jūsų krepšelis</h2>
+    <button class="close-cart" id="closeCartBtn">✕</button>
+  </div>
+  <div class="cart-body">
+    <ul id="cartItems"></ul>
+  </div>
+  <div class="cart-footer">
+    <div class="total-line">
+      <span>Iš viso:</span>
+      <span>€<span id="cartTotal">0</span></span>
+    </div>
+    <button class="checkout-btn">Tęsti apmokėjimą</button>
+  </div>
+</div>
+
 <script>
-  const burgerBtn = document.getElementById('burgerBtn');
-  const menuOverlay = document.getElementById('menuOverlay');
-  const logo = document.querySelector('.logo');
+const burgerBtn = document.getElementById('burgerBtn');
+const menuOverlay = document.getElementById('menuOverlay');
+const logo = document.querySelector('.logo');
 
-  burgerBtn.addEventListener('click', () => {
-    const isOpen = menuOverlay.classList.toggle('open');
-    logo.style.display = isOpen ? 'none' : 'block';
+burgerBtn.addEventListener('click', () => {
+  const isOpen = menuOverlay.classList.toggle('open');
+  logo.style.display = isOpen ? 'none' : 'block';
+});
+
+// Анимация карточек
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
   });
+}, { threshold: 0.1 });
 
-  // Анимация карточек при скролле
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
+document.querySelectorAll('.product-card').forEach(card => {
+  observer.observe(card);
+});
 
-  document.querySelectorAll('.product-card').forEach(card => {
-    observer.observe(card);
-  });
+// Современная корзина
+const cart = [];
+const cartPanel = document.getElementById('cartPanel');
+const cartOverlay = document.getElementById('cartOverlay');
+const cartCount = document.getElementById('cartCount');
+const cartItems = document.getElementById('cartItems');
+const cartTotal = document.getElementById('cartTotal');
+const closeCartBtn = document.getElementById('closeCartBtn');
+
+function openCart() {
+  cartPanel.classList.add('open');
+  cartOverlay.classList.add('visible');
+}
+
+function closeCart() {
+  cartPanel.classList.remove('open');
+  cartOverlay.classList.remove('visible');
+}
+
+document.getElementById('cartIcon').addEventListener('click', openCart);
+closeCartBtn.addEventListener('click', closeCart);
+cartOverlay.addEventListener('click', closeCart);
 
 document.querySelectorAll('.add-to-cart').forEach(button => {
   button.addEventListener('click', () => {
     const productCard = button.closest('.product-card');
     const title = productCard.querySelector('h3').innerText;
-    alert(`Prekė „${title}“ pridėta į krepšelį!`);
+    const priceText = productCard.querySelector('.product-footer div').innerText.replace(/[^\d\.]/g, '');
+    const price = parseFloat(priceText);
+    const image = productCard.querySelector('img').src;
+
+    const existing = cart.find(item => item.title === title);
+    if (existing) {
+      existing.qty += 1;
+    } else {
+      cart.push({ title, price, image, qty: 1 });
+    }
+
+    updateCartUI();
+    openCart();
   });
 });
+
+function updateCartUI() {
+  cartItems.innerHTML = '';
+  let total = 0;
+  cart.forEach(item => {
+    total += item.price * item.qty;
+    const li = document.createElement('li');
+
+    li.innerHTML =
+      '<img src="' + item.image + '" alt="">' +
+      '<div class="item-info">' +
+        '<h4>' + item.title + ' x' + item.qty + '</h4>' +
+        '<div class="price">€' + (item.price * item.qty).toFixed(2) + '</div>' +
+      '</div>' +
+      '<button onclick="removeFromCart(\'' + item.title + '\')">❌</button>';
+    cartItems.appendChild(li);
+  });
+  cartTotal.innerText = total.toFixed(2);
+  cartCount.innerText = cart.reduce((sum, item) => sum + item.qty, 0);
+}
+
+function removeFromCart(title) {
+  const index = cart.findIndex(item => item.title === title);
+  if (index > -1) {
+    cart[index].qty -= 1;
+    if (cart[index].qty <= 0) {
+      cart.splice(index, 1);
+    }
+    updateCartUI();
+  }
+}
+</script>
+
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
 </script>
 
 
-</body>
-</html>
+</body></html>
