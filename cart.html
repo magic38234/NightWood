@@ -399,27 +399,6 @@ body {
     display: none;
   }
 }
-
-@media (min-width: 769px) {
-  .checkout-grid {
-    flex-direction: row;
-    align-items: flex-start;
-  }
-
-  .checkout-form-container {
-    width: 60%;
-  }
-
-  .checkout-cart {
-    width: 40%;
-    max-width: 420px;
-    margin-left: auto;
-  }
-
-  .checkout-form .checkout-cart {
-    display: none;
-  }
-}
 </style>
 </head>
 <body>
@@ -494,10 +473,7 @@ body {
 <div class="form-group">
 <label for="komentaras">Komentaras (nebūtina)</label>
 <textarea id="komentaras" placeholder="Turite papildomos informacijos?" rows="3"></textarea>
-</div>
-</form>
-</div>
-<div class="checkout-cart mobile-cart">
+</div><div class="checkout-cart mobile-cart">
 <h2>Jūsų krepšelis</h2>
 <div id="checkoutCartItems"></div>
 <hr/>
@@ -505,7 +481,12 @@ body {
 <strong>Iš viso:</strong>
 <strong>€<span id="checkoutCartTotal">0</span></strong>
 </div>
-<button class="checkout-submit" type="submit">Pateikti užsakymą</button></div></div>
+<button class="checkout-submit" type="submit">Pateikti užsakymą</button></div>
+</form>
+
+
+</div>
+</div>
 </section>
 <style>
   .checkout-wrapper {
