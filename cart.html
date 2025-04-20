@@ -605,6 +605,89 @@ select:focus {
     text-align: center;
   }
 }
+
+/* Super Mobile Optimization */
+@media (max-width: 420px) {
+  .checkout-wrapper {
+    padding: 3rem 1rem 2rem;
+  }
+
+  .checkout-grid {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .checkout-form-container,
+  .checkout-cart {
+    padding: 0.5rem;
+  }
+
+  .checkout-form-container h2,
+  .checkout-cart h2 {
+    font-size: 1.1rem;
+    padding-bottom: 0.3rem;
+  }
+
+  .form-group label {
+    font-size: 0.85rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  #cardFields input {
+    font-size: 0.9rem;
+    padding: 10px 12px;
+    border-radius: 8px;
+  }
+
+  .custom-payment-methods,
+  .custom-bank-options {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .payment-button,
+  .bank-button {
+    flex: 1 1 100%;
+    font-size: 0.95rem;
+    padding: 0.8rem;
+  }
+
+  .bank-button img.bank-icon {
+    height: 22px;
+  }
+
+  .checkout-submit {
+    font-size: 0.95rem;
+    padding: 0.8rem;
+  }
+
+  .cart-item {
+    font-size: 0.9rem;
+  }
+
+  .cart-total {
+    font-size: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+
+  header {
+    padding: 10px;
+  }
+
+  .burger {
+    top: 14px;
+    right: 14px;
+    transform: scale(0.85);
+  }
+
+  .logo img {
+    width: 42px;
+  }
+}
 </style>
 </head>
 <body>
