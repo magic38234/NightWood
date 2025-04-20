@@ -228,18 +228,11 @@
 
     <div class="checkout-cart">
       <h2>Jūsų krepšelis</h2>
-      <div class="cart-item">
-        <span>Prekė 1</span>
-        <span>€29.99</span>
-      </div>
-      <div class="cart-item">
-        <span>Prekė 2</span>
-        <span>€15.00</span>
-      </div>
+      <div id="checkoutCartItems"></div>
       <hr>
       <div class="cart-total">
         <strong>Iš viso:</strong>
-        <strong>€44.99</strong>
+        <strong>€<span id="checkoutCartTotal">0</span></strong>
       </div>
     </div>
   </div>
@@ -369,6 +362,31 @@
     }
   }
 </style>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const cartData = JSON.parse(localStorage.getItem("nightwood_cart") || "[]");
+  const container = document.getElementById("checkoutCartItems");
+  const totalEl = document.getElementById("checkoutCartTotal");
+
+  if (!container || !totalEl) return;
+
+  let total = 0;
+  cartData.forEach(item => {
+    const div = document.createElement("div");
+    div.className = "cart-item";
+    div.innerHTML = `
+      <span>${item.title} x${item.qty}</span>
+      <span>€${(item.price * item.qty).toFixed(2)}</span>
+    `;
+    container.appendChild(div);
+    total += item.price * item.qty;
+  });
+
+  totalEl.textContent = total.toFixed(2);
+});
+</script>
 
 </body>
 </html>
