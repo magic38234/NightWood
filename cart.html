@@ -427,6 +427,45 @@ body {
     display: none;
   }
 }
+
+@media (min-width: 769px) {
+  .checkout-wrapper {
+    justify-content: center;
+  }
+
+  .checkout-grid {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 3rem;
+    max-width: 1400px;
+  }
+
+  .checkout-form-container {
+    width: 60%;
+  }
+
+  .checkout-cart {
+    width: 40%;
+    max-width: 450px;
+    margin-left: auto;
+    display: flex !important;
+  }
+
+  .checkout-form .checkout-cart {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .checkout-cart {
+    width: 100%;
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+  }
+}
 </style>
 </head>
 <body>
