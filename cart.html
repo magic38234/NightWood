@@ -688,6 +688,16 @@ select:focus {
     width: 42px;
   }
 }
+
+/* Переключение между версиями корзины */
+@media (max-width: 768px) {
+  .checkout-grid > .checkout-cart {
+    display: none;
+  }
+  .mobile-cart {
+    display: flex !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -765,7 +775,15 @@ select:focus {
 </div>
 <div class="form-group"><label for="mokejimas">Mokėjimo būdas</label><div class="custom-payment-methods"><button class="payment-button" data-value="bank" type="button">Interneto Banku</button><button class="payment-button" data-value="card" type="button">Mokėjimas kortele</button></div><input id="selectedPayment" name="mokejimas" type="hidden"/></div><div class="form-group" id="bankSelectGroup" style="display:none;"><label for="bankas">Pasirinkite banką</label><div class="custom-bank-options"><button class="bank-button" data-value="seb" type="button">SEB</button><button class="bank-button" data-value="swedbank" type="button">Swedbank</button><button class="bank-button" data-value="luminor" type="button">Luminor</button><button class="bank-button" data-value="citadele" type="button">Citadele</button><button class="bank-button" data-value="revolut" type="button">Revolut</button></div><input id="selectedBank" name="bank" type="hidden"/></div><div class="form-group" id="cardFields" style="display: none;"><label>Kortelės duomenys</label><div class="form-group"><label for="cardNumber">Kortelės numeris</label><input id="cardNumber" placeholder="1234 5678 9012 3456" required="True" type="text"/></div><div class="form-group"><label for="cardExpiry">Galiojimo data</label><input id="cardExpiry" placeholder="MM / YY" required="True" type="text"/></div><div class="form-group"><label for="cardCVV">CVV</label><input id="cardCVV" placeholder="123" required="True" type="text"/></div></div><button class="checkout-submit" type="submit">Pateikti užsakymą</button>
 </form>
+<div class="checkout-cart mobile-cart" style="display: none;">
+<h2>Jūsų krepšelis</h2>
+<div id="checkoutCartItems"></div>
+<hr/>
+<div class="cart-total">
+<strong>Iš viso:</strong>
+<strong>€<span id="checkoutCartTotal">0</span></strong>
 </div>
+</div></div>
 <div class="checkout-cart">
 <h2>Jūsų krepšelis</h2>
 <div id="checkoutCartItems"></div>
