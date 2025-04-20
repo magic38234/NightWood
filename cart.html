@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-
 <html lang="lt">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Night Wood Užsakymo Forma</title>
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Night Wood Užsakymo Forma</title>
+  <style>
     * {
       margin: 0;
       padding: 0;
@@ -348,152 +347,38 @@ body {
     margin-top: 20px;
   }
 }
-
-@media (min-width: 769px) {
-  .checkout-form-container {
-    display: flex;
-    gap: 2rem;
-    align-items: flex-start;
-  }
-
-  .checkout-form {
-    flex: 2;
-  }
-
-  .mobile-cart {
-    flex: 1;
-    max-width: 350px;
-  }
-}
-
-
-@media (max-width: 768px) {
-  .cart-box {
-    margin-top: 40px;
-  }
-}
-
-
-@media (max-width: 768px) {
-  .checkout-cart {
-    margin-top: 24px;
-  }
-}
-
-
-@media (max-width: 768px) {
-  .checkout-form-container {
-    flex-direction: column;
-  }
-
-  .checkout-form .checkout-cart {
-    margin-top: 16px;
-  }
-
-  .checkout-form .checkout-submit {
-    display: block;
-    margin-top: 1rem;
-  }
-
-  .checkout-grid > .checkout-cart {
-    display: none;
-  }
-}
-
-@media (min-width: 769px) {
-  .checkout-wrapper {
-    justify-content: center;
-  }
-
-  .checkout-grid {
-    max-width: 1400px;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 3rem;
-  }
-
-  .checkout-form-container {
-    width: 60%;
-  }
-
-  .checkout-cart {
-    width: 40%;
-    max-width: 450px;
-    margin-left: auto;
-  }
-
-  .checkout-form .checkout-cart {
-    display: none;
-  }
-}
-
-@media (min-width: 769px) {
-  .checkout-wrapper {
-    justify-content: center;
-  }
-
-  .checkout-grid {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 3rem;
-    max-width: 1400px;
-  }
-
-  .checkout-form-container {
-    width: 60%;
-  }
-
-  .checkout-cart {
-    width: 40%;
-    max-width: 450px;
-    margin-left: auto;
-    display: flex !important;
-  }
-
-  .checkout-form .checkout-cart {
-    display: none !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .checkout-cart {
-    width: 100%;
-    margin-top: 24px;
-    display: flex;
-    flex-direction: column;
-  }
-}
 </style>
+
 </head>
 <body>
+
 <header>
-<div class="logo">
-<img alt="Logo" src="https://i.postimg.cc/xTbFtq6w/IMG-0546.png"/>
-</div>
-<div class="burger" id="burgerBtn">
-<span></span>
-<span></span>
-<span></span>
-</div>
+  <div class="logo">
+    <img src="https://i.postimg.cc/xTbFtq6w/IMG-0546.png" alt="Logo">
+  </div>
+  <div class="burger" id="burgerBtn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 </header>
+
 <div id="menuOverlay">
-<a href="/index.html">Pagrindinis</a>
-<a href="/catalog.html">Katalogas</a>
-<a href="#">Apie mus</a>
-<a href="#">Kontaktai</a>
-<div class="contact">Tel.: +370 640 81 312</div>
-<div class="social-icons">
-<a href="https://www.facebook.com/NightWood.lt" target="_blank">
-<img alt="Facebook" src="https://i.postimg.cc/G3Z9ZSj4/icons8-facebook-50.png"/>
-</a>
-<a href="https://www.instagram.com/nightwood.lt/" target="_blank">
-<img alt="Instagram" src="https://i.postimg.cc/Cdy7WHcW/icons8-instagram-50.png"/>
-</a>
+  <a href="/index.html">Pagrindinis</a>
+  <a href="/catalog.html">Katalogas</a>
+  <a href="#">Apie mus</a>
+  <a href="#">Kontaktai</a>
+  <div class="contact">Tel.: +370 640 81 312</div>
+  <div class="social-icons">
+    <a href="https://www.facebook.com/NightWood.lt" target="_blank">
+      <img src="https://i.postimg.cc/G3Z9ZSj4/icons8-facebook-50.png" alt="Facebook">
+    </a>
+    <a href="https://www.instagram.com/nightwood.lt/" target="_blank">
+      <img src="https://i.postimg.cc/Cdy7WHcW/icons8-instagram-50.png" alt="Instagram">
+    </a>
+  </div>
 </div>
-</div>
+
 <script>
   const burger = document.getElementById('burgerBtn');
   const menu = document.getElementById('menuOverlay');
@@ -512,47 +397,53 @@ body {
     });
   });
 </script>
+
+
 <section class="checkout-wrapper">
-<div class="checkout-grid">
-<div class="checkout-form-container">
-<h2>Užsakymo forma</h2>
-<form class="checkout-form">
-<div class="form-group">
-<label for="vardas">Vardas</label>
-<input id="vardas" placeholder="Įveskite vardą" required="" type="text"/>
-</div>
-<div class="form-group">
-<label for="pavarde">Pavardė</label>
-<input id="pavarde" placeholder="Įveskite pavardę" required="" type="text"/>
-</div>
-<div class="form-group">
-<label for="tel">Telefono numeris</label>
-<input id="tel" placeholder="+370..." required="" type="tel"/>
-</div>
-<div class="form-group">
-<label for="email">El. paštas</label>
-<input id="email" placeholder="el.pastas@example.com" required="" type="email"/>
-</div>
-<div class="form-group">
-<label for="adresas">Pristatymo adresas</label>
-<input id="adresas" placeholder="Gatvė, miestas, pašto kodas" required="" type="text"/>
-</div>
-<div class="form-group">
-<label for="komentaras">Komentaras (nebūtina)</label>
-<textarea id="komentaras" placeholder="Turite papildomos informacijos?" rows="3"></textarea>
-</div>
-</form>
-</div>
-<div class="checkout-cart mobile-cart">
-<h2>Jūsų krepšelis</h2>
-<div id="checkoutCartItems"></div>
-<hr/>
-<div class="cart-total">
-<strong>Iš viso:</strong>
-<strong>€<span id="checkoutCartTotal">0</span></strong>
-</div>
-<button class="checkout-submit" type="submit">Pateikti užsakymą</button></div></div>
+  <div class="checkout-grid">
+    <div class="checkout-form-container">
+      <h2>Užsakymo forma</h2>
+      <form class="checkout-form">
+        <div class="form-group">
+          <label for="vardas">Vardas</label>
+          <input type="text" id="vardas" placeholder="Įveskite vardą" required>
+        </div>
+        <div class="form-group">
+          <label for="pavarde">Pavardė</label>
+          <input type="text" id="pavarde" placeholder="Įveskite pavardę" required>
+        </div>
+        <div class="form-group">
+          <label for="tel">Telefono numeris</label>
+          <input type="tel" id="tel" placeholder="+370..." required>
+        </div>
+        <div class="form-group">
+          <label for="email">El. paštas</label>
+          <input type="email" id="email" placeholder="el.pastas@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="adresas">Pristatymo adresas</label>
+          <input type="text" id="adresas" placeholder="Gatvė, miestas, pašto kodas" required>
+        </div>
+        <div class="form-group">
+          <label for="komentaras">Komentaras (nebūtina)</label>
+          <textarea id="komentaras" rows="3" placeholder="Turite papildomos informacijos?"></textarea>
+        </div>
+        <button class="checkout-submit" type="submit">Pateikti užsakymą</button>
+      </form>
+    </div>
+
+    <div class="checkout-cart">
+      <h2>Jūsų krepšelis</h2>
+      <div id="checkoutCartItems"></div>
+      <hr>
+      <div class="cart-total">
+        <strong>Iš viso:</strong>
+        <strong>€<span id="checkoutCartTotal">0</span></strong>
+      </div>
+    </div>
+  </div>
 </section>
+
 <style>
   .checkout-wrapper {
     padding: 6rem 2rem 4rem;
@@ -813,39 +704,9 @@ body {
     margin-top: 20px;
   }
 }
-
-@media (min-width: 769px) {
-  .checkout-form-container {
-    display: flex;
-    gap: 2rem;
-    align-items: flex-start;
-  }
-
-  .checkout-form {
-    flex: 2;
-  }
-
-  .mobile-cart {
-    flex: 1;
-    max-width: 350px;
-  }
-}
-
-
-@media (max-width: 768px) {
-  .cart-box {
-    margin-top: 40px;
-  }
-}
-
-
-@media (max-width: 768px) {
-  .checkout-cart {
-    margin-top: 24px;
-  }
-}
-
 </style>
+
+
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const cartData = JSON.parse(localStorage.getItem("nightwood_cart") || "[]");
@@ -869,5 +730,6 @@ document.addEventListener("DOMContentLoaded", () => {
   totalEl.textContent = total.toFixed(2);
 });
 </script>
+
 </body>
 </html>
