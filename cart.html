@@ -515,6 +515,26 @@ select:focus {
     flex: 1 1 100%;
   }
 }
+
+#cardFields {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+#cardFields input {
+  padding: 12px 16px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+#cardFields input:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+  outline: none;
+}
 </style>
 </head>
 <body>
@@ -590,7 +610,7 @@ select:focus {
 <label for="komentaras">Komentaras (nebūtina)</label>
 <textarea id="komentaras" placeholder="Turite papildomos informacijos?" rows="3"></textarea>
 </div>
-<div class="form-group"><label for="mokejimas">Mokėjimo būdas</label><div class="custom-payment-methods"><button class="payment-button" data-value="bank" type="button">Bankinis pavedimas</button><button class="payment-button" data-value="card" type="button">Mokėjimas kortele</button></div><input id="selectedPayment" name="mokejimas" type="hidden"/></div><div class="form-group" id="bankSelectGroup" style="display:none;"><label for="bankas">Pasirinkite banką</label><div class="custom-bank-options"><button class="bank-button" data-value="seb" type="button">SEB</button><button class="bank-button" data-value="swedbank" type="button">Swedbank</button><button class="bank-button" data-value="luminor" type="button">Luminor</button><button class="bank-button" data-value="citadele" type="button">Citadele</button><button class="bank-button" data-value="revolut" type="button">Revolut</button></div><input id="selectedBank" name="bank" type="hidden"/></div><button class="checkout-submit" type="submit">Pateikti užsakymą</button>
+<div class="form-group"><label for="mokejimas">Mokėjimo būdas</label><div class="custom-payment-methods"><button class="payment-button" data-value="bank" type="button">Interneto Banku</button><button class="payment-button" data-value="card" type="button">Mokėjimas kortele</button></div><input id="selectedPayment" name="mokejimas" type="hidden"/></div><div class="form-group" id="bankSelectGroup" style="display:none;"><label for="bankas">Pasirinkite banką</label><div class="custom-bank-options"><button class="bank-button" data-value="seb" type="button">SEB</button><button class="bank-button" data-value="swedbank" type="button">Swedbank</button><button class="bank-button" data-value="luminor" type="button">Luminor</button><button class="bank-button" data-value="citadele" type="button">Citadele</button><button class="bank-button" data-value="revolut" type="button">Revolut</button></div><input id="selectedBank" name="bank" type="hidden"/></div><div class="form-group" id="cardFields" style="display: none;"><label>Kortelės duomenys</label><div class="form-group"><label for="cardNumber">Kortelės numeris</label><input id="cardNumber" placeholder="1234 5678 9012 3456" required="True" type="text"/></div><div class="form-group"><label for="cardExpiry">Galiojimo data</label><input id="cardExpiry" placeholder="MM / YY" required="True" type="text"/></div><div class="form-group"><label for="cardCVV">CVV</label><input id="cardCVV" placeholder="123" required="True" type="text"/></div></div><button class="checkout-submit" type="submit">Pateikti užsakymą</button>
 </form>
 </div>
 <div class="checkout-cart">
@@ -943,6 +963,25 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         bankGroup.style.display = "none";
       }
+    });
+  });
+});
+</script><script>
+document.addEventListener("DOMContentLoaded", () => {
+  const paymentButtons = document.querySelectorAll(".payment-button");
+  const selectedPayment = document.getElementById("selectedPayment");
+  const bankGroup = document.getElementById("bankSelectGroup");
+  const cardFields = document.getElementById("cardFields");
+
+  paymentButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      paymentButtons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      const value = btn.dataset.value;
+      selectedPayment.value = value;
+
+      bankGroup.style.display = value === "bank" ? "flex" : "none";
+      cardFields.style.display = value === "card" ? "flex" : "none";
     });
   });
 });
