@@ -783,6 +783,14 @@ select:focus {
 <strong>Iš viso:</strong>
 <strong>€<span id="checkoutCartTotal">0</span></strong>
 </div>
+</div><div class="checkout-cart mobile-cart" id="mobileCart" style="display: none;">
+<h2>Jūsų krepšelis</h2>
+<div id="checkoutCartItems"></div>
+<hr/>
+<div class="cart-total">
+<strong>Iš viso:</strong>
+<strong>€<span id="checkoutCartTotal">0</span></strong>
+</div>
 </div></div>
 <div class="checkout-cart" id="desktopCart">
 <h2>Jūsų krepšelis</h2>
@@ -1159,11 +1167,15 @@ document.addEventListener("DOMContentLoaded", () => {
 </script><script>
 document.addEventListener("DOMContentLoaded", function () {
   const isMobile = window.innerWidth < 768;
-  const cart = document.getElementById("desktopCart");
-  const form = document.querySelector(".checkout-form-container");
+  const desktopCart = document.getElementById("desktopCart");
+  const mobileCart = document.getElementById("mobileCart");
 
-  if (isMobile && cart && form) {
-    form.appendChild(cart);
+  if (isMobile) {
+    if (desktopCart) desktopCart.style.display = "none";
+    if (mobileCart) mobileCart.style.display = "flex";
+  } else {
+    if (desktopCart) desktopCart.style.display = "flex";
+    if (mobileCart) mobileCart.style.display = "none";
   }
 });
 </script></body>
