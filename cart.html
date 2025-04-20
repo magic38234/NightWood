@@ -349,18 +349,54 @@ body {
   }
 }
 
+@media (min-width: 769px) {
+  .checkout-form-container {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+
+  .checkout-form {
+    flex: 2;
+  }
+
+  .mobile-cart {
+    flex: 1;
+    max-width: 350px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .cart-box {
+    margin-top: 40px;
+  }
+}
+
+
 @media (max-width: 768px) {
   .checkout-cart {
     margin-top: 24px;
   }
+}
 
-  .checkout-form .checkout-submit {
-    display: none;
+
+@media (max-width: 768px) {
+  .checkout-form-container {
+    flex-direction: column;
   }
 
-  .checkout-cart .checkout-submit {
+  .checkout-form .checkout-cart {
+    margin-top: 16px;
+  }
+
+  .checkout-form .checkout-submit {
     display: block;
     margin-top: 1rem;
+  }
+
+  .checkout-grid > .checkout-cart {
+    display: none;
   }
 }
 </style>
@@ -437,11 +473,7 @@ body {
 <div class="form-group">
 <label for="komentaras">Komentaras (nebūtina)</label>
 <textarea id="komentaras" placeholder="Turite papildomos informacijos?" rows="3"></textarea>
-</div>
-
-</form>
-</div>
-<div class="checkout-cart">
+</div><div class="checkout-cart mobile-cart">
 <h2>Jūsų krepšelis</h2>
 <div id="checkoutCartItems"></div>
 <hr/>
@@ -450,6 +482,10 @@ body {
 <strong>€<span id="checkoutCartTotal">0</span></strong>
 </div>
 <button class="checkout-submit" type="submit">Pateikti užsakymą</button></div>
+</form>
+
+
+</div>
 </div>
 </section>
 <style>
@@ -712,6 +748,38 @@ body {
     margin-top: 20px;
   }
 }
+
+@media (min-width: 769px) {
+  .checkout-form-container {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+
+  .checkout-form {
+    flex: 2;
+  }
+
+  .mobile-cart {
+    flex: 1;
+    max-width: 350px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .cart-box {
+    margin-top: 40px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .checkout-cart {
+    margin-top: 24px;
+  }
+}
+
 </style>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
