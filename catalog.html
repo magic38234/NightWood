@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Night Wood Katalogas</title>
+<title>Katalogas | Night Wood</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -164,6 +164,26 @@
     top: 20px;
     right: 20px;
   }
+
+  .product-card {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .product-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    .product-card {
+      transform: translateX(-50px);
+    }
+    .product-card.visible {
+      transform: translateX(0);
+    }
+  }
 </style>
 </head>
 <body>
@@ -230,6 +250,7 @@
   © 2025 Night Wood. Visos teisės saugomos.
 </footer>
 
+
 <script>
   const burgerBtn = document.getElementById('burgerBtn');
   const menuOverlay = document.getElementById('menuOverlay');
@@ -239,7 +260,22 @@
     const isOpen = menuOverlay.classList.toggle('open');
     logo.style.display = isOpen ? 'none' : 'block';
   });
+
+  // Анимация карточек при скролле
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.product-card').forEach(card => {
+    observer.observe(card);
+  });
 </script>
+
 
 </body>
 </html>
