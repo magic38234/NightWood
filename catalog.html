@@ -173,7 +173,7 @@
 </header>
 <div id="menuOverlay">
   <a href="/index.html">Pagrindinis</a>
-  <a href="#">Katalogas</a>
+  <a href="/catalog.html">Katalogas</a>
   <a href="#">Apie mus</a>
   <a href="#">Kontaktai</a>
   <div class="contact">Tel.: +370 640 81 312</div>
@@ -223,12 +223,17 @@
 <footer>
   © 2025 Night Wood. Visos teisės saugomos.
 </footer>
+
 <script>
   const burgerBtn = document.getElementById('burgerBtn');
   const menuOverlay = document.getElementById('menuOverlay');
+  const logo = document.querySelector('.logo');
+
   burgerBtn.addEventListener('click', () => {
-    menuOverlay.classList.toggle('open');
+    const isOpen = menuOverlay.classList.toggle('open');
+    logo.style.display = isOpen ? 'none' : 'block';
   });
 </script>
+
 </body>
 </html>
