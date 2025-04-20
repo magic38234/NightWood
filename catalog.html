@@ -1130,6 +1130,23 @@ document.getElementById('cartIcon').addEventListener('click', openCart);
 closeCartBtn.addEventListener('click', closeCart);
 cartOverlay.addEventListener('click', closeCart);
 
+
+function saveCart() {
+  localStorage.setItem('nightwood_cart', JSON.stringify(cart));
+}
+
+function loadCart() {
+  const saved = localStorage.getItem('nightwood_cart');
+  if (saved) {
+    const parsed = JSON.parse(saved);
+    cart.length = 0;
+    parsed.forEach(item => cart.push(item));
+    updateCartUI();
+  }
+}
+
+loadCart();
+
 document.querySelectorAll('.add-to-cart').forEach(button => {
   button.addEventListener('click', () => {
     const productCard = button.closest('.product-card');
@@ -1167,6 +1184,7 @@ function updateCartUI() {
     cartItems.appendChild(li);
   });
   cartTotal.innerText = total.toFixed(2);
+  saveCart();
   cartCount.innerText = cart.reduce((sum, item) => sum + item.qty, 0);
 }
 
