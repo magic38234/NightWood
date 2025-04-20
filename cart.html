@@ -784,7 +784,7 @@ select:focus {
 <strong>€<span id="checkoutCartTotal">0</span></strong>
 </div>
 </div></div>
-<div class="checkout-cart">
+<div class="checkout-cart" id="desktopCart">
 <h2>Jūsų krepšelis</h2>
 <div id="checkoutCartItems"></div>
 <hr/>
@@ -1155,6 +1155,16 @@ document.addEventListener("DOMContentLoaded", () => {
       cardFields.style.display = value === "card" ? "flex" : "none";
     });
   });
+});
+</script><script>
+document.addEventListener("DOMContentLoaded", function () {
+  const isMobile = window.innerWidth < 768;
+  const cart = document.getElementById("desktopCart");
+  const form = document.querySelector(".checkout-form-container");
+
+  if (isMobile && cart && form) {
+    form.appendChild(cart);
+  }
 });
 </script></body>
 </html>
