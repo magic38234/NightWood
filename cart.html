@@ -699,37 +699,29 @@ select:focus {
   }
 }
 
-/* ПК: обычная корзина */
-.adaptive-cart {
-  position: static;
-  border-radius: 20px;
+.cart-mobile {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 1rem;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  flex-direction: column;
 }
 
-/* Мобайл: фиксированная корзина внизу */
-@media (max-width: 768px) {
-  .adaptive-cart {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(25, 25, 25, 0.85);
-    padding: 1rem;
-    border-radius: 20px 20px 0 0;
-    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.3);
-    z-index: 999;
-    backdrop-filter: blur(8px);
-  }
+.cart-mobile h2 {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
 
-  .adaptive-cart h2 {
-    font-size: 1.2rem;
-    text-align: center;
-    margin-bottom: 0.5rem;
-  }
-
-  .adaptive-cart .cart-total {
-    justify-content: space-between;
-    font-size: 1rem;
-  }
+.cart-mobile .cart-total {
+  justify-content: space-between;
+  font-size: 1rem;
 }
 </style>
 </head>
@@ -806,8 +798,16 @@ select:focus {
 <label for="komentaras">Komentaras (nebūtina)</label>
 <textarea id="komentaras" placeholder="Turite papildomos informacijos?" rows="3"></textarea>
 </div>
-<div class="form-group"><label for="mokejimas">Mokėjimo būdas</label><div class="custom-payment-methods"><button class="payment-button" data-value="bank" type="button">Interneto Banku</button><button class="payment-button" data-value="card" type="button">Mokėjimas kortele</button></div><input id="selectedPayment" name="mokejimas" type="hidden"/></div><div class="form-group" id="bankSelectGroup" style="display:none;"><label for="bankas">Pasirinkite banką</label><div class="custom-bank-options"><button class="bank-button" data-value="seb" type="button">SEB</button><button class="bank-button" data-value="swedbank" type="button">Swedbank</button><button class="bank-button" data-value="luminor" type="button">Luminor</button><button class="bank-button" data-value="citadele" type="button">Citadele</button><button class="bank-button" data-value="revolut" type="button">Revolut</button></div><input id="selectedBank" name="bank" type="hidden"/></div><div class="form-group" id="cardFields" style="display: none;"><label>Kortelės duomenys</label><div class="form-group"><label for="cardNumber">Kortelės numeris</label><input id="cardNumber" placeholder="1234 5678 9012 3456" required="True" type="text"/></div><div class="form-group"><label for="cardExpiry">Galiojimo data</label><input id="cardExpiry" placeholder="MM / YY" required="True" type="text"/></div><div class="form-group"><label for="cardCVV">CVV</label><input id="cardCVV" placeholder="123" required="True" type="text"/></div></div><button class="checkout-submit" type="submit">Pateikti užsakymą</button>
-<div class="checkout-cart mobile-cart   a d a p t i v e - c a r t" id="cart-mobile" style="display: none;">
+<div class="form-group"><label for="mokejimas">Mokėjimo būdas</label><div class="custom-payment-methods"><button class="payment-button" data-value="bank" type="button">Interneto Banku</button><button class="payment-button" data-value="card" type="button">Mokėjimas kortele</button></div><input id="selectedPayment" name="mokejimas" type="hidden"/></div><div class="form-group" id="bankSelectGroup" style="display:none;"><label for="bankas">Pasirinkite banką</label><div class="custom-bank-options"><button class="bank-button" data-value="seb" type="button">SEB</button><button class="bank-button" data-value="swedbank" type="button">Swedbank</button><button class="bank-button" data-value="luminor" type="button">Luminor</button><button class="bank-button" data-value="citadele" type="button">Citadele</button><button class="bank-button" data-value="revolut" type="button">Revolut</button></div><input id="selectedBank" name="bank" type="hidden"/></div><div class="form-group" id="cardFields" style="display: none;"><label>Kortelės duomenys</label><div class="form-group"><label for="cardNumber">Kortelės numeris</label><input id="cardNumber" placeholder="1234 5678 9012 3456" required="True" type="text"/></div><div class="form-group"><label for="cardExpiry">Galiojimo data</label><input id="cardExpiry" placeholder="MM / YY" required="True" type="text"/></div><div class="form-group"><label for="cardCVV">CVV</label><input id="cardCVV" placeholder="123" required="True" type="text"/></div></div><button class="checkout-submit" type="submit">Pateikti užsakymą</button><div class="checkout-cart   c a r t - m o b i l e" id="cart-mobile" style="display: none;">
+<h2>Jūsų krepšelis</h2>
+<div id="checkoutCartItems"></div>
+<hr/>
+<div class="cart-total">
+<strong>Iš viso:</strong>
+<strong>€<span id="checkoutCartTotal">0</span></strong>
+</div>
+</div>
+<div class="checkout-cart mobile-cart" id="cart-mobile" style="display: none;">
 <h2>Jūsų krepšelis</h2>
 <div id="checkoutCartItems"></div>
 <hr/>
@@ -1209,6 +1209,22 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     if (cartDesktop) cartDesktop.style.display = "flex";
     if (cartMobile) cartMobile.style.display = "none";
+  }
+});
+</script><script>
+document.addEventListener("DOMContentLoaded", function () {
+  const isMobile = window.innerWidth < 768;
+  const cartDesktop = document.getElementById("cart-desktop");
+  const cartMobile = document.getElementById("cart-mobile");
+
+  if (cartDesktop && cartMobile) {
+    if (isMobile) {
+      cartDesktop.style.display = "none";
+      cartMobile.style.display = "flex";
+    } else {
+      cartDesktop.style.display = "flex";
+      cartMobile.style.display = "none";
+    }
   }
 });
 </script></body>
