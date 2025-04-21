@@ -210,8 +210,8 @@
       .hero-btn { padding: 12px 24px; font-size: 14px; }
     }
 
- /* === Заголовок "Populiariausi produktai" === */
- .section h2 {
+   /* === Заголовок "Populiariausi produktai" в стиле bilresta.lt с адаптацией === */
+   .section h2 {
     text-align: center;
     margin-bottom: 2.5rem;
     font-size: 2.8rem;
@@ -230,6 +230,18 @@
     background: linear-gradient(90deg, #d3ad7f 0%, #c89c68 100%);
     margin: 16px auto 0;
     border-radius: 2px;
+  }
+
+  @media (max-width: 768px) {
+    .section h2 {
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+    }
+    .section h2::after {
+      width: 50px;
+      height: 3px;
+      margin-top: 12px;
+    }
   }
   </style>
 </head>
