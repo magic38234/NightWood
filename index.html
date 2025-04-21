@@ -262,6 +262,55 @@
 #closeMenuBtn:hover {
   color: #dad7d7;
 }
+
+/* === Добавляем стили слайдера изображений с ховером === */
+.slider-wrapper {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+.slider-wrapper img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: none;
+}
+.slider-wrapper img.active {
+  display: block;
+}
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.575);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  color: #000;
+  font-weight: bold;
+  font-size: 18px;
+  user-select: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.product-card:hover .slider-arrow {
+  opacity: 1;
+}
+.slider-arrow:hover {
+  background: #dbdbdba9;
+}
+.slider-arrow.left {
+  left: 10px;
+}
+.slider-arrow.right {
+  right: 10px;
+}
 </style>
 </head>
 <body>
@@ -295,7 +344,12 @@
 <h2>Populiariausi produktai</h2>
 <div class="products">
 <div class="product-card">
-<img alt="Slate Tray" src="https://i.postimg.cc/tCWG7rGn/440132346-847674780712524-8695788779793653024-n.jpg"/>
+  <div class="slider-wrapper">
+    <div class="slider-arrow left" onclick="slideImage(this, -1)">&#8592;</div>
+    <div class="slider-arrow right" onclick="slideImage(this, 1)">&#8594;</div>
+    <img class="active" src="https://i.postimg.cc/HLRt2CqJ/poon.jpg" alt="Padėklas"/>
+    <img src="https://i.postimg.cc/VkNBP61r/476231208-1034025892077411-8188252417738116989-n.jpg" alt="Padėklas"/>
+  </div>
 <div class="info">
 <h3>Padėklas su graviruoti</h3>
 <p>Stilingas ir natūralus akcentas jūsų stalo serviravimui.</p>
@@ -303,8 +357,12 @@
 <div class="product-footer"><div style="color:#ccc; font-size: 0.95rem; margin-bottom: 0.5rem;">€ 46</div><button class="buy-button" onclick="window.location.href='/cart.html'">PIRKTI</button></div>
 </div>
 <div class="product-card">
-<img alt="Metal Grill" src="https://i.postimg.cc/DzrprDyR/mangalas.jpg"/>
-<div class="info">
+  <div class="slider-wrapper">
+    <div class="slider-arrow left" onclick="slideImage(this, -1)">&#8592;</div>
+    <div class="slider-arrow right" onclick="slideImage(this, 1)">&#8594;</div>
+    <img class="active" src="https://i.postimg.cc/GhV6HZ2p/mangalas.jpg" alt="Padėklas"/>
+    <img src="https://i.postimg.cc/xjswSkVM/photo-2025-04-21-23-03-50.jpg" alt="Padėklas"/>
+  </div><div class="info">
 <h3>Metaliniai mangalai</h3>
 <p>Tvirtas dizainas ir puikus funkcionalumas lauko kepimui.</p>
 </div>
@@ -353,6 +411,16 @@
   closeMenuBtn.addEventListener('click', () => {
     menuOverlay.classList.remove('open');
   });
+
+  function slideImage(btn, direction) {
+  const wrapper = btn.closest('.slider-wrapper');
+  const images = wrapper.querySelectorAll('img');
+  let current = Array.from(images).findIndex(img => img.classList.contains('active'));
+  if (current === -1) return;
+  images[current].classList.remove('active');
+  let next = (current + direction + images.length) % images.length;
+  images[next].classList.add('active');
+}
 </script>
 </body>
 </html>
