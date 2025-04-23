@@ -1354,6 +1354,51 @@ header.scrolled {
 .slider-arrow.right {
   right: 10px;
 }
+</style><style>
+/* 💎 Обновления в стиле Cropp для корзины */
+.cart-body li {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 0.75rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  transition: background 0.3s ease;
+}
+.cart-body li:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+.cart-body li button {
+  background: transparent;
+  border: none;
+  color: #ff4f81;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.cart-body li button:hover {
+  color: #ff7ca3;
+}
+.checkout-btn {
+  background: linear-gradient(to right, #ffffff, #dddddd);
+  color: #000;
+  font-weight: bold;
+  border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+.checkout-btn:hover {
+  background: #f5f5f5;
+}
+.cart-panel {
+  transition: right 0.3s ease-in-out, opacity 0.3s ease;
+  opacity: 0;
+}
+.cart-panel.open {
+  right: 0;
+  opacity: 1;
+}
 </style></head>
 <body><header>
 <div class="logo"><div class="cart-icon" id="cartIcon">
@@ -1388,12 +1433,12 @@ header.scrolled {
 <h2 style="text-align:center; margin-bottom: 3rem;">Mūsų produktai</h2>
 <div class="products">
 <div class="product-card visible">
-  <div class="slider-wrapper">
-    <div class="slider-arrow left" onclick="slideImage(this, -1)">&#8592;</div>
-    <div class="slider-arrow right" onclick="slideImage(this, 1)">&#8594;</div>
-    <img class="active" src="https://i.postimg.cc/HLRt2CqJ/poon.jpg" alt="Padėklas"/>
-    <img src="https://i.postimg.cc/VkNBP61r/476231208-1034025892077411-8188252417738116989-n.jpg" alt="Padėklas"/>
-  </div><div class="info">
+<div class="slider-wrapper">
+<div class="slider-arrow left" onclick="slideImage(this, -1)">←</div>
+<div class="slider-arrow right" onclick="slideImage(this, 1)">→</div>
+<img alt="Padėklas" class="active" src="https://i.postimg.cc/HLRt2CqJ/poon.jpg"/>
+<img alt="Padėklas" src="https://i.postimg.cc/VkNBP61r/476231208-1034025892077411-8188252417738116989-n.jpg"/>
+</div><div class="info">
 <h3>Padėklas su graviruote</h3>
 <p>Stilingas ir natūralus akcentas jūsų stalo serviravimui.</p>
 </div>
@@ -1406,12 +1451,12 @@ header.scrolled {
 </div>
 </div>
 <div class="product-card visible">
-  <div class="slider-wrapper">
-    <div class="slider-arrow left" onclick="slideImage(this, -1)">&#8592;</div>
-    <div class="slider-arrow right" onclick="slideImage(this, 1)">&#8594;</div>
-    <img class="active" src="https://i.postimg.cc/GhV6HZ2p/mangalas.jpg" alt="Padėklas"/>
-    <img src="https://i.postimg.cc/xjswSkVM/photo-2025-04-21-23-03-50.jpg" alt="Padėklas"/>
-  </div><div class="info">
+<div class="slider-wrapper">
+<div class="slider-arrow left" onclick="slideImage(this, -1)">←</div>
+<div class="slider-arrow right" onclick="slideImage(this, 1)">→</div>
+<img alt="Padėklas" class="active" src="https://i.postimg.cc/GhV6HZ2p/mangalas.jpg"/>
+<img alt="Padėklas" src="https://i.postimg.cc/xjswSkVM/photo-2025-04-21-23-03-50.jpg"/>
+</div><div class="info">
 <h3>Metaliniai mangalai</h3>
 <p>Tvirtas dizainas ir puikus funkcionalumas lauko kepimui.</p>
 </div>
@@ -1424,13 +1469,13 @@ header.scrolled {
 </div>
 </div>
 <div class="product-card visible">
-  <div class="slider-wrapper">
-    <div class="slider-arrow left" onclick="slideImage(this, -1)">&#8592;</div>
-    <div class="slider-arrow right" onclick="slideImage(this, 1)">&#8594;</div>
-    <img class="active" src="https://i.postimg.cc/fypZWypz/IMG-0832.jpg" alt="Padėklas"/>
-    <img src="https://i.postimg.cc/4NHsLvHm/1453368273-121412851-1263882373960351-7394105723998329079-n.jpg" alt="Padėklas"/>
-  </div>
- <div class="info">
+<div class="slider-wrapper">
+<div class="slider-arrow left" onclick="slideImage(this, -1)">←</div>
+<div class="slider-arrow right" onclick="slideImage(this, 1)">→</div>
+<img alt="Padėklas" class="active" src="https://i.postimg.cc/fypZWypz/IMG-0832.jpg"/>
+<img alt="Padėklas" src="https://i.postimg.cc/4NHsLvHm/1453368273-121412851-1263882373960351-7394105723998329079-n.jpg"/>
+</div>
+<div class="info">
 <h3>Paprastas padėklas</h3>
 <p>Stilingas ir natūralus akcentas jūsų stalo serviravimui.</p>
 </div>
@@ -1465,7 +1510,6 @@ header.scrolled {
 </div>
 </div>
 <!-- Code injected by live-server -->
-
 <div class="cart-overlay" id="cartOverlay"></div><div class="cart-panel" id="cartPanel">
 <div class="cart-header">
 <h2>Jūsų krepšelis</h2>
@@ -1482,7 +1526,6 @@ header.scrolled {
 <button class="checkout-btn" onclick="window.location.href='/cart.html'">Tęsti apmokėjimą</button>
 </div>
 </div>
-
 <!-- Code injected by live-server -->
 <script>
 	// <![CDATA[  <-- For SVG support
@@ -1521,7 +1564,6 @@ header.scrolled {
 	}
 	// ]]>
 </script>
-
 <!-- Code injected by live-server -->
 <script>
 	// <![CDATA[  <-- For SVG support
