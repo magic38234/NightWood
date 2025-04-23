@@ -2,6 +2,68 @@
 
 <!-- saved from url=(0046)http://127.0.0.1:5500/catalog_modern_cart.html -->
 <html lang="lt"><head>
+<style>
+.promo-area {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+.promo-area input {
+  flex: 1;
+  padding: 0.5rem 0.8rem;
+  border-radius: 10px;
+  border: none;
+  font-size: 0.9rem;
+}
+
+.promo-btn {
+  padding: 0.5rem 1rem;
+  background: #ff4f81;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+
+.promo-btn:hover {
+  background: #ff7ca3;
+}
+
+.mini-preview {
+  display: flex;
+  gap: 10px;
+  margin-top: 1rem;
+  overflow-x: auto;
+}
+
+.mini-preview img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #444;
+}
+
+@media (max-width: 480px) {
+  .promo-area {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .promo-area input,
+  .promo-btn {
+    width: 100%;
+    font-size: 0.85rem;
+  }
+}
+</style>
+
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Night Wood Pagrindinis</title>
@@ -1507,24 +1569,16 @@ header.scrolled {
 <span>€<span id="cartTotal">0</span></span>
 </div>
 <button class="checkout-btn" onclick="window.location.href='/cart.html'">Tęsti apmokėjimą</button>
+
+<div class="promo-area">
+<input placeholder="Įveskite nuolaidos kodą" type="text"/>
+<button class="promo-btn">Taikyti</button>
+</div>
+
 </div>
 </div>
-<!-- Code injected by live-server -->
-<div class="cart-overlay" id="cartOverlay"></div><div class="cart-panel" id="cartPanel">
-<div class="cart-header">
-<h2>Jūsų krepšelis</h2>
-<button class="close-cart" id="closeCartBtn">✕</button>
 </div>
-<div class="cart-body">
-<ul id="cartItems"></ul>
-</div>
-<div class="cart-footer">
-<div class="total-line">
-<span>Iš viso:</span>
-<span>€<span id="cartTotal">0</span></span>
-</div>
-<button class="checkout-btn" onclick="window.location.href='/cart.html'">Tęsti apmokėjimą</button>
-</div>
+
 </div>
 <!-- Code injected by live-server -->
 <script>
