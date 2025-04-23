@@ -63,9 +63,10 @@
   }
 }
 </style>
+
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Night Wood Pagrindinis</title>
+<title>Night Wood Katalogas</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://i.postimg.cc/xTbFtq6w/IMG-0546.png" rel="icon" type="image/png"/>
 <style>
@@ -1506,7 +1507,7 @@ header.scrolled {
 <div class="product-footer">
 <div style="color:#ccc; font-size: 0.95rem; margin-bottom: 0.5rem;">€ 46</div>
 <div style="display: flex; gap: 0.5rem; justify-content: center;">
-<button class="buy-button">PIRKTI</button>
+<button class="buy-button"  onclick="window.location.href='/cart.html'">PIRKTI</button>
 <button class="buy-button add-to-cart">PRIDĖTI</button>
 </div>
 </div>
@@ -1524,7 +1525,7 @@ header.scrolled {
 <div class="product-footer">
 <div style="color:#ccc; font-size: 0.95rem; margin-bottom: 0.5rem;">€ 550</div>
 <div style="display: flex; gap: 0.5rem; justify-content: center;">
-<button class="buy-button">PIRKTI</button>
+<button class="buy-button" onclick="window.location.href='/cart.html'">PIRKTI</button>
 <button class="buy-button add-to-cart">PRIDĖTI</button>
 </div>
 </div>
@@ -1543,7 +1544,7 @@ header.scrolled {
 <div class="product-footer">
 <div style="color:#ccc; font-size: 0.95rem; margin-bottom: 0.5rem;">€ 30</div>
 <div style="display: flex; gap: 0.5rem; justify-content: center;">
-<button class="buy-button">PIRKTI</button>
+<button class="buy-button" onclick="window.location.href='/cart.html'">PIRKTI</button>
 <button class="buy-button add-to-cart">PRIDĖTI</button>
 </div>
 </div>
@@ -1568,14 +1569,17 @@ header.scrolled {
 <span>€<span id="cartTotal">0</span></span>
 </div>
 <button class="checkout-btn" onclick="window.location.href='/cart.html'">Tęsti apmokėjimą</button>
+
 <div class="promo-area">
 <input placeholder="Įveskite nuolaidos kodą" type="text"/>
 <button class="promo-btn">Taikyti</button>
 </div>
+
+</div>
 </div>
 </div>
 
-
+</div>
 <!-- Code injected by live-server -->
 <script>
 	// <![CDATA[  <-- For SVG support
@@ -1789,92 +1793,6 @@ function removeFromCart(title) {
     updateCartUI();
   }
 }
-</script><script>
-document.addEventListener('click', function(e) {
-  if (e.target.tagName === 'IMG' && e.target.closest('.cart-body')) {
-    const items = Array.from(document.querySelectorAll('.cart-body li'));
-    const images = items.map(item => item.querySelector('img').src);
-    const titles = items.map(item => item.querySelector('h4').textContent);
-    const prices = items.map(item => item.querySelector('.price').textContent);
-    let currentIndex = images.indexOf(e.target.src);
 
-    const modal = document.createElement('div');
-    modal.style.position = 'fixed';
-    modal.style.top = '0';
-    modal.style.left = '0';
-    modal.style.width = '100vw';
-    modal.style.height = '100vh';
-    modal.style.background = 'rgba(0, 0, 0, 0.9)';
-    modal.style.display = 'flex';
-    modal.style.flexDirection = 'column';
-    modal.style.justifyContent = 'center';
-    modal.style.alignItems = 'center';
-    modal.style.zIndex = '10010';
-    modal.style.padding = '20px';
-    modal.style.textAlign = 'center';
 
-    const img = document.createElement('img');
-    img.src = images[currentIndex];
-    img.style.maxWidth = '90vw';
-    img.style.maxHeight = '60vh';
-    img.style.borderRadius = '12px';
-    img.style.boxShadow = '0 0 20px #000';
-    modal.appendChild(img);
-
-    const title = document.createElement('h3');
-    title.textContent = titles[currentIndex];
-    title.style.color = '#fff';
-    title.style.margin = '1rem 0 0.5rem';
-    modal.appendChild(title);
-
-    const price = document.createElement('div');
-    price.textContent = prices[currentIndex];
-    price.style.color = '#aaa';
-    price.style.fontSize = '1.1rem';
-    modal.appendChild(price);
-
-    const controls = document.createElement('div');
-    controls.style.display = 'flex';
-    controls.style.gap = '2rem';
-    controls.style.marginTop = '1.5rem';
-
-    const prevBtn = document.createElement('button');
-    prevBtn.innerHTML = '←';
-    prevBtn.style.fontSize = '2rem';
-    prevBtn.style.color = 'white';
-    prevBtn.style.background = 'transparent';
-    prevBtn.style.border = 'none';
-    prevBtn.style.cursor = 'pointer';
-    prevBtn.onclick = () => {
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      img.src = images[currentIndex];
-      title.textContent = titles[currentIndex];
-      price.textContent = prices[currentIndex];
-    };
-
-    const nextBtn = document.createElement('button');
-    nextBtn.innerHTML = '→';
-    nextBtn.style.fontSize = '2rem';
-    nextBtn.style.color = 'white';
-    nextBtn.style.background = 'transparent';
-    nextBtn.style.border = 'none';
-    nextBtn.style.cursor = 'pointer';
-    nextBtn.onclick = () => {
-      currentIndex = (currentIndex + 1) % images.length;
-      img.src = images[currentIndex];
-      title.textContent = titles[currentIndex];
-      price.textContent = prices[currentIndex];
-    };
-
-    controls.appendChild(prevBtn);
-    controls.appendChild(nextBtn);
-    modal.appendChild(controls);
-
-    modal.addEventListener('click', e => {
-      if (e.target === modal) modal.remove();
-    });
-
-    document.body.appendChild(modal);
-  }
-});
 </script></body></html>
