@@ -1518,6 +1518,32 @@ header.scrolled {
   right: 0;
   opacity: 1;
 }
+
+.qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+.qty-controls button {
+  background: #ff4f81;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.qty-controls button:hover {
+  background: #ff7ca3;
+}
+.qty-controls span {
+  font-size: 1rem;
+  min-width: 24px;
+  text-align: center;
+  display: inline-block;
+}
 </style></head>
 <body><header>
 <div class="logo"><div class="cart-icon" id="cartIcon">
@@ -1814,7 +1840,6 @@ document.querySelectorAll('.add-to-cart').forEach(button => {
     }
 
     updateCartUI();
-    openCart();
   });
 });
 
@@ -1856,37 +1881,6 @@ function removeFromCart(title) {
   }
 }
 
-
-</script>
-<style>
-.qty-controls {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
-}
-.qty-controls button {
-  background: #ff4f81;
-  border: none;
-  color: white;
-  font-size: 1rem;
-  padding: 0.2rem 0.6rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-.qty-controls button:hover {
-  background: #ff7ca3;
-}
-.qty-controls span {
-  font-size: 1rem;
-  min-width: 24px;
-  text-align: center;
-  display: inline-block;
-}
-</style>
-<script>
-
 function updateCartUI() {
   cartItems.innerHTML = '';
   let total = 0;
@@ -1923,6 +1917,28 @@ function removeItem(index) {
   cart.splice(index, 1);
   updateCartUI();
 }
+</script>
+
+
+<script>
+// 📱 Назад на телефоне — скрыть корзину
+window.addEventListener('popstate', () => {
+  if (cartPanel.classList.contains('open')) {
+    closeCart();
+    history.pushState(null, null, location.href);
+  }
+});
+
+// 🖥 Клик вне корзины — скрыть
+document.addEventListener('click', (e) => {
+  if (
+    cartPanel.classList.contains('open') &&
+    !cartPanel.contains(e.target) &&
+    !cartIcon.contains(e.target)
+  ) {
+    closeCart();
+  }
+});
 </script>
 
 </body></html>
