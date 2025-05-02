@@ -276,6 +276,205 @@ header.scrolled {
   color: #dad7d7;
 }
 
+/*=== Корзина для товаров ===*/
+.cart-icon {
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0.1rem 1.3rem;
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+  color: white;
+  position: fixed;
+  top: 20px;
+  right: 60px;
+  z-index: 10003;
+}
+.cart-total {
+  margin-top: 1rem;
+  font-weight: bold;
+  text-align: right;
+}
+.close-cart {
+  margin-top: 1rem;
+  background: #feebe2;
+  color: #000;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 12px;
+  cursor: pointer;
+}
+.cart-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.6);
+  backdrop-filter: blur(3px);
+  z-index: 10001;
+  display: none;
+}
+.cart-panel {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 360px;
+  height: 100vh;
+  background: #111;
+  color: #fff;
+  z-index: 10002;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.4s ease;
+  padding: 1rem;
+}
+.cart-panel.open {
+  right: 0;
+}
+.cart-overlay.visible {
+  display: block;
+}
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #444;
+  padding-bottom: 0.5rem;
+}
+.cart-body {
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 1rem;
+}
+
+.cart-body ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.cart-body li {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  align-items: center;
+  border-bottom: 1px solid #222;
+  padding-bottom: 0.75rem;
+}
+.cart-body img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.item-info {
+  flex: 1;
+}
+.item-info h4 {
+  font-size: 0.95rem;
+  margin: 0 0 0.3rem 0;
+}
+.item-info .price {
+  font-size: 0.85rem;
+  color: #aaa;
+}
+.cart-footer {
+  padding-top: 1rem;
+  border-top: 1px solid #444;
+}
+.total-line {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.checkout-btn {
+  width: 100%;
+  background: linear-gradient(90deg, #ff4f81, #c300ff);
+  color: white;
+  font-weight: bold;
+  padding: 0.8rem 1rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 14px rgba(255, 79, 129, 0.4);
+}
+.checkout-btn:hover {
+  background: linear-gradient(90deg, #ff82a8, #d066ff);
+  transform: translateY(-2px);
+}
+.close-cart {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.cart-img {
+  width: 34px;
+  height: 34px;
+  display: block;
+}
+.cart-count-badge {
+  position: absolute;
+  top: -8px;
+  right: 7px;
+  background: #ff183f;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
+  line-height: 1;
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.5);
+}
+
+/*=== Корзина для товаров Промокоды ===*/
+.promo-area {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  padding: 0.75rem 1rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+  justify-content: space-between;
+  align-items: center;
+}
+.promo-area input {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 12px;
+  background: #1a1a1c;
+  color: #fff;
+  font-size: 0.95rem;
+  transition: box-shadow 0.3s;
+}
+.promo-area input::placeholder {
+  color: #aaa;
+}
+.promo-area input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #ff4f81;
+}
+.promo-btn {
+  padding: 0.6rem 1.2rem;
+  background: linear-gradient(90deg, #ff4f81, #c300ff);
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.3s;
+}
+.promo-btn:hover {
+  background: linear-gradient(90deg, #ff82a8, #d066ff);
+}
+
+
 /* === Добавляем стили слайдера изображений с ховером === */
 .slider-wrapper {
   position: relative;
@@ -350,10 +549,15 @@ header.scrolled {
 
 <div id="scrollLine"></div>
 
+<div class="cart-icon" id="cartIcon">
+  <img alt="cart" class="cart-img" src="https://i.postimg.cc/9fs6JGmx/icons8-bag-50.png"/>
+  <span class="cart-count-badge" id="cartCount">0</span>
+</div>
 
 <div class="burger" id="burgerBtn">
 <span></span><span></span><span></span>
 </div>
+
 </header>
 <div id="menuOverlay"><div id="closeMenuBtn">✕</div>
 <a href="/index.html">Pagrindinis</a>
@@ -366,6 +570,29 @@ header.scrolled {
 <a href="https://www.instagram.com/nightwood.lt/"><img alt="Instagram" src="https://i.postimg.cc/Cdy7WHcW/icons8-instagram-50.png"/></a>
 </div>
 </div>
+
+<!--Kорзинa-->
+<div class="cart-overlay" id="cartOverlay"></div>
+<div class="cart-panel" id="cartPanel">
+<div class="cart-header">
+<h2>Jūsų krepšelis</h2>
+<button class="close-cart" id="closeCartBtn">✕</button>
+</div>
+<div class="cart-body">
+<ul id="cartItems"></ul>
+</div>
+<div class="cart-footer">
+<div class="total-line">
+<span>Iš viso:</span>
+<span>€<span id="cartTotal">0</span></span>
+</div>
+<div class="promo-area">
+<input placeholder="Įveskite nuolaidos kodą" type="text"/>
+<button class="promo-btn">Taikyti</button>
+</div>
+<button class="checkout-btn" onclick="window.location.href='/cart.html'">Tęsti apmokėjimą</button>
+</div></div></div>
+
 <div class="hero-banner">
 <div class="hero-content">
 <h1>Prabanga iš medžio ir akmens</h1>
@@ -469,6 +696,29 @@ window.addEventListener('scroll', () => {
     header.classList.remove('scrolled');
   }
 });
+
+ // Современная корзина
+ const cart = [];
+  const cartPanel = document.getElementById('cartPanel');
+  const cartOverlay = document.getElementById('cartOverlay');
+  const cartCount = document.getElementById('cartCount');
+  const cartItems = document.getElementById('cartItems');
+  const cartTotal = document.getElementById('cartTotal');
+  const closeCartBtn = document.getElementById('closeCartBtn');
+
+  function openCart() {
+  cartPanel.classList.add('open');
+  cartOverlay.classList.add('visible');
+  }
+
+  function closeCart() {
+  cartPanel.classList.remove('open');
+  cartOverlay.classList.remove('visible');
+  }
+
+  document.getElementById('cartIcon').addEventListener('click', openCart);
+  closeCartBtn.addEventListener('click', closeCart);
+  cartOverlay.addEventListener('click', closeCart);
 </script>
 </body>
 </html>
