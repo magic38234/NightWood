@@ -146,12 +146,17 @@ header.scrolled {
       text-transform: uppercase;
       cursor: pointer;
       box-shadow: 0 8px 16px #00000050;
+      animation: pulse 2s infinite;
     }
     .hero-btn:hover {
       background: #cc00ff;
       color: #fff;
     }
 
+    @keyframes pulse{
+      0%{box-shadow: 0 0 0 3px #dcaeeb;}
+      100%{box-shadow: 0 0 0 15px #5969ff00;}
+    }
     /* === Секция товаров === */
     .section {
       padding: 4rem 2rem;
@@ -363,7 +368,7 @@ header.scrolled {
 </div>
 <div class="hero-banner">
 <div class="hero-content">
-<h1>Prabanga medžio ir akmens</h1>
+<h1>Prabanga iš medžio ir akmens</h1>
 <p>Išskirtiniai padėklai, mangalai ir lentos – unikalūs dirbiniai iš natūralių medžiagų tavo namams ir dovanoms.</p>
 <button class="hero-btn" onclick="window.location.href='/catalog.html'">Žiūrėti kolekciją</button>
 </div>
@@ -413,7 +418,7 @@ header.scrolled {
 </section>
 <footer>© 2025 Night Wood. Visos teisės saugomos.</footer>
 <script>
-   const burgerBtn = document.getElementById('burgerBtn');
+  const burgerBtn = document.getElementById('burgerBtn');
   const menuOverlay = document.getElementById('menuOverlay');
 
   burgerBtn.addEventListener('click', (e) => {
