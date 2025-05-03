@@ -12,14 +12,14 @@
 /* === Общие настройки === */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
-    position: relative; /* добавьте эту строку */
+    position: relative;
     font-family: 'Segoe UI', sans-serif;
     background-color: #0e0e10;
     color: #fff;
     cursor: pointer;
     min-height: 100vh;
     background: url('https://i.postimg.cc/7hQRW2zz/photo-2025-04-17-17-27-30.jpg') no-repeat center center fixed;
-    background-size: cover; /* обязательно для растяжения */
+    background-size: cover;
   }
 body::before {
   content: "";
@@ -46,28 +46,28 @@ header {
     transition: background 0.3s ease;
 }
 header.scrolled {
-  background: #0e0e10; /* затемнённый фон при скролле */
-
+  background: #0e0e10;
 }
-.logo img { width: 50px; }
+.logo img { 
+  width: 50px; 
+}
 
 /* === Бургер-меню === */
 .burger {
-  width: 36px;
-  height: 28px;
+  width: 34px;
+  height: 26px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
   z-index: 10001;
-      
-  }
+}
 .burger span {
-  height: 4px;
+  height: 3px;
   background: #fff;
   border-radius: 2px;
   transition: 0.3s ease;
-  }
+}
 .burger:hover { transform: scale(1.1); }
 
 /* === Подвал === */
@@ -90,30 +90,30 @@ footer {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 1.5rem;
   transform: translateY(-100%);
   transition: transform 0.4s ease;
 }
 #menuOverlay.open { transform: translateY(0); }
 #menuOverlay a {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: #fff;
   text-transform: uppercase;
   text-decoration: none;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.2px;
   transition: color 0.3s ease;
 }
 #menuOverlay a:hover { color: #c300ff; }
-#menuOverlay .contact { color: #aaa; font-size: 1rem; margin-top: 2rem; }
+#menuOverlay .contact { color: #aaa; font-size: 0.9rem; margin-top: 1.5rem; }
 #menuOverlay .social-icons {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.2rem;
   margin-top: 1rem;
 }
 #menuOverlay .social-icons img {
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   filter: grayscale(100%) brightness(0.9);
   transition: transform 0.3s ease;
 }
@@ -123,10 +123,9 @@ footer {
 }
 #closeMenuBtn {
   position: absolute;
-  top: 30px;
-  right: 5%;
-  transform: translateX(50%);
-  font-size: 3rem;
+  top: 20px;
+  right: 20px;
+  font-size: 2rem;
   font-weight: bold;
   color: #fff;
   cursor: pointer;
@@ -140,12 +139,12 @@ footer {
 .cart-icon {
   cursor: pointer;
   font-size: 1.2rem;
-  padding: 0.1rem 1.3rem;
+  padding: 0.1rem 1rem;
   border-radius: 16px;
   backdrop-filter: blur(4px);
   color: white;
   position: fixed;
-  top: 20px;
+  top: 18px;
   right: 60px;
   z-index: 10003;
 }
@@ -176,8 +175,9 @@ footer {
 .cart-panel {
   position: fixed;
   top: 0;
-  right: -400px;
-  width: 360px;
+  right: -100%;
+  width: 100%;
+  max-width: 360px;
   height: 100vh;
   background: #111;
   color: #fff;
@@ -271,19 +271,19 @@ footer {
   cursor: pointer;
 }
 .cart-img {
-  width: 34px;
-  height: 34px;
+  width: 30px;
+  height: 30px;
   display: block;
 }
 .cart-count-badge {
   position: absolute;
   top: -8px;
-  right: 7px;
+  right: 5px;
   background: #ff183f;
   color: white;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: bold;
-  padding: 2px 6px;
+  padding: 2px 5px;
   border-radius: 50%;
   line-height: 1;
   box-shadow: 0 0 0 2px rgba(0,0,0,0.5);
@@ -351,9 +351,9 @@ footer {
   background: #ff4f81;
   border: none;
   color: white;
-  font-size: 1rem;
-  padding: 0.2rem 0.6rem;
-  border-radius: 8px;
+  font-size: 0.9rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
   cursor: pointer;
   transition: background 0.2s ease;
 }
@@ -361,8 +361,8 @@ footer {
   background: #ff7ca3;
 }
 .qty-controls span {
-  font-size: 1rem;
-  min-width: 24px;
+  font-size: 0.9rem;
+  min-width: 20px;
   text-align: center;
   display: inline-block;
 }
@@ -378,9 +378,11 @@ footer {
   backdrop-filter: blur(4px);
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 .promo-area input {
   flex: 1;
+  min-width: 100px;
   padding: 0.6rem 1rem;
   border: none;
   border-radius: 12px;
@@ -413,35 +415,35 @@ footer {
 
 /*=== Карточка товаров ===*/
 .section {
-    padding: 6rem 2rem 4rem;
+    padding: 6rem 1.5rem 3rem;
     max-width: 1200px;
     margin: auto;
   }
 
   .section h2 {
     text-align: center;
-    margin-bottom: 2.5rem;
-    font-size: 2.8rem;
+    margin-bottom: 2rem;
+    font-size: 2.2rem;
     text-transform: uppercase;
     color: #e0e0e0;
     font-weight: 700;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.2px;
     font-family: 'Montserrat', sans-serif;
     position: relative;
   }
   .section h2::after {
     content: "";
     display: block;
-    width: 90px;
-    height: 4px;
+    width: 70px;
+    height: 3px;
     background: linear-gradient(90deg, #c97fd3 0%, #c97fd3 100%);
-    margin: 16px auto 0;
+    margin: 12px auto 0;
     border-radius: 2px;
   }
   .products {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 1.5rem;
   }
   .product-card {
     opacity: 0;
@@ -463,7 +465,7 @@ footer {
     object-fit: cover;
   }
   .info { padding: 1rem; }
-  .info h3 { margin-bottom: 0.5rem; }
+  .info h3 { margin-bottom: 0.5rem; font-size: 1.1rem; }
   .info p { font-size: 0.9rem; color: #ccc; }
   .product-footer {
     text-align: center;
@@ -477,7 +479,7 @@ footer {
     border-radius: 16px;
     transition: background-color 0.3s ease;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 14px;
     border: none;
     font-family: 'Segoe UI', sans-serif;
   }
@@ -491,15 +493,11 @@ footer {
 
   .burger {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 18px;
+    right: 15px;
   }
 
   .product-card {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 0.8s ease, transform 0.8s ease;
@@ -510,18 +508,6 @@ footer {
     transform: translateY(0);
   }
 
-  @media (max-width: 768px) {
-    .product-card {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-
-      transform: translateX(-50px);
-    }
-    .product-card.visible {
-      transform: translateX(0);
-    }
-  }
 /* === Стили для слайдера изображений === */
 
   .slider-wrapper {
@@ -545,8 +531,8 @@ footer {
   transform: translateY(-50%);
   background: rgba(255, 255, 255, 0.575);
   border-radius: 50%;
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -554,7 +540,7 @@ footer {
   z-index: 2;
   color: #000;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 16px;
   user-select: none;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -572,7 +558,285 @@ footer {
   right: 10px;
 }
 
+/* === Медиа-запросы для адаптивности === */
+@media (max-width: 1024px) {
+  .section {
+    padding: 5rem 1.5rem 3rem;
+  }
+  .products {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.2rem;
+  }
+  .section h2 {
+    font-size: 2rem;
+  }
+}
 
+@media (max-width: 768px) {
+  header {
+    padding: 15px;
+    height: 60px;
+  }
+  .logo img {
+    width: 40px;
+  }
+  .cart-icon {
+    top: 14px;
+    right: 50px;
+  }
+  .cart-img {
+    width: 26px;
+    height: 26px;
+  }
+  .cart-count-badge {
+    font-size: 10px;
+    padding: 1px 4px;
+  }
+  .burger {
+    width: 30px;
+    height: 22px;
+    top: 15px;
+    right: 12px;
+  }
+  .burger span {
+    height: 2px;
+  }
+  #closeMenuBtn {
+    font-size: 1.8rem;
+    top: 15px;
+    right: 15px;
+  }
+  #menuOverlay a {
+    font-size: 1.3rem;
+  }
+  .section {
+    padding: 4.5rem 1rem 2rem;
+  }
+  .section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+  .section h2::after {
+    width: 60px;
+    margin: 10px auto 0;
+  }
+  .products {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+  .slider-wrapper,
+  .slider-wrapper img {
+    height: 180px;
+  }
+  .product-card {
+    transform: translateY(30px);
+  }
+  .info h3 {
+    font-size: 1rem;
+  }
+  .info p {
+    font-size: 0.85rem;
+  }
+  .product-footer {
+    padding: 0.8rem;
+  }
+  .buy-button {
+    padding: 0.4rem 1rem;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 12px 15px;
+    height: 55px;
+  }
+  .logo img {
+    width: 35px;
+  }
+  .cart-icon {
+    top: 12px;
+    right: 45px;
+  }
+  .cart-img {
+    width: 24px;
+    height: 24px;
+  }
+  .burger {
+    width: 26px;
+    height: 20px;
+    top: 13px;
+    right: 10px;
+  }
+  #menuOverlay a {
+    font-size: 1.2rem;
+    gap: 1rem;
+  }
+  #menuOverlay .social-icons img {
+    width: 35px;
+    height: 35px;
+  }
+  .section {
+    padding: 4rem 0.8rem 1.5rem;
+  }
+  .section h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
+  }
+  .section h2::after {
+    width: 50px;
+    height: 2px;
+  }
+  .products {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .slider-wrapper,
+  .slider-wrapper img {
+    height: 200px;
+  }
+  .info {
+    padding: 0.8rem;
+  }
+  .product-footer {
+    padding: 0.6rem 0.8rem 0.8rem;
+  }
+  .slider-arrow {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+  .qty-controls button {
+    padding: 0.15rem 0.4rem;
+    font-size: 0.8rem;
+  }
+  .qty-controls span {
+    font-size: 0.8rem;
+    min-width: 18px;
+  }
+  .cart-panel {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.8rem;
+  }
+  .cart-header h2 {
+    font-size: 1.3rem;
+  }
+  .promo-area {
+    flex-direction: column;
+    padding: 0.6rem 0.8rem;
+    gap: 0.6rem;
+  }
+  .promo-area input {
+    width: 100%;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.9rem;
+  }
+  .promo-btn {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+  .checkout-btn {
+    padding: 0.7rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* === Улучшенная поддержка для мобильных устройств с тачскрином === */
+@media (hover: none) {
+  .product-card:hover {
+    transform: none;
+  }
+  .slider-arrow {
+    opacity: 1;
+    width: 35px;
+    height: 35px;
+  }
+  .buy-button:active {
+    background-color: #f0d9ca;
+  }
+  .checkout-btn:active {
+    transform: translateY(1px);
+  }
+}
+
+/* === Поддержка для очень маленьких экранов === */
+@media (max-width: 320px) {
+  header {
+    padding: 10px 12px;
+    height: 50px;
+  }
+  .logo img {
+    width: 30px;
+  }
+  .cart-icon {
+    right: 40px;
+  }
+  .cart-img {
+    width: 22px;
+    height: 22px;
+  }
+  .burger {
+    width: 24px;
+    height: 18px;
+  }
+  .section h2 {
+    font-size: 1.4rem;
+  }
+  .info h3 {
+    font-size: 0.95rem;
+  }
+  .info p {
+    font-size: 0.8rem;
+  }
+  .buy-button {
+    padding: 0.4rem 0.8rem;
+    font-size: 12px;
+  }
+}
+
+/* === Поддержка крупных экранов === */
+@media (min-width: 1600px) {
+  .section {
+    max-width: 1500px;
+    padding: 7rem 2rem 5rem;
+  }
+  .products {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+  }
+  .slider-wrapper,
+  .slider-wrapper img {
+    height: 240px;
+  }
+  .section h2 {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+  }
+  .section h2::after {
+    width: 100px;
+    height: 5px;
+    margin: 20px auto 0;
+  }
+  .info {
+    padding: 1.5rem;
+  }
+  .info h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.7rem;
+  }
+  .info p {
+    font-size: 1rem;
+  }
+  .product-footer {
+    padding: 1.5rem;
+  }
+  .buy-button {
+    padding: 0.6rem 1.5rem;
+    font-size: 16px;
+  }
+}
 
 </style>
 </head>
@@ -843,6 +1107,28 @@ footer {
   cart.splice(index, 1);
   updateCartUI();
   }
+
+  // JavaScript (логика применения промокода)
+  function applyPromoCode() {
+  const input = document.getElementById("promoInput").value.trim().toUpperCase();
+  const message = document.getElementById("promoMessage");
+  
+  if (input === "START15") {
+    message.textContent = "✅ Промокод применён! Скидка 15%.";
+    message.style.color = "#00c897";
+    applyDiscount(15); // вызывается функция пересчёта итоговой суммы
+  } else {
+    message.textContent = "❌ Неверный промокод.";
+    message.style.color = "#ff4d4d";
+  }
+  }
+  function applyDiscount(percent) {
+  const totalElement = document.getElementById("cartTotal"); // например, <span id="cartTotal">123.00 €</span>
+  let total = parseFloat(totalElement.textContent.replace(/[^\d.]/g, ""));
+  const discounted = (total * (1 - percent / 100)).toFixed(2);
+  totalElement.textContent = `${discounted} €`;
+  }
+
 
   //  для товаров 
   function slideImage(btn, direction) {
