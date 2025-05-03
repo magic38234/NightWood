@@ -9,7 +9,8 @@
 <link href="https://i.postimg.cc/xTbFtq6w/IMG-0546.png" rel="icon" type="image/png"/>
 <style>
     /* === Общие настройки === */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+/* === Общие настройки === */
+* { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', sans-serif;
       background-color: #0e0e10;
@@ -414,27 +415,6 @@
       margin-top: 3rem;
     }
 
-    /* Стили для мобильных устройств */
-    @media (max-width: 768px) {
-      .checkout-container {
-        flex-direction: column;
-      }
-      
-      .checkout-summary {
-        width: 100%;
-        order: -1;
-      }
-      
-      .form-row {
-        flex-direction: column;
-        gap: 1.5rem;
-      }
-      
-      .payment-method-title {
-        font-size: 0.9rem;
-      }
-    }
-
     /* Стиль для информации о доставке */
     .shipping-info {
       margin: 1.5rem 0;
@@ -479,6 +459,298 @@
 
     .breadcrumbs .current {
       color: #c300ff;
+    }
+
+    /* === RESPONSIVE STYLES === */
+    
+    /* Для планшетов (от 768px до 991px) */
+    @media (max-width: 991px) {
+      .main-content {
+        padding: 0 15px;
+        margin-top: 80px;
+      }
+      
+      .checkout-container {
+        gap: 1.5rem;
+      }
+      
+      .section-title {
+        font-size: 1.5rem;
+      }
+      
+      .checkout-summary {
+        width: 100%;
+        max-width: 380px;
+      }
+    }
+    
+    /* Для мобильных устройств (до 767px) */
+    @media (max-width: 767px) {
+      .main-content {
+        margin-top: 70px;
+      }
+      
+      .checkout-container {
+        flex-direction: column;
+      }
+      
+      .checkout-form, .checkout-summary {
+        width: 100%;
+        max-width: none;
+      }
+      
+      .checkout-summary {
+        order: -1; /* Перемещаем корзину наверх на мобильных устройствах */
+      }
+      
+      .form-row {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .section-title {
+        font-size: 1.3rem;
+      }
+      
+      .breadcrumbs {
+        overflow-x: auto;
+        white-space: nowrap;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        font-size: 0.8rem;
+      }
+      
+      #menuOverlay a {
+        font-size: 1.5rem;
+      }
+      
+      .payment-method {
+        padding: 0.75rem;
+      }
+      
+      .payment-method-title {
+        font-size: 0.85rem;
+      }
+      
+      .payment-method-description {
+        font-size: 0.75rem;
+      }
+      
+      .payment-method-icon {
+        width: 30px;
+        height: 30px;
+      }
+      
+      .cart-item {
+        gap: 0.5rem;
+      }
+      
+      .cart-item-img {
+        width: 50px;
+        height: 50px;
+      }
+      
+      .promo-code-form {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      
+      .promo-code-btn {
+        width: 100%;
+      }
+    }
+    
+    /* Для маленьких мобильных устройств (до 480px) */
+    @media (max-width: 480px) {
+      header {
+        padding: 15px;
+        height: 60px;
+      }
+      
+      .logo img {
+        width: 40px;
+      }
+      
+      .burger {
+        width: 30px;
+        height: 24px;
+      }
+      
+      .main-content {
+        margin-top: 60px;
+        padding: 0 10px;
+      }
+      
+      .section-title {
+        font-size: 1.2rem;
+      }
+      
+      .form-control {
+        padding: 0.7rem 0.8rem;
+        font-size: 0.9rem;
+      }
+      
+      .checkout-btn {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+      }
+      
+      .cart-item-title {
+        font-size: 0.85rem;
+      }
+      
+      .cart-item-price, .cart-item-qty {
+        font-size: 0.8rem;
+      }
+      
+      .shipping-info {
+        padding: 0.8rem;
+      }
+      
+      .shipping-info h4 {
+        font-size: 0.9rem;
+      }
+      
+      .shipping-info p {
+        font-size: 0.8rem;
+      }
+      
+      #closeMenuBtn {
+        font-size: 2rem;
+        top: 20px;
+      }
+      
+      #menuOverlay .social-icons img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+    
+    /* Стили для высокого разрешения (от 1200px) */
+    @media (min-width: 1200px) {
+      .main-content {
+        max-width: 1400px;
+      }
+      
+      .checkout-container {
+        gap: 3rem;
+      }
+      
+      .checkout-summary {
+        width: 420px;
+      }
+    }
+    
+    /* Исправления для темной темы и доступности */
+    @media (prefers-color-scheme: dark) {
+      .form-control::placeholder {
+        color: #888;
+      }
+      
+      .checkbox-group label a {
+        text-decoration: underline;
+      }
+    }
+    
+    /* Стили для печати */
+    @media print {
+      body {
+        background-color: white;
+        color: black;
+      }
+      
+      header, .burger, #menuOverlay, .checkout-btn, .footer {
+        display: none;
+      }
+      
+      .main-content {
+        margin-top: 0;
+        padding: 0;
+      }
+      
+      .checkout-container {
+        display: block;
+      }
+      
+      .checkout-summary, .checkout-form {
+        width: 100%;
+        background: none;
+        box-shadow: none;
+        border: 1px solid #ddd;
+        border-radius: 0;
+        margin-bottom: 2rem;
+      }
+      
+      .section-title::after {
+        background: #000;
+      }
+      
+      .cart-item {
+        border-bottom: 1px solid #ddd;
+      }
+      
+      .summary-row {
+        border-top: 1px solid #ddd;
+      }
+      
+      .summary-row.total {
+        border-top: 2px solid #000;
+      }
+    }
+    
+    /* Анимации и переходы */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .cart-item, .payment-method, .form-control, .checkout-btn {
+      animation: fadeIn 0.5s ease-out;
+    }
+    
+    /* Улучшения для touch-устройств */
+    @media (hover: none) {
+      .payment-method:hover {
+        transform: none;
+      }
+      
+      .checkout-btn:hover {
+        transform: none;
+      }
+    }
+    
+    /* Fix для проблем с прокруткой на iOS */
+    .cart-items {
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Стили для ошибок формы */
+    .form-control.error {
+      border-color: #ff4f81;
+      box-shadow: 0 0 0 2px rgba(255, 79, 129, 0.2);
+    }
+    
+    .error-message {
+      color: #ff4f81;
+      font-size: 0.8rem;
+      margin-top: 0.25rem;
+    }
+    
+    /* Индикатор загрузки для кнопки */
+    .spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s ease-in-out infinite;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
 </style>
 </head>
