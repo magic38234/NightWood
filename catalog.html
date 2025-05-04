@@ -562,9 +562,138 @@ footer {
 }
 
 
+/* === Responsive Fixes === */
+
+/* Base responsive fixes */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background-attachment: fixed; /* Ensures background stays fixed on mobile */
+}
+
+/* Improve header responsiveness */
+@media (max-width: 768px) {
+  header {
+    padding: 15px 10px;
+  }
+  
+  .logo img {
+    width: 40px;
+  }
+  
+  .cart-icon {
+    right: 70px;
+  }
+}
+
+/* Make sections responsive */
+.section {
+  padding: 6rem 10px 3rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Product card responsiveness */
+@media (max-width: 576px) {
+  .products {
+    grid-template-columns: 1fr; /* Single column on small devices */
+    gap: 1rem;
+  }
+  
+  .product-card {
+    margin-bottom: 1rem;
+  }
+  
+  .info h3 {
+    font-size: 1rem;
+  }
+}
+
+/* Always show slider arrows on mobile */
+@media (max-width: 992px) {
+  .slider-arrow {
+    opacity: 1;
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+    background: rgba(255, 255, 255, 0.7);
+  }
+  
+  .slider-arrow.left {
+    left: 5px;
+  }
+  
+  .slider-arrow.right {
+    right: 5px;
+  }
+}
+
+/* Cart panel responsiveness */
+@media (max-width: 576px) {
+  .cart-panel {
+    max-width: 90%;
+  }
+  
+  .promo-area {
+    flex-direction: column;
+  }
+  
+  .promo-btn {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+}
+
+/* Footer responsiveness */
+@media (max-width: 768px) {
+  footer {
+    padding: 1.5rem 10px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Improved product card slider responsiveness */
+.slider-wrapper {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+/* Make slider arrows always visible on mobile and tablet */
+@media (max-width: 992px) {
+  .product-card .slider-arrow {
+    opacity: 1 !important;
+    display: flex !important;
+  }
+}
+
+/* Only apply hover effects on desktop */
+@media (min-width: 993px) {
+  .product-card .slider-arrow {
+    opacity: 0;
+  }
+  
+  .product-card:hover .slider-arrow {
+    opacity: 1;
+  }
+}
 </style>
 </head>
 <body>
+<!-- Meta tag to ensure proper viewport scaling -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+<!-- Link to include the responsive CSS modifications -->
+<link rel="stylesheet" href="responsive-fixes.css" />
+
   <header>
   <div class="logo"><img alt="logotipas" src="https://i.postimg.cc/xTbFtq6w/IMG-0546.png"/></div>
   <div id="scrollLine"></div>
