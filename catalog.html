@@ -579,6 +579,213 @@ footer {
 }
 
 
+/* Адаптивные стили для Night Wood каталога */
+
+/* === Общие медиа-запросы === */
+@media (max-width: 1024px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr); /* На планшетах 2 товара в ряд */
+  }
+  .section {
+    padding: 5rem 1rem 2rem;
+  }
+  .section h2 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr); /* На небольших планшетах 2 товара в ряд */
+    gap: 1rem;
+  }
+  .product-card img {
+    height: 180px;
+  }
+  .slider-wrapper {
+    height: 180px;
+  }
+  .info h3 {
+    font-size: 1rem;
+  }
+  .info p {
+    font-size: 0.8rem;
+  }
+  .buy-button {
+    padding: 0.4rem 1rem;
+    font-size: 13px;
+  }
+  .cart-icon {
+    right: 70px;
+  }
+}
+
+@media (max-width: 576px) {
+  .products {
+    grid-template-columns: 1fr; /* На мобильных 1 товар в ряд */
+  }
+  .product-card {
+    max-width: 100%;
+  }
+  .product-card img {
+    height: 220px;
+  }
+  .slider-wrapper {
+    height: 220px;
+  }
+  .section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .product-footer {
+    padding: 0.75rem;
+  }
+  
+  /* Увеличиваем кнопки для лучшего тапа на мобильных */
+  .slider-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+  
+  /* Корзина на весь экран на мобильных */
+  .cart-panel {
+    max-width: 100%;
+  }
+}
+
+/* === Улучшения для очень маленьких экранов === */
+@media (max-width: 360px) {
+  .buy-button {
+    padding: 0.4rem 0.8rem;
+    font-size: 12px;
+  }
+  .info h3 {
+    font-size: 0.95rem;
+  }
+  .info p {
+    font-size: 0.75rem;
+  }
+}
+
+/* === Исправления меню для разных устройств === */
+@media (max-width: 768px) {
+  #menuOverlay a {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  #menuOverlay .social-icons img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* === Исправления для корзины === */
+@media (max-width: 768px) {
+  .cart-body li {
+    padding: 0.5rem;
+  }
+  .cart-body img {
+    width: 50px;
+    height: 50px;
+  }
+  .item-info h4 {
+    font-size: 0.85rem;
+  }
+  .qty-controls button {
+    padding: 0.15rem 0.4rem;
+  }
+}
+
+/* === Анимации для карточек === */
+@media (max-width: 768px) {
+  .product-card.animate-left {
+    animation: slideInLeft 0.8s ease forwards;
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+
+@media (min-width: 769px) {
+  .product-card.animate-up {
+    animation: slideInUp 0.8s ease forwards;
+  }
+  
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* === Исправления для шапки === */
+@media (max-width: 768px) {
+  header {
+    padding: 15px;
+  }
+  .logo img {
+    width: 40px;
+  }
+}
+
+/* === Улучшения для тач-интерфейсов === */
+@media (hover: none) {
+  .slider-arrow {
+    opacity: 1; /* Стрелки слайдера всегда видны на тач-устройствах */
+  }
+  
+  .buy-button {
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+  }
+  
+  /* Увеличиваем высоту интерактивных элементов для тапа */
+  .cart-body li button {
+    padding: 6px;
+  }
+}
+
+/* === Улучшения для больших экранов === */
+@media (min-width: 1400px) {
+  .section {
+    max-width: 1400px;
+  }
+  
+  .product-card {
+    transition: transform 0.4s, box-shadow 0.4s;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  }
+}
+
+/* === Исправление для фиксации высоты страницы на мобильных === */
+.vh-fix {
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+}
+
+/* Вертикальный скролл для товаров должен сохраняться */
+.products {
+  overflow-y: visible;
+}
+
 </style>
 </head>
 <body>
