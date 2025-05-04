@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Night Wood - Apmokėjimas</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://i.postimg.cc/xTbFtq6w/IMG-0546.png" rel="icon" type="image/png"/>
 <style>
     /* === Общие настройки === */
@@ -799,17 +799,14 @@
 </style>
 </head>
 <body>
-
 <header>
 <div class="logo">
-<img alt="logotipas" src="https://i.postimg.cc/xTbFtq6w/IMG-0546.png" onclick="window.location.href='/index.html'"/>
+<img alt="logotipas" onclick="window.location.href='/index.html'" src="https://i.postimg.cc/xTbFtq6w/IMG-0546.png"/>
 </div>
-
 <div class="burger" id="burgerBtn">
 <span></span><span></span><span></span>
 </div>
 </header>
-
 <div id="menuOverlay"><div id="closeMenuBtn">✕</div>
 <a href="/index.html">Pagrindinis</a>
 <a href="/catalog.html">Katalogas</a>
@@ -821,164 +818,132 @@
 <a href="https://www.instagram.com/nightwood.lt/"><img alt="Instagram" src="https://i.postimg.cc/Cdy7WHcW/icons8-instagram-50.png"/></a>
 </div>
 </div>
-
 <div class="main-content">
-    <div class="breadcrumbs">
-        <a href="/index.html">Pagrindinis</a>
-        <span class="separator">›</span>
-        <a href="/catalog.html">Katalogas</a>
-        <span class="separator">›</span>
-        <span class="current">Apmokėjimas</span>
-    </div>
-
-    <h1 class="section-title">Užsakymo apmokėjimas</h1>
-
-    <div class="checkout-container">
-        <div class="checkout-form">
-            <h2 class="section-title">Pirkėjo informacija</h2>
-            
-            <div class="form-group">
-                <label for="email">El. paštas</label>
-                <input type="email" id="email" class="form-control" placeholder="jusu@pastas.lt" required>
-            </div>
-            
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="firstName">Vardas</label>
-                    <input type="text" id="firstName" class="form-control" placeholder="Jūsų vardas" required>
-                </div>
-                <div class="form-group">
-                    <label for="lastName">Pavardė</label>
-                    <input type="text" id="lastName" class="form-control" placeholder="Jūsų pavardė" required>
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <label for="phone">Telefono numeris</label>
-                <input type="tel" id="phone" class="form-control" placeholder="+370 XXX XXXXX" required>
-            </div>
-            
-            <h2 class="section-title">Pristatymo informacija</h2>
-            
-            <div class="form-group">
-                <label for="address">Adresas</label>
-                <input type="text" id="address" class="form-control" placeholder="Gatvė, namo numeris, butas" required>
-            </div>
-            
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="city">Miestas</label>
-                    <input type="text" id="city" class="form-control" placeholder="Miestas" required>
-                </div>
-                <div class="form-group">
-                    <label for="postcode">Pašto kodas</label>
-                    <input type="text" id="postcode" class="form-control" placeholder="LT-XXXXX" required>
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <label for="country">Šalis</label>
-                <select id="country" class="form-control" required>
-                    <option value="lt" selected>Lietuva</option>
-                    <option value="lv">Latvija</option>
-                    <option value="ee">Estija</option>
-                    <option value="other">Kita</option>
-                </select>
-            </div>
-            
-            <div class="shipping-info">
-                <h4>Pristatymo informacija</h4>
-                <p>Standartinis pristatymas Lietuvoje trunka 1-3 darbo dienas. Užsakymai virš 100€ pristatomi nemokamai.</p>
-            </div>
-            
-            <div class="form-group">
-                <label for="notes">Pastabos užsakymui (neprivaloma)</label>
-                <textarea id="notes" class="form-control" rows="3" placeholder="Papildomi komentarai ar pageidavimai"></textarea>
-            </div>
-            
-            <div class="checkbox-group">
-                <input type="checkbox" id="newsletter">
-                <label for="newsletter">Noriu gauti naujienas ir specialius pasiūlymus</label>
-            </div>
-            
-
-      
-            <h2 class="section-title">Mokėjimo būdas</h2>
-            
-            <div class="payment-methods">
-                <label class="payment-method active">
-                    <input type="radio" name="payment" class="payment-method-radio" checked>
-                    <img src="https://i.postimg.cc/CKPyX9vz/Mastercard-Logo-wine.png" alt="Banko pavedimas" class="payment-method-icon">
-                    <div class="payment-method-info">
-                        <div class="payment-method-title">Banko pavedimas</div>
-                        <div class="payment-method-description">Mokėkite tiesiai į mūsų banko sąskaitą</div>
-                    </div>
-                </label>
-                
-                <label class="payment-method">
-                    <input type="radio" name="payment" class="payment-method-radio">
-                    <img src="https://i.postimg.cc/FRq31sK3/channels4-profile-removebg-preview.png" alt="Kortelės" class="payment-method-icon">
-                    <div class="payment-method-info">
-                        <div class="payment-method-title">Paysera</div>
-                        <div class="payment-method-description">Saugus mokėjimas per Paysera sistemą</div>
-                    </div>
-                </label>
-                
-                <label class="payment-method">
-                    <input type="radio" name="payment" class="payment-method-radio">
-                    <img src="https://i.postimg.cc/xjt8njQk/paypal.png" alt="PayPal" class="payment-method-icon">
-                    <div class="payment-method-info">
-                        <div class="payment-method-title">PayPal</div>
-                        <div class="payment-method-description">Greitas ir saugus mokėjimas su PayPal</div>
-                    </div>
-                </label>
-            </div>
-            
-            <button class="checkout-btn" id="placeOrderBtn">Užbaigti užsakymą</button>
-        </div>
-        
-        <div class="checkout-summary">
-            <h2 class="section-title">Jūsų užsakymas</h2>
-            
-            <div class="cart-items" id="checkoutItems">
-                <!-- Cart items will be loaded dynamically from JS -->
-            </div>
-            
-            <div class="promo-code">
-                <form class="promo-code-form">
-                    <input type="text" class="promo-code-input" placeholder="Nuolaidos kodas">
-                    <button type="button" class="promo-code-btn">Taikyti</button>
-                </form>
-            </div>
-            
-            <div class="summary-row">
-                <span>Prekių suma:</span>
-                <span>€<span id="subtotal">0.00</span></span>
-            </div>
-            
-            <div class="summary-row">
-                <span>Pristatymas:</span>
-                <span>€<span id="shipping">5.99</span></span>
-            </div>
-            
-            <div class="summary-row">
-                <span>Nuolaida:</span>
-                <span>-€<span id="discount">0.00</span></span>
-            </div>
-            
-            <div class="summary-row total">
-                <span>Bendra suma:</span>
-                <span>€<span id="total">0.00</span></span>
-            </div>
-        </div>
-    </div>
+<div class="breadcrumbs">
+<a href="/index.html">Pagrindinis</a>
+<span class="separator">›</span>
+<a href="/catalog.html">Katalogas</a>
+<span class="separator">›</span>
+<span class="current">Apmokėjimas</span>
 </div>
-
-
-
-
+<h1 class="section-title">Užsakymo apmokėjimas</h1>
+<div class="checkout-container">
+<div class="checkout-form">
+<h2 class="section-title">Pirkėjo informacija</h2>
+<div class="form-group">
+<label for="email">El. paštas</label>
+<input class="form-control" id="email" placeholder="jusu@pastas.lt" required="" type="email"/>
+</div>
+<div class="form-row">
+<div class="form-group">
+<label for="firstName">Vardas</label>
+<input class="form-control" id="firstName" placeholder="Jūsų vardas" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="lastName">Pavardė</label>
+<input class="form-control" id="lastName" placeholder="Jūsų pavardė" required="" type="text"/>
+</div>
+</div>
+<div class="form-group">
+<label for="phone">Telefono numeris</label>
+<input class="form-control" id="phone" placeholder="+370 XXX XXXXX" required="" type="tel"/>
+</div>
+<h2 class="section-title">Pristatymo informacija</h2>
+<div class="form-group">
+<label for="address">Adresas</label>
+<input class="form-control" id="address" placeholder="Gatvė, namo numeris, butas" required="" type="text"/>
+</div>
+<div class="form-row">
+<div class="form-group">
+<label for="city">Miestas</label>
+<input class="form-control" id="city" placeholder="Miestas" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="postcode">Pašto kodas</label>
+<input class="form-control" id="postcode" placeholder="LT-XXXXX" required="" type="text"/>
+</div>
+</div>
+<div class="form-group">
+<label for="country">Šalis</label>
+<select class="form-control" id="country" required="">
+<option selected="" value="lt">Lietuva</option>
+<option value="lv">Latvija</option>
+<option value="ee">Estija</option>
+<option value="other">Kita</option>
+</select>
+</div>
+<div class="shipping-info">
+<h4>Pristatymo informacija</h4>
+<p>Standartinis pristatymas Lietuvoje trunka 1-3 darbo dienas. Užsakymai virš 100€ pristatomi nemokamai.</p>
+</div>
+<div class="form-group">
+<label for="notes">Pastabos užsakymui (neprivaloma)</label>
+<textarea class="form-control" id="notes" placeholder="Papildomi komentarai ar pageidavimai" rows="3"></textarea>
+</div>
+<div class="checkbox-group">
+<input id="newsletter" type="checkbox"/>
+<label for="newsletter">Noriu gauti naujienas ir specialius pasiūlymus</label>
+</div>
+<h2 class="section-title">Mokėjimo būdas</h2>
+<div class="payment-methods">
+<label class="payment-method active">
+<input checked="" class="payment-method-radio" name="payment" type="radio"/>
+<img alt="Banko pavedimas" class="payment-method-icon" src="https://i.postimg.cc/CKPyX9vz/Mastercard-Logo-wine.png"/>
+<div class="payment-method-info">
+<div class="payment-method-title">Banko pavedimas</div>
+<div class="payment-method-description">Mokėkite tiesiai į mūsų banko sąskaitą</div>
+</div>
+</label>
+<label class="payment-method">
+<input class="payment-method-radio" name="payment" type="radio"/>
+<img alt="Kortelės" class="payment-method-icon" src="https://i.postimg.cc/FRq31sK3/channels4-profile-removebg-preview.png"/>
+<div class="payment-method-info">
+<div class="payment-method-title">Paysera</div>
+<div class="payment-method-description">Saugus mokėjimas per Paysera sistemą</div>
+</div>
+</label>
+<label class="payment-method">
+<input class="payment-method-radio" name="payment" type="radio"/>
+<img alt="PayPal" class="payment-method-icon" src="https://i.postimg.cc/xjt8njQk/paypal.png"/>
+<div class="payment-method-info">
+<div class="payment-method-title">PayPal</div>
+<div class="payment-method-description">Greitas ir saugus mokėjimas su PayPal</div>
+</div>
+</label>
+</div>
+<button class="checkout-btn" id="placeOrderBtn">Užbaigti užsakymą</button>
+</div>
+<div class="checkout-summary">
+<h2 class="section-title">Jūsų užsakymas</h2>
+<div class="cart-items" id="checkoutItems">
+<!-- Cart items will be loaded dynamically from JS -->
+</div>
+<div class="promo-code">
+<form class="promo-code-form">
+<input class="promo-code-input" placeholder="Nuolaidos kodas" type="text"/>
+<button class="promo-code-btn" type="button">Taikyti</button>
+</form>
+</div>
+<div class="summary-row">
+<span>Prekių suma:</span>
+<span>€<span id="subtotal">0.00</span></span>
+</div>
+<div class="summary-row">
+<span>Pristatymas:</span>
+<span>€<span id="shipping">5.99</span></span>
+</div>
+<div class="summary-row">
+<span>Nuolaida:</span>
+<span>-€<span id="discount">0.00</span></span>
+</div>
+<div class="summary-row total">
+<span>Bendra suma:</span>
+<span>€<span id="total">0.00</span></span>
+</div>
+</div>
+</div>
+</div>
 <footer class="footer">© 2025 Night Wood. Visos teisės saugomos.</footer>
-
 <script>
     // Open/close mobile menu
     const burgerBtn = document.getElementById('burgerBtn');
@@ -1128,35 +1093,33 @@
     document.addEventListener('DOMContentLoaded', () => {
         loadCartItems();
         
-        // Handle promo code application
-        document.querySelector('.promo-code-btn').addEventListener('click', function() {
-            const promoInput = document.querySelector('.promo-code-input');
-            const promoCode = promoInput.value.trim().toUpperCase();
-            
-            if (promoCode === 'NIGHT25') {
-                // Apply 25% discount
-                const subtotal = parseFloat(document.getElementById('subtotal').textContent);
-                const discount = subtotal * 0.25;
-                document.getElementById('discount').textContent = discount.toFixed(2);
-                
-                // Update total
-                const shipping = parseFloat(document.getElementById('shipping').textContent);
-                const total = subtotal + shipping - discount;
-                document.getElementById('total').textContent = total.toFixed(2);
-                
-                // Show success message
-                promoInput.value = '';
-                alert('Nuolaidos kodas pritaikytas! 25% nuolaida pritaikyta jūsų užsakymui.');
-                
-                // Disable promo code button after successful application
-                this.disabled = true;
-                this.textContent = 'Pritaikytas';
-                this.style.background = '#28a745';
-            } else {
-                alert('Neteisingas nuolaidos kodas. Bandykite dar kartą.');
-                promoInput.focus();
-            }
-        });
+        let promoApplied = false;
+
+document.getElementById("promo-form").addEventListener("submit", function (e) {
+  e.preventDefault();
+  if (promoApplied) return;
+
+  const promoInput = document.getElementById("promo-code");
+  const promoCode = promoInput.value.trim().toUpperCase();
+
+  if (promoCode === "NIGHT25") {
+    applyDiscount(25);
+    promoApplied = true;
+    promoInput.disabled = true;
+    document.getElementById("apply-promo").disabled = true;
+    document.getElementById("promo-message").textContent = "Промокод применен. Скидка 25%!";
+  } else {
+    document.getElementById("promo-message").textContent = "Неверный промокод.";
+  }
+});
+
+function applyDiscount(percent) {
+  const totalElem = document.getElementById("cart-total");
+  const originalTotal = parseFloat(totalElem.dataset.originalTotal || totalElem.textContent.replace(/[^\d.]/g, ''));
+  const discountedTotal = (originalTotal * (1 - percent / 100)).toFixed(2);
+  totalElem.dataset.originalTotal = originalTotal;
+  totalElem.textContent = discountedTotal + " ₽";
+}
         
         // Update shipping method when country changes
         document.getElementById('country').addEventListener('change', function() {
