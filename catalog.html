@@ -880,10 +880,7 @@ footer {
 <span>Iš viso:</span>
 <span>€<span id="cartTotal">0</span></span>
 </div>
-<div class="promo-area">
-<input placeholder="Įveskite nuolaidos kodą" type="text"/>
-<button class="promo-btn">Taikyti</button>
-</div>
+
 <button class="checkout-btn" onclick="window.location.href='/cart.html'">Tęsti apmokėjimą</button>
 </div></div></div>
 
@@ -1107,28 +1104,6 @@ footer {
   cart.splice(index, 1);
   updateCartUI();
   }
-
-  // JavaScript (логика применения промокода)
-  function applyPromoCode() {
-  const input = document.getElementById("promoInput").value.trim().toUpperCase();
-  const message = document.getElementById("promoMessage");
-  
-  if (input === "START15") {
-    message.textContent = "✅ Промокод применён! Скидка 15%.";
-    message.style.color = "#00c897";
-    applyDiscount(15); // вызывается функция пересчёта итоговой суммы
-  } else {
-    message.textContent = "❌ Неверный промокод.";
-    message.style.color = "#ff4d4d";
-  }
-  }
-  function applyDiscount(percent) {
-  const totalElement = document.getElementById("cartTotal"); // например, <span id="cartTotal">123.00 €</span>
-  let total = parseFloat(totalElement.textContent.replace(/[^\d.]/g, ""));
-  const discounted = (total * (1 - percent / 100)).toFixed(2);
-  totalElement.textContent = `${discounted} €`;
-  }
-
 
   //  для товаров 
   function slideImage(btn, direction) {
