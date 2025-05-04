@@ -52,23 +52,6 @@ header.scrolled {
   width: 50px; 
 }
 
-/* === Бургер-меню === */
-.burger {
-  width: 34px;
-  height: 26px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  cursor: pointer;
-  z-index: 10001;
-}
-.burger span {
-  height: 3px;
-  background: #fff;
-  border-radius: 2px;
-  transition: 0.3s ease;
-}
-.burger:hover { transform: scale(1.1); }
 
 /* === Подвал === */
 footer {
@@ -79,61 +62,67 @@ footer {
 }
 
 
-/* === Мобильное меню === */
-#menuOverlay {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  background: rgba(0,0,0,0.9);
-  z-index: 10000;
+/* === Бургер-меню === */
+.burger {
+  width: 36px;
+  height: 28px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  transform: translateY(-100%);
-  transition: transform 0.4s ease;
-}
-#menuOverlay.open { transform: translateY(0); }
-#menuOverlay a {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #fff;
-  text-transform: uppercase;
-  text-decoration: none;
-  letter-spacing: 1.2px;
-  transition: color 0.3s ease;
-}
-#menuOverlay a:hover { color: #c300ff; }
-#menuOverlay .contact { color: #aaa; font-size: 0.9rem; margin-top: 1.5rem; }
-#menuOverlay .social-icons {
-  display: flex;
-  gap: 1.2rem;
-  margin-top: 1rem;
-}
-#menuOverlay .social-icons img {
-  width: 40px;
-  height: 40px;
-  filter: grayscale(100%) brightness(0.9);
-  transition: transform 0.3s ease;
-}
-#menuOverlay .social-icons img:hover {
-  transform: scale(1.2);
-  filter: grayscale(0%) brightness(1);
-}
-#closeMenuBtn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 2rem;
-  font-weight: bold;
-  color: #fff;
+  justify-content: space-between;
   cursor: pointer;
   z-index: 10001;
-}
-#closeMenuBtn:hover {
-  color: #dad7d7;
-}
+      
+  }
+.burger span {
+  height: 4px;
+  background: #fff;
+  border-radius: 2px;
+  transition: 0.3s ease;
+  }
+.burger:hover { transform: scale(1.1); }
+
+    /* === Мобильное меню === */
+    #menuOverlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.9);
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      transform: translateY(-100%);
+      transition: transform 0.4s ease;
+    }
+    #menuOverlay.open { transform: translateY(0); }
+    #menuOverlay a {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #fff;
+      text-transform: uppercase;
+      text-decoration: none;
+      letter-spacing: 1.5px;
+      transition: color 0.3s ease;
+    }
+    #menuOverlay a:hover { color: #c300ff; }
+    #menuOverlay .contact { color: #aaa; font-size: 1rem; margin-top: 2rem; }
+    #menuOverlay .social-icons {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    #menuOverlay .social-icons img {
+      width: 60px;
+      height: 60px;
+      filter: grayscale(100%) brightness(0.9);
+      transition: transform 0.3s ease;
+    }
+    #menuOverlay .social-icons img:hover {
+      transform: scale(1.2);
+      filter: grayscale(0%) brightness(1);
+    }
 
 /*=== Корзина для товаров ===*/
 .cart-icon {
