@@ -4,1167 +4,1118 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Night Wood - Apmokėjimas</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
+<title>Night Wood Katalogas</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://i.postimg.cc/xTbFtq6w/IMG-0546.png" rel="icon" type="image/png"/>
+</head>
 <style>
-    /* === Общие настройки === */
 /* === Общие настройки === */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #0e0e10;
-      color: #fff;
-      min-height: 100vh;
-    }
+body {
+    position: relative;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #0e0e10;
+    color: #fff;
+    cursor: pointer;
+    min-height: 100vh;
+    background: url('https://i.postimg.cc/7hQRW2zz/photo-2025-04-17-17-27-30.jpg') no-repeat center center fixed;
+    background-size: cover;
+  }
+body::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.712);
+  z-index: -1;
+}
 
 
-    /* === Хедер и логотип === */
-    header {
-      background: #0e0e10;
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 20;
-      height: 70px;
-      transition: background 0.3s ease;
-    }
+  /* === Хедер и логотип === */
+header {
+    background: transparent;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 20;
+    height: 70px;
+    transition: background 0.3s ease;
+}
+header.scrolled {
+  background: #0e0e10;
+}
+.logo img { 
+  width: 50px; 
+}
 
-    .logo img { width: 50px; }
+/* === Бургер-меню === */
+.burger {
+  width: 34px;
+  height: 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 10001;
+}
+.burger span {
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  transition: 0.3s ease;
+}
+.burger:hover { transform: scale(1.1); }
 
-    /* === Бургер-меню === */
-    .burger {
-      width: 36px;
-      height: 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      cursor: pointer;
-      z-index: 10001;
-    }
-    .burger span {
-      height: 4px;
-      background: #fff;
-      border-radius: 2px;
-      transition: 0.3s ease;
-    }
-    .burger:hover { transform: scale(1.1); }
+/* === Подвал === */
+footer {
+  text-align: center;
+  padding: 2rem;
+  background: #0e0e10;
+  color: #888;
+}
 
-    /* === Мобильное меню === */
-    #menuOverlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.9);
-      z-index: 10000;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 2rem;
-      transform: translateY(-100%);
-      transition: transform 0.4s ease;
-    }
-    #menuOverlay.open { transform: translateY(0); }
-    #menuOverlay a {
-      font-size: 2rem;
-      font-weight: 600;
-      color: #fff;
-      text-transform: uppercase;
-      text-decoration: none;
-      letter-spacing: 1.5px;
-      transition: color 0.3s ease;
-    }
-    #menuOverlay a:hover { color: #c300ff; }
-    #menuOverlay .contact { color: #aaa; font-size: 1rem; margin-top: 2rem; }
-    #menuOverlay .social-icons {
-      display: flex;
-      gap: 1.5rem;
-      margin-top: 1rem;
-    }
-    #menuOverlay .social-icons img {
-      width: 60px;
-      height: 60px;
-      filter: grayscale(100%) brightness(0.9);
-      transition: transform 0.3s ease;
-    }
-    #menuOverlay .social-icons img:hover {
-      transform: scale(1.2);
-      filter: grayscale(0%) brightness(1);
-    }
 
-    #closeMenuBtn {
-      position: absolute;
-      top: 30px;
-      right: 5%;
-      transform: translateX(50%);
-      font-size: 3rem;
-      font-weight: bold;
-      color: #fff;
-      cursor: pointer;
-      z-index: 10001;
-    }
-    #closeMenuBtn:hover {
-      color: #dad7d7;
-    }
+/* === Мобильное меню === */
+#menuOverlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.9);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  transform: translateY(-100%);
+  transition: transform 0.4s ease;
+}
+#menuOverlay.open { transform: translateY(0); }
+#menuOverlay a {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 1.2px;
+  transition: color 0.3s ease;
+}
+#menuOverlay a:hover { color: #c300ff; }
+#menuOverlay .contact { color: #aaa; font-size: 0.9rem; margin-top: 1.5rem; }
+#menuOverlay .social-icons {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+#menuOverlay .social-icons img {
+  width: 40px;
+  height: 40px;
+  filter: grayscale(100%) brightness(0.9);
+  transition: transform 0.3s ease;
+}
+#menuOverlay .social-icons img:hover {
+  transform: scale(1.2);
+  filter: grayscale(0%) brightness(1);
+}
+#closeMenuBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  z-index: 10001;
+}
+#closeMenuBtn:hover {
+  color: #dad7d7;
+}
 
-    /* === Основной контент === */
-    .main-content {
-      max-width: 1200px;
-      margin: 100px auto 50px;
-      padding: 0 20px;
-    }
+/*=== Корзина для товаров ===*/
+.cart-icon {
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0.1rem 1rem;
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+  color: white;
+  position: fixed;
+  top: 18px;
+  right: 60px;
+  z-index: 10003;
+}
+.cart-total {
+  margin-top: 1rem;
+  font-weight: bold;
+  text-align: right;
+}
+.close-cart {
+  margin-top: 1rem;
+  background: #feebe2;
+  color: #000;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 12px;
+  cursor: pointer;
+}
+.cart-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.6);
+  backdrop-filter: blur(3px);
+  z-index: 10001;
+  display: none;
+}
+.cart-panel {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 360px;
+  height: 100vh;
+  background: #111;
+  color: #fff;
+  z-index: 10002;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.4s ease;
+  padding: 1rem;
+}
+.cart-panel.open {
+  right: 0;
+}
+.cart-overlay.visible {
+  display: block;
+}
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #444;
+  padding-bottom: 0.5rem;
+}
+.cart-body {
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 1rem;
+}
 
-    /* === Стили для страницы оформления заказа === */
-    .checkout-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      margin-top: 2rem;
-    }
+.cart-body ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.cart-body li {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  align-items: center;
+  border-bottom: 1px solid #222;
+  padding-bottom: 0.75rem;
+}
+.cart-body img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.item-info {
+  flex: 1;
+}
+.item-info h4 {
+  font-size: 0.95rem;
+  margin: 0 0 0.3rem 0;
+}
+.item-info .price {
+  font-size: 0.85rem;
+  color: #aaa;
+}
+.cart-footer {
+  padding-top: 1rem;
+  border-top: 1px solid #444;
+}
+.total-line {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.checkout-btn {
+  width: 100%;
+  background: linear-gradient(90deg, #ff4f81, #c300ff);
+  color: white;
+  font-weight: bold;
+  padding: 0.8rem 1rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 14px rgba(255, 79, 129, 0.4);
+}
+.checkout-btn:hover {
+  background: linear-gradient(90deg, #ff82a8, #d066ff);
+  transform: translateY(-2px);
+}
+.close-cart {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.cart-img {
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+.cart-count-badge {
+  position: absolute;
+  top: -8px;
+  right: 5px;
+  background: #ff183f;
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 2px 5px;
+  border-radius: 50%;
+  line-height: 1;
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.5);
+}
 
-    .checkout-form {
-      flex: 1;
-      min-width: 300px;
-    }
+.cart-body li {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 0.75rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  transition: background 0.3s ease;
+}
+.cart-body li:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+.cart-body li button {
+  background: transparent;
+  border: none;
+  color: #ff82e0;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.cart-body li button:hover {
+  color: #f7e8ed;
+}
+.checkout-btn {
+  width: 100%;
+  background: linear-gradient(90deg, #ff4f81, #c300ff);
+  color: white;
+  font-weight: bold;
+  padding: 0.8rem 1rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 14px rgba(255, 79, 129, 0.4);
+}
 
-    .checkout-summary {
-      width: 380px;
-      background: #1a1a1c;
-      border-radius: 16px;
-      padding: 1.5rem;
-      height: fit-content;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-    }
+.checkout-btn:hover {
+  background: linear-gradient(90deg, #ff82a8, #d066ff);
+  transform: translateY(-2px);
+}
+.cart-panel {
+  transition: right 0.3s ease-in-out, opacity 0.3s ease;
+  opacity: 0;
+}
+.cart-panel.open {
+  right: 0;
+  opacity: 1;
+}
 
-    .section-title {
-      color: #e0e0e0;
-      font-size: 1.8rem;
-      margin-bottom: 1.5rem;
-      font-weight: 600;
-      font-family: 'Montserrat', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      position: relative;
-    }
+.qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+.qty-controls button {
+  background: #ff4f81;
+  border: none;
+  color: white;
+  font-size: 0.9rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.qty-controls button:hover {
+  background: #ff7ca3;
+}
+.qty-controls span {
+  font-size: 0.9rem;
+  min-width: 20px;
+  text-align: center;
+  display: inline-block;
+}
+/*=== Корзина для товаров Промокоды ===*/
+.promo-area {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  padding: 0.75rem 1rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.promo-area input {
+  flex: 1;
+  min-width: 100px;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 12px;
+  background: #1a1a1c;
+  color: #fff;
+  font-size: 0.95rem;
+  transition: box-shadow 0.3s;
+}
+.promo-area input::placeholder {
+  color: #aaa;
+}
+.promo-area input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #ff4f81;
+}
+.promo-btn {
+  padding: 0.6rem 1.2rem;
+  background: linear-gradient(90deg, #ff4f81, #c300ff);
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.3s;
+}
+.promo-btn:hover {
+  background: linear-gradient(90deg, #ff82a8, #d066ff);
+}
 
-    .section-title::after {
-      content: "";
-      display: block;
-      width: 60px;
-      height: 3px;
-      background: linear-gradient(90deg, #bf7fd3 0%, #bf7fd3 100%);
-      margin-top: 10px;
-      border-radius: 2px;
-    }
+/*=== Карточка товаров ===*/
+.section {
+    padding: 6rem 1.5rem 3rem;
+    max-width: 1200px;
+    margin: auto;
+  }
 
-    .form-group {
-      margin-bottom: 1.5rem;
-    }
+  .section h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.2rem;
+    text-transform: uppercase;
+    color: #e0e0e0;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+  }
+  .section h2::after {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 3px;
+    background: linear-gradient(90deg, #c97fd3 0%, #c97fd3 100%);
+    margin: 12px auto 0;
+    border-radius: 2px;
+  }
+  .products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 1.5rem;
+  }
+  .product-card {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    background-color: rgba(126, 126, 126, 0.322);
+    backdrop-filter: blur(4px);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .product-card:hover { transform: translateY(-5px); }
+  .product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  .info { padding: 1rem; }
+  .info h3 { margin-bottom: 0.5rem; font-size: 1.1rem; }
+  .info p { font-size: 0.9rem; color: #ccc; }
+  .product-footer {
+    text-align: center;
+    padding: 1rem;
+  }
+  .buy-button {
+    background-color: #feebe2;
+    color: rgb(24, 24, 24);
+    font-weight: 600;
+    padding: 0.5rem 1.25rem;
+    border-radius: 16px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    font-size: 14px;
+    border: none;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  .buy-button:hover { background-color: #fafafa; }
+  footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #aaa;
+  }
 
-    .form-group label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-size: 0.95rem;
-      color: #ccc;
-    }
+  .burger {
+    position: fixed;
+    top: 18px;
+    right: 15px;
+  }
 
-    .form-control {
-      width: 100%;
-      padding: 0.8rem 1rem;
-      background: #1a1a1c;
-      border: 1px solid #333;
-      border-radius: 10px;
-      color: #fff;
-      font-size: 1rem;
-      transition: border-color 0.3s, box-shadow 0.3s;
-    }
+  .product-card {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
 
-    .form-control:focus {
-      outline: none;
-      border-color: #c300ff;
-      box-shadow: 0 0 0 2px rgba(195, 0, 255, 0.2);
-    }
+  .product-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-    .form-row {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
+/* === Стили для слайдера изображений === */
 
-    .form-row > div {
-      flex: 1;
-      min-width: 150px;
-    }
+  .slider-wrapper {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+.slider-wrapper img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: none;
+}
+.slider-wrapper img.active {
+  display: block;
+}
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.575);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  color: #000;
+  font-weight: bold;
+  font-size: 16px;
+  user-select: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.product-card:hover .slider-arrow {
+  opacity: 1;
+}
+.slider-arrow:hover {
+  background: #dbdbdba9;
+}
+.slider-arrow.left {
+  left: 10px;
+}
+.slider-arrow.right {
+  right: 10px;
+}
 
-    .checkbox-group {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin: 1rem 0;
-    }
+/* === Медиа-запросы для адаптивности === */
+@media (max-width: 1024px) {
+  .section {
+    padding: 5rem 1.5rem 3rem;
+  }
+  .products {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.2rem;
+  }
+  .section h2 {
+    font-size: 2rem;
+  }
+}
 
-    .checkbox-group input {
-      width: 18px;
-      height: 18px;
-      accent-color: #c300ff;
-    }
+@media (max-width: 768px) {
+  header {
+    padding: 15px;
+    height: 60px;
+  }
+  .logo img {
+    width: 40px;
+  }
+  .cart-icon {
+    top: 14px;
+    right: 50px;
+  }
+  .cart-img {
+    width: 26px;
+    height: 26px;
+  }
+  .cart-count-badge {
+    font-size: 10px;
+    padding: 1px 4px;
+  }
+  .burger {
+    width: 30px;
+    height: 22px;
+    top: 15px;
+    right: 12px;
+  }
+  .burger span {
+    height: 2px;
+  }
+  #closeMenuBtn {
+    font-size: 1.8rem;
+    top: 15px;
+    right: 15px;
+  }
+  #menuOverlay a {
+    font-size: 1.3rem;
+  }
+  .section {
+    padding: 4.5rem 1rem 2rem;
+  }
+  .section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+  .section h2::after {
+    width: 60px;
+    margin: 10px auto 0;
+  }
+  .products {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+  .slider-wrapper,
+  .slider-wrapper img {
+    height: 180px;
+  }
+  .product-card {
+    transform: translateY(30px);
+  }
+  .info h3 {
+    font-size: 1rem;
+  }
+  .info p {
+    font-size: 0.85rem;
+  }
+  .product-footer {
+    padding: 0.8rem;
+  }
+  .buy-button {
+    padding: 0.4rem 1rem;
+    font-size: 13px;
+  }
+}
 
-    .checkout-btn {
-      width: 100%;
-      padding: 1rem;
-      margin-top: 1rem;
-      background: linear-gradient(90deg, #ff4f81, #c300ff);
-      color: white;
-      font-weight: bold;
-      border: none;
-      border-radius: 50px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.3s ease, transform 0.2s ease;
-      box-shadow: 0 4px 14px rgba(255, 79, 129, 0.4);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
+@media (max-width: 480px) {
+  header {
+    padding: 12px 15px;
+    height: 55px;
+  }
+  .logo img {
+    width: 35px;
+  }
+  .cart-icon {
+    top: 12px;
+    right: 45px;
+  }
+  .cart-img {
+    width: 24px;
+    height: 24px;
+  }
+  .burger {
+    width: 26px;
+    height: 20px;
+    top: 13px;
+    right: 10px;
+  }
+  #menuOverlay a {
+    font-size: 1.2rem;
+    gap: 1rem;
+  }
+  #menuOverlay .social-icons img {
+    width: 35px;
+    height: 35px;
+  }
+  .section {
+    padding: 4rem 0.8rem 1.5rem;
+  }
+  .section h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
+  }
+  .section h2::after {
+    width: 50px;
+    height: 2px;
+  }
+  .products {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .slider-wrapper,
+  .slider-wrapper img {
+    height: 200px;
+  }
+  .info {
+    padding: 0.8rem;
+  }
+  .product-footer {
+    padding: 0.6rem 0.8rem 0.8rem;
+  }
+  .slider-arrow {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+  .qty-controls button {
+    padding: 0.15rem 0.4rem;
+    font-size: 0.8rem;
+  }
+  .qty-controls span {
+    font-size: 0.8rem;
+    min-width: 18px;
+  }
+  .cart-panel {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.8rem;
+  }
+  .cart-header h2 {
+    font-size: 1.3rem;
+  }
+  .promo-area {
+    flex-direction: column;
+    padding: 0.6rem 0.8rem;
+    gap: 0.6rem;
+  }
+  .promo-area input {
+    width: 100%;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.9rem;
+  }
+  .promo-btn {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+  .checkout-btn {
+    padding: 0.7rem;
+    font-size: 0.95rem;
+  }
+}
 
-    .checkout-btn:hover {
-      background: linear-gradient(90deg, #ff82a8, #d066ff);
-      transform: translateY(-2px);
-    }
+/* === Улучшенная поддержка для мобильных устройств с тачскрином === */
+@media (hover: none) {
+  .product-card:hover {
+    transform: none;
+  }
+  .slider-arrow {
+    opacity: 1;
+    width: 35px;
+    height: 35px;
+  }
+  .buy-button:active {
+    background-color: #f0d9ca;
+  }
+  .checkout-btn:active {
+    transform: translateY(1px);
+  }
+}
 
-    /* Стили для выпадающих списков */
-    select.form-control {
-      appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23aaa' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: calc(100% - 15px) center;
-      padding-right: 40px;
-    }
+/* === Поддержка для очень маленьких экранов === */
+@media (max-width: 320px) {
+  header {
+    padding: 10px 12px;
+    height: 50px;
+  }
+  .logo img {
+    width: 30px;
+  }
+  .cart-icon {
+    right: 40px;
+  }
+  .cart-img {
+    width: 22px;
+    height: 22px;
+  }
+  .burger {
+    width: 24px;
+    height: 18px;
+  }
+  .section h2 {
+    font-size: 1.4rem;
+  }
+  .info h3 {
+    font-size: 0.95rem;
+  }
+  .info p {
+    font-size: 0.8rem;
+  }
+  .buy-button {
+    padding: 0.4rem 0.8rem;
+    font-size: 12px;
+  }
+}
 
-    /* Стили для корзины в боковой панели */
-    .cart-items {
-      margin-bottom: 1.5rem;
-      max-height: 300px;
-      overflow-y: auto;
-    }
+/* === Поддержка крупных экранов === */
+@media (min-width: 1600px) {
+  .section {
+    max-width: 1500px;
+    padding: 7rem 2rem 5rem;
+  }
+  .products {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+  }
+  .slider-wrapper,
+  .slider-wrapper img {
+    height: 240px;
+  }
+  .section h2 {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+  }
+  .section h2::after {
+    width: 100px;
+    height: 5px;
+    margin: 20px auto 0;
+  }
+  .info {
+    padding: 1.5rem;
+  }
+  .info h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.7rem;
+  }
+  .info p {
+    font-size: 1rem;
+  }
+  .product-footer {
+    padding: 1.5rem;
+  }
+  .buy-button {
+    padding: 0.6rem 1.5rem;
+    font-size: 16px;
+  }
+}
 
-    .cart-item {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 1rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid #333;
-      align-items: center;
-    }
-
-    .cart-item:last-child {
-      border-bottom: none;
-    }
-
-    .cart-item-img {
-      width: 60px;
-      height: 60px;
-      border-radius: 8px;
-      object-fit: cover;
-    }
-
-    .cart-item-info {
-      flex: 1;
-    }
-
-    .cart-item-title {
-      font-size: 0.95rem;
-      margin-bottom: 0.25rem;
-    }
-
-    .cart-item-price {
-      font-size: 0.9rem;
-      color: #aaa;
-    }
-
-    .cart-item-qty {
-      font-size: 0.9rem;
-      color: #999;
-    }
-
-    .summary-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 0.75rem 0;
-      border-top: 1px solid #333;
-    }
-
-    .summary-row:first-child {
-      border-top: none;
-    }
-
-    .summary-row.total {
-      font-weight: bold;
-      font-size: 1.1rem;
-      color: #fff;
-      border-top: 2px solid #333;
-      margin-top: 0.5rem;
-    }
-
-    /* Promo code section */
-    .promo-code {
-      margin: 1.5rem 0;
-      padding: 1rem;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 12px;
-    }
-
-    .promo-code-form {
-      display: flex;
-      gap: 0.5rem;
-    }
-
-    .promo-code-input {
-      flex: 1;
-      padding: 0.6rem 1rem;
-      border: none;
-      border-radius: 10px;
-      background: #1a1a1c;
-      color: #fff;
-      font-size: 0.95rem;
-    }
-
-    .promo-code-input::placeholder {
-      color: #aaa;
-    }
-
-    .promo-code-btn {
-      padding: 0.6rem 1.2rem;
-      background: linear-gradient(90deg, #ff4f81, #c300ff);
-      color: #fff;
-      font-weight: 600;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 0.95rem;
-    }
-
-    .promo-code-btn:hover {
-      background: linear-gradient(90deg, #ff82a8, #d066ff);
-    }
-
-    /* Payment method selection */
-    .payment-methods {
-      margin: 1.5rem 0;
-    }
-
-    .payment-method {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      background: #1a1a1c;
-      border: 1px solid #333;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: border-color 0.3s, transform 0.2s;
-    }
-
-    .payment-method:hover {
-      border-color: #c300ff;
-      transform: translateY(-2px);
-    }
-
-    .payment-method.active {
-      border-color: #c300ff;
-      box-shadow: 0 0 0 2px rgba(195, 0, 255, 0.2);
-    }
-
-    .payment-method-radio {
-      width: 20px;
-      height: 20px;
-      accent-color: #c300ff;
-    }
-
-    .payment-method-icon {
-      width: 40px;
-      height: 40px;
-      object-fit: contain;
-    }
-
-    .payment-method-info {
-      flex: 1;
-    }
-
-    .payment-method-title {
-      font-weight: 600;
-      margin-bottom: 0.25rem;
-    }
-
-    .payment-method-description {
-      font-size: 0.85rem;
-      color: #aaa;
-    }
-
-    /* Footer */
-    .footer {
-      text-align: center;
-      padding: 2rem;
-      background: #0e0e10;
-      color: #888;
-      margin-top: 3rem;
-    }
-
-    /* Стиль для информации о доставке */
-    .shipping-info {
-      margin: 1.5rem 0;
-      padding: 1rem;
-      background: rgba(195, 0, 255, 0.1);
-      border-radius: 12px;
-      border-left: 4px solid #c300ff;
-    }
-
-    .shipping-info h4 {
-      color: #c300ff;
-      margin-bottom: 0.5rem;
-    }
-
-    .shipping-info p {
-      font-size: 0.9rem;
-      color: #ccc;
-    }
-
-    /* Breadcrumbs */
-    .breadcrumbs {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 2rem;
-      color: #aaa;
-      font-size: 0.9rem;
-    }
-
-    .breadcrumbs a {
-      color: #aaa;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .breadcrumbs a:hover {
-      color: #c300ff;
-    }
-
-    .breadcrumbs .separator {
-      color: #555;
-    }
-
-    .breadcrumbs .current {
-      color: #c300ff;
-    }
-
-    /* === RESPONSIVE STYLES === */
-    
-    /* Для планшетов (от 768px до 991px) */
-    @media (max-width: 991px) {
-      .main-content {
-        padding: 0 15px;
-        margin-top: 80px;
-      }
-      
-      .checkout-container {
-        gap: 1.5rem;
-      }
-      
-      .section-title {
-        font-size: 1.5rem;
-      }
-      
-      .checkout-summary {
-        width: 100%;
-        max-width: 380px;
-      }
-    }
-    
-    /* Для мобильных устройств (до 767px) */
-    @media (max-width: 767px) {
-      .main-content {
-        margin-top: 70px;
-      }
-      
-      .checkout-container {
-        flex-direction: column;
-      }
-      
-      .checkout-form, .checkout-summary {
-        width: 100%;
-        max-width: none;
-      }
-      
-      .checkout-summary {
-        order: -1; /* Перемещаем корзину наверх на мобильных устройствах */
-      }
-      
-      .form-row {
-        flex-direction: column;
-        gap: 1rem;
-      }
-      
-      .section-title {
-        font-size: 1.3rem;
-      }
-      
-      .breadcrumbs {
-        overflow-x: auto;
-        white-space: nowrap;
-        margin-bottom: 1rem;
-        padding-bottom: 0.5rem;
-        font-size: 0.8rem;
-      }
-      
-      #menuOverlay a {
-        font-size: 1.5rem;
-      }
-      
-      .payment-method {
-        padding: 0.75rem;
-      }
-      
-      .payment-method-title {
-        font-size: 0.85rem;
-      }
-      
-      .payment-method-description {
-        font-size: 0.75rem;
-      }
-      
-      .payment-method-icon {
-        width: 30px;
-        height: 30px;
-      }
-      
-      .cart-item {
-        gap: 0.5rem;
-      }
-      
-      .cart-item-img {
-        width: 50px;
-        height: 50px;
-      }
-      
-      .promo-code-form {
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-      
-      .promo-code-btn {
-        width: 100%;
-      }
-    }
-    
-    /* Для маленьких мобильных устройств (до 480px) */
-    @media (max-width: 480px) {
-      header {
-        padding: 15px;
-        height: 60px;
-      }
-      
-      .logo img {
-        width: 40px;
-      }
-      
-      .burger {
-        width: 30px;
-        height: 24px;
-      }
-      
-      .main-content {
-        margin-top: 60px;
-        padding: 0 10px;
-      }
-      
-      .section-title {
-        font-size: 1.2rem;
-      }
-      
-      .form-control {
-        padding: 0.7rem 0.8rem;
-        font-size: 0.9rem;
-      }
-      
-      .checkout-btn {
-        padding: 0.8rem;
-        font-size: 0.9rem;
-      }
-      
-      .cart-item-title {
-        font-size: 0.85rem;
-      }
-      
-      .cart-item-price, .cart-item-qty {
-        font-size: 0.8rem;
-      }
-      
-      .shipping-info {
-        padding: 0.8rem;
-      }
-      
-      .shipping-info h4 {
-        font-size: 0.9rem;
-      }
-      
-      .shipping-info p {
-        font-size: 0.8rem;
-      }
-      
-      #closeMenuBtn {
-        font-size: 2rem;
-        top: 20px;
-      }
-      
-      #menuOverlay .social-icons img {
-        width: 40px;
-        height: 40px;
-      }
-    }
-    
-    /* Стили для высокого разрешения (от 1200px) */
-    @media (min-width: 1200px) {
-      .main-content {
-        max-width: 1400px;
-      }
-      
-      .checkout-container {
-        gap: 3rem;
-      }
-      
-      .checkout-summary {
-        width: 420px;
-      }
-    }
-    
-    /* Исправления для темной темы и доступности */
-    @media (prefers-color-scheme: dark) {
-      .form-control::placeholder {
-        color: #888;
-      }
-      
-      .checkbox-group label a {
-        text-decoration: underline;
-      }
-    }
-    
-    /* Стили для печати */
-    @media print {
-      body {
-        background-color: white;
-        color: black;
-      }
-      
-      header, .burger, #menuOverlay, .checkout-btn, .footer {
-        display: none;
-      }
-      
-      .main-content {
-        margin-top: 0;
-        padding: 0;
-      }
-      
-      .checkout-container {
-        display: block;
-      }
-      
-      .checkout-summary, .checkout-form {
-        width: 100%;
-        background: none;
-        box-shadow: none;
-        border: 1px solid #ddd;
-        border-radius: 0;
-        margin-bottom: 2rem;
-      }
-      
-      .section-title::after {
-        background: #000;
-      }
-      
-      .cart-item {
-        border-bottom: 1px solid #ddd;
-      }
-      
-      .summary-row {
-        border-top: 1px solid #ddd;
-      }
-      
-      .summary-row.total {
-        border-top: 2px solid #000;
-      }
-    }
-    
-    /* Анимации и переходы */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    
-    .cart-item, .payment-method, .form-control, .checkout-btn {
-      animation: fadeIn 0.5s ease-out;
-    }
-    
-    /* Улучшения для touch-устройств */
-    @media (hover: none) {
-      .payment-method:hover {
-        transform: none;
-      }
-      
-      .checkout-btn:hover {
-        transform: none;
-      }
-    }
-    
-    /* Fix для проблем с прокруткой на iOS */
-    .cart-items {
-      -webkit-overflow-scrolling: touch;
-    }
-    
-    /* Стили для ошибок формы */
-    .form-control.error {
-      border-color: #ff4f81;
-      box-shadow: 0 0 0 2px rgba(255, 79, 129, 0.2);
-    }
-    
-    .error-message {
-      color: #ff4f81;
-      font-size: 0.8rem;
-      margin-top: 0.25rem;
-    }
-    
-    /* Индикатор загрузки для кнопки */
-    .spinner {
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      border: 2px solid rgba(255,255,255,0.3);
-      border-radius: 50%;
-      border-top-color: #fff;
-      animation: spin 1s ease-in-out infinite;
-      margin-right: 8px;
-      vertical-align: middle;
-    }
-    
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
 </style>
 </head>
 <body>
-
-<header>
-<div class="logo">
-<img alt="logotipas" src="https://i.postimg.cc/xTbFtq6w/IMG-0546.png" onclick="window.location.href='/index.html'"/>
-</div>
-
-<div class="burger" id="burgerBtn">
-<span></span><span></span><span></span>
-</div>
-</header>
-
-<div id="menuOverlay"><div id="closeMenuBtn">✕</div>
-<a href="/index.html">Pagrindinis</a>
-<a href="/catalog.html">Katalogas</a>
-<a href="#about">Apie mus</a>
-<a href="#contacts">Kontaktai</a>
-<div class="contact">Tel.: +370 640 81 312</div>
-<div class="social-icons">
-<a href="https://www.facebook.com/NightWood.lt"><img alt="Facebook" src="https://i.postimg.cc/G3Z9ZSj4/icons8-facebook-50.png"/></a>
-<a href="https://www.instagram.com/nightwood.lt/"><img alt="Instagram" src="https://i.postimg.cc/Cdy7WHcW/icons8-instagram-50.png"/></a>
-</div>
-</div>
-
-<div class="main-content">
-    <div class="breadcrumbs">
-        <a href="/index.html">Pagrindinis</a>
-        <span class="separator">›</span>
-        <a href="/catalog.html">Katalogas</a>
-        <span class="separator">›</span>
-        <span class="current">Apmokėjimas</span>
+  <header>
+  <div class="logo"><img alt="logotipas" src="https://i.postimg.cc/xTbFtq6w/IMG-0546.png"/></div>
+  <div id="scrollLine"></div>
+  <div class="cart-icon" id="cartIcon">
+    <img alt="cart" class="cart-img" src="https://i.postimg.cc/9fs6JGmx/icons8-bag-50.png"/>
+    <span class="cart-count-badge" id="cartCount">0</span>
     </div>
-
-    <h1 class="section-title">Užsakymo apmokėjimas</h1>
-
-    <div class="checkout-container">
-        <div class="checkout-form">
-            <h2 class="section-title">Pirkėjo informacija</h2>
-            
-            <div class="form-group">
-                <label for="email">El. paštas</label>
-                <input type="email" id="email" class="form-control" placeholder="jusu@pastas.lt" required>
-            </div>
-            
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="firstName">Vardas</label>
-                    <input type="text" id="firstName" class="form-control" placeholder="Jūsų vardas" required>
-                </div>
-                <div class="form-group">
-                    <label for="lastName">Pavardė</label>
-                    <input type="text" id="lastName" class="form-control" placeholder="Jūsų pavardė" required>
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <label for="phone">Telefono numeris</label>
-                <input type="tel" id="phone" class="form-control" placeholder="+370 XXX XXXXX" required>
-            </div>
-            
-            <h2 class="section-title">Pristatymo informacija</h2>
-            
-            <div class="form-group">
-                <label for="address">Adresas</label>
-                <input type="text" id="address" class="form-control" placeholder="Gatvė, namo numeris, butas" required>
-            </div>
-            
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="city">Miestas</label>
-                    <input type="text" id="city" class="form-control" placeholder="Miestas" required>
-                </div>
-                <div class="form-group">
-                    <label for="postcode">Pašto kodas</label>
-                    <input type="text" id="postcode" class="form-control" placeholder="LT-XXXXX" required>
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <label for="country">Šalis</label>
-                <select id="country" class="form-control" required>
-                    <option value="lt" selected>Lietuva</option>
-                    <option value="lv">Latvija</option>
-                    <option value="ee">Estija</option>
-                    <option value="other">Kita</option>
-                </select>
-            </div>
-            
-            <div class="shipping-info">
-                <h4>Pristatymo informacija</h4>
-                <p>Standartinis pristatymas Lietuvoje trunka 1-3 darbo dienas. Užsakymai virš 100€ pristatomi nemokamai.</p>
-            </div>
-            
-            <div class="form-group">
-                <label for="notes">Pastabos užsakymui (neprivaloma)</label>
-                <textarea id="notes" class="form-control" rows="3" placeholder="Papildomi komentarai ar pageidavimai"></textarea>
-            </div>
-            
-            <div class="checkbox-group">
-                <input type="checkbox" id="newsletter">
-                <label for="newsletter">Noriu gauti naujienas ir specialius pasiūlymus</label>
-            </div>
-            
-            <div class="checkbox-group">
-                <input type="checkbox" id="terms" required>
-                <label for="terms">Sutinku su <a href="#" style="color: #c300ff;">pirkimo sąlygomis</a> ir <a href="#" style="color: #c300ff;">privatumo politika</a></label>
-            </div>
-            
-            <h2 class="section-title">Mokėjimo būdas</h2>
-            
-            <div class="payment-methods">
-                <label class="payment-method active">
-                    <input type="radio" name="payment" class="payment-method-radio" checked>
-                    <img src="https://i.postimg.cc/CKPyX9vz/Mastercard-Logo-wine.png" alt="Banko pavedimas" class="payment-method-icon">
-                    <div class="payment-method-info">
-                        <div class="payment-method-title">Banko pavedimas</div>
-                        <div class="payment-method-description">Mokėkite tiesiai į mūsų banko sąskaitą</div>
-                    </div>
-                </label>
-                
-                <label class="payment-method">
-                    <input type="radio" name="payment" class="payment-method-radio">
-                    <img src="https://i.postimg.cc/FRq31sK3/channels4-profile-removebg-preview.png" alt="Kortelės" class="payment-method-icon">
-                    <div class="payment-method-info">
-                        <div class="payment-method-title">Paysera</div>
-                        <div class="payment-method-description">Saugus mokėjimas per Paysera sistemą</div>
-                    </div>
-                </label>
-                
-                <label class="payment-method">
-                    <input type="radio" name="payment" class="payment-method-radio">
-                    <img src="https://i.postimg.cc/xjt8njQk/paypal.png" alt="PayPal" class="payment-method-icon">
-                    <div class="payment-method-info">
-                        <div class="payment-method-title">PayPal</div>
-                        <div class="payment-method-description">Greitas ir saugus mokėjimas su PayPal</div>
-                    </div>
-                </label>
-            </div>
-            
-            <button class="checkout-btn" id="placeOrderBtn">Užbaigti užsakymą</button>
-        </div>
-        
-        <div class="checkout-summary">
-            <h2 class="section-title">Jūsų užsakymas</h2>
-            
-            <div class="cart-items" id="checkoutItems">
-                <!-- Cart items will be loaded dynamically from JS -->
-            </div>
-            
-            <div class="promo-code">
-                <form class="promo-code-form">
-                    <input type="text" class="promo-code-input" placeholder="Nuolaidos kodas">
-                    <button type="button" class="promo-code-btn">Taikyti</button>
-                </form>
-            </div>
-            
-            <div class="summary-row">
-                <span>Prekių suma:</span>
-                <span>€<span id="subtotal">0.00</span></span>
-            </div>
-            
-            <div class="summary-row">
-                <span>Pristatymas:</span>
-                <span>€<span id="shipping">5.99</span></span>
-            </div>
-            
-            <div class="summary-row">
-                <span>Nuolaida:</span>
-                <span>-€<span id="discount">0.00</span></span>
-            </div>
-            
-            <div class="summary-row total">
-                <span>Bendra suma:</span>
-                <span>€<span id="total">0.00</span></span>
-            </div>
-        </div>
+  <div class="burger" id="burgerBtn">
+    <span></span><span></span><span></span>
     </div>
+  </header>
+  <div id="menuOverlay"><div id="closeMenuBtn">✕</div>
+  <a href="/index.html">Pagrindinis</a>
+  <a href="/catalog.html">Katalogas</a>
+  <a href="#about">Apie mus</a>
+  <a href="#contacts">Kontaktai</a>
+  <div class="contact">Tel.: +370 640 81 312</div>
+  <div class="social-icons">
+    <a href="https://www.facebook.com/NightWood.lt"><img alt="Facebook" src="https://i.postimg.cc/G3Z9ZSj4/icons8-facebook-50.png"/></a>
+    <a href="https://www.instagram.com/nightwood.lt/"><img alt="Instagram" src="https://i.postimg.cc/Cdy7WHcW/icons8-instagram-50.png"/></a>
+  </div>
 </div>
 
+
+<!--Kорзинa-->
+<div class="cart-overlay" id="cartOverlay"></div>
+<div class="cart-panel" id="cartPanel">
+<div class="cart-header">
+<h2>Jūsų krepšelis</h2>
+<button class="close-cart" id="closeCartBtn">✕</button>
+</div>
+<div class="cart-body">
+<ul id="cartItems"></ul>
+</div>
+<div class="cart-footer">
+<div class="total-line">
+<span>Iš viso:</span>
+<span>€<span id="cartTotal">0</span></span>
+</div>
+
+<button class="checkout-btn" onclick="window.location.href='/cart.html'">Tęsti apmokėjimą</button>
+</div></div></div>
+
+<!-- Карточки для товаров -->
+<section class="section">
+<h2 style="text-align:center; margin-bottom: 3rem;">Mūsų produktai</h2>
+<div class="products">
+<div class="product-card visible">
+<div class="slider-wrapper">
+<div class="slider-arrow left" onclick="slideImage(this, -1)">←</div>
+<div class="slider-arrow right" onclick="slideImage(this, 1)">→</div>
+<img alt="Padėklas" class="active" src="https://i.postimg.cc/HLRt2CqJ/poon.jpg"/>
+<img alt="Padėklas" src="https://i.postimg.cc/VkNBP61r/476231208-1034025892077411-8188252417738116989-n.jpg"/>
+</div><div class="info">
+<h3>Gravirotai padėklas</h3>
+<p>Stilingas ir natūralus akcentas jūsų stalo serviravimui.</p>
+</div>
+<div class="product-footer">
+<div style="color:#ccc; font-size: 0.95rem; margin-bottom: 0.5rem;">€ 46</div>
+<div style="display: flex; gap: 0.5rem; justify-content: center;">
+<button class="buy-button add-to-cart"  onclick="window.location.href='/cart.html'">PIRKTI</button>
+<button class="buy-button add-to-cart">PRIDĖTI</button>
+</div></div></div>
+
+<div class="product-card visible">
+<div class="slider-wrapper">
+<div class="slider-arrow left" onclick="slideImage(this, -1)">←</div>
+<div class="slider-arrow right" onclick="slideImage(this, 1)">→</div>
+<img alt="Padėklas" class="active" src="https://i.postimg.cc/GhV6HZ2p/mangalas.jpg"/>
+<img alt="Padėklas" src="https://i.postimg.cc/xjswSkVM/photo-2025-04-21-23-03-50.jpg"/>
+</div><div class="info">
+<h3>Metaliniai mangalai</h3>
+<p>Tvirtas dizainas ir puikus funkcionalumas lauko kepimui.</p>
+</div>
+<div class="product-footer">
+<div style="color:#ccc; font-size: 0.95rem; margin-bottom: 0.5rem;">€ 550</div>
+<div style="display: flex; gap: 0.5rem; justify-content: center;">
+<button class="buy-button add-to-cart" onclick="window.location.href='/cart.html'">PIRKTI</button>
+<button class="buy-button add-to-cart">PRIDĖTI</button>
+</div></div></div>
+
+<div class="product-card visible">
+<div class="slider-wrapper">
+<div class="slider-arrow left" onclick="slideImage(this, -1)">←</div>
+<div class="slider-arrow right" onclick="slideImage(this, 1)">→</div>
+<img alt="Padėklas" class="active" src="https://i.postimg.cc/fypZWypz/IMG-0832.jpg"/>
+<img alt="Padėklas" src="https://i.postimg.cc/4NHsLvHm/1453368273-121412851-1263882373960351-7394105723998329079-n.jpg"/>
+</div>
+<div class="info">
+<h3>Paprastas padėklas</h3>
+<p>Stilingas ir natūralus akcentas jūsų stalo serviravimui.</p>
+</div>
+<div class="product-footer">
+<div style="color:#ccc; font-size: 0.95rem; margin-bottom: 0.5rem;">€ 30</div>
+<div style="display: flex; gap: 0.5rem; justify-content: center;">
+<button class="buy-button add-to-cart" onclick="window.location.href='/cart.html'">PIRKTI</button>
+<button class="buy-button add-to-cart">PRIDĖTI</button>
+</div></div></div>
+
+
+</section>
 <footer class="footer">© 2025 Night Wood. Visos teisės saugomos.</footer>
-
+</body>
 <script>
-    // Open/close mobile menu
-    const burgerBtn = document.getElementById('burgerBtn');
-    const menuOverlay = document.getElementById('menuOverlay');
-    const closeMenuBtn = document.getElementById('closeMenuBtn');
+  const burgerBtn = document.getElementById('burgerBtn');
+  const menuOverlay = document.getElementById('menuOverlay');
+  const closeMenuBtn = document.getElementById('closeMenuBtn');
 
-    burgerBtn.addEventListener('click', () => {
-        menuOverlay.classList.toggle('open');
+  burgerBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // чтобы клик не ушёл на body
+    menuOverlay.classList.toggle('open');
+  });
+
+  // Закрывать меню при клике на любую ссылку в нём
+  menuOverlay.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menuOverlay.classList.remove('open');
     });
+  });
 
-    closeMenuBtn.addEventListener('click', () => {
-        menuOverlay.classList.remove('open');
-    });
+  // Закрывать меню при клике нa ✕
+  closeMenuBtn.addEventListener('click', () => {
+    menuOverlay.classList.remove('open');
+  });
 
-    // Close menu when clicking on a link
-    menuOverlay.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            menuOverlay.classList.remove('open');
-        });
-    });
+  // HeaderMenu
+  const header = document.querySelector('header');
+  window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+  });
 
-    // Payment methods selection
-    const paymentMethods = document.querySelectorAll('.payment-method');
-    paymentMethods.forEach(method => {
-        method.addEventListener('click', () => {
-            paymentMethods.forEach(m => m.classList.remove('active'));
-            method.classList.add('active');
-            method.querySelector('input').checked = true;
-        });
-    });
+  // Современная корзина
+  const cart = [];
+  const cartPanel = document.getElementById('cartPanel');
+  const cartOverlay = document.getElementById('cartOverlay');
+  const cartCount = document.getElementById('cartCount');
+  const cartItems = document.getElementById('cartItems');
+  const cartTotal = document.getElementById('cartTotal');
+  const closeCartBtn = document.getElementById('closeCartBtn');
 
-    // Load cart items
-    function loadCartItems() {
-        const cart = JSON.parse(localStorage.getItem('nightwood_cart')) || [];
-        const checkoutItems = document.getElementById('checkoutItems');
-        const subtotalEl = document.getElementById('subtotal');
-        const totalEl = document.getElementById('total');
-        const shippingEl = document.getElementById('shipping');
-        
-        checkoutItems.innerHTML = '';
-        let subtotal = 0;
-        
-        if (cart.length === 0) {
-            checkoutItems.innerHTML = '<p style="text-align: center; color: #aaa;">Jūsų krepšelis tuščias</p>';
-            updateTotals(0);
-            return;
-        }
-        
-        cart.forEach(item => {
-            const itemTotal = item.price * item.qty;
-            subtotal += itemTotal;
-            
-            const cartItemEl = document.createElement('div');
-            cartItemEl.className = 'cart-item';
-            cartItemEl.innerHTML = `
-                <img src="${item.image}" alt="${item.title}" class="cart-item-img">
-                <div class="cart-item-info">
-                    <div class="cart-item-title">${item.title}</div>
-                    <div class="cart-item-price">€${item.price.toFixed(2)}</div>
-                    <div class="cart-item-qty">Kiekis: ${item.qty}</div>
-                </div>
-                <div class="cart-item-total">€${itemTotal.toFixed(2)}</div>
-            `;
-            
-            checkoutItems.appendChild(cartItemEl);
-        });
-        
-        updateTotals(subtotal);
+  function openCart() {
+  cartPanel.classList.add('open');
+  cartOverlay.classList.add('visible');
+  }
+
+  function closeCart() {
+  cartPanel.classList.remove('open');
+  cartOverlay.classList.remove('visible');
+  }
+
+  document.getElementById('cartIcon').addEventListener('click', openCart);
+  closeCartBtn.addEventListener('click', closeCart);
+  cartOverlay.addEventListener('click', closeCart);
+
+  function saveCart() {
+  localStorage.setItem('nightwood_cart', JSON.stringify(cart));
+  }
+  function loadCart() {
+  const saved = localStorage.getItem('nightwood_cart');
+  if (saved) {
+    const parsed = JSON.parse(saved);
+    cart.length = 0;
+    parsed.forEach(item => cart.push(item));
+    updateCartUI();
+  }
+  }
+  loadCart();
+
+  document.querySelectorAll('.add-to-cart').forEach(button => {
+  button.addEventListener('click', () => {
+    const productCard = button.closest('.product-card');
+    const title = productCard.querySelector('h3').innerText;
+    const priceText = productCard.querySelector('.product-footer div').innerText.replace(/[^\d\.]/g, '');
+    const price = parseFloat(priceText);
+    const image = productCard.querySelector('img').src;
+
+    const existing = cart.find(item => item.title === title);
+    if (existing) {
+      existing.qty += 1;
+    } else {
+      cart.push({ title, price, image, qty: 1 });
     }
-    
-    function updateTotals(subtotal) {
-        const subtotalEl = document.getElementById('subtotal');
-        const totalEl = document.getElementById('total');
-        const shippingEl = document.getElementById('shipping');
-        const discountEl = document.getElementById('discount');
-        
-        // Format the values
-        subtotalEl.textContent = subtotal.toFixed(2);
-        
-        // Shipping logic: free if order over 100€
-        let shipping = subtotal > 100 ? 0 : 5.99;
-        shippingEl.textContent = shipping.toFixed(2);
-        
-        // Discount (would come from promo code application)
-        let discount = 0;
-        discountEl.textContent = discount.toFixed(2);
-        
-        // Calculate total
-        let total = subtotal + shipping - discount;
-        totalEl.textContent = total.toFixed(2);
-        
-        // Update shipping message
-        if (subtotal > 100) {
-            shippingEl.textContent = "0.00";
-            document.querySelector('.shipping-info p').textContent = "Jūs kvalifikavote nemokamam pristatymui! Standartinis pristatymas Lietuvoje trunka 1-3 darbo dienas.";
-        }
+
+    updateCartUI();
+  });
+  });
+
+  function updateCartUI() {
+  cartItems.innerHTML = '';
+  let total = 0;
+  cart.forEach((item, index) => {
+    total += item.price * item.qty;
+    const li = document.createElement('li');
+    li.innerHTML = 
+      '<img src="' + item.image + '" alt="">' +
+      '<div class="item-info">' +
+        '<h4>' + item.title + '</h4>' +
+        '<div class="price">€' + (item.price * item.qty).toFixed(2) + '</div>' +
+        '<div class="qty-controls">' +
+          '<button onclick="changeQty(' + index + ', -1)">−</button>' +
+          '<span>' + item.qty + '</span>' +
+          '<button onclick="changeQty(' + index + ', 1)">+</button>' +
+        '</div>' +
+      '</div>' +
+      '<button onclick="removeItem(' + index + ')">❌</button>';
+    cartItems.appendChild(li);
+  });
+  cartTotal.innerText = total.toFixed(2);
+  cartCount.innerText = cart.reduce((sum, item) => sum + item.qty, 0);
+  saveCart();
+  }
+
+  function removeFromCart(title) {
+  const index = cart.findIndex(item => item.title === title);
+  if (index > -1) {
+    cart[index].qty -= 1;
+    if (cart[index].qty <= 0) {
+      cart.splice(index, 1);
     }
-    
-    // Handle order placement
-    document.getElementById('placeOrderBtn').addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        // Basic form validation
-        const requiredFields = document.querySelectorAll('[required]');
-        let isFormValid = true;
-        
-        requiredFields.forEach(field => {
-            if (!field.value.trim()) {
-                field.style.borderColor = '#ff4f81';
-                isFormValid = false;
-            } else {
-                field.style.borderColor = '#333';
-            }
-        });
-        
-        // Terms checkbox validation
-        const termsCheckbox = document.getElementById('terms');
-        if (!termsCheckbox.checked) {
-            alert('Prašome sutikti su pirkimo sąlygomis');
-            return;
-        }
-        
-        if (isFormValid) {
-            // Simulate order submission
-            this.innerHTML = '<span class="spinner"></span> Apdorojama...';
-            this.disabled = true;
-            
-            setTimeout(() => {
-                // Clear cart and redirect to success page
-                localStorage.setItem('nightwood_cart', JSON.stringify([]));
-                alert('Užsakymas sėkmingai pateiktas! Jus pervedame į patvirtinimo puslapį.');
-                // In a real scenario, you'd redirect to a success page
-                // window.location.href = '/order-success.html';
-                
-                // For demo purposes, we'll just reset the button
-                this.innerHTML = 'Užsakymas pateiktas!';
-                setTimeout(() => {
-                    window.location.href = '/index.html';
-                }, 1500);
-            }, 2000);
-        } else {
-            alert('Prašome užpildyti visus būtinus laukus');
-        }
-    });
-    
-    // Initialize the page
-    document.addEventListener('DOMContentLoaded', () => {
-        loadCartItems();
-        
-        // Handle promo code application
-        document.querySelector('.promo-code-btn').addEventListener('click', function() {
-            const promoInput = document.querySelector('.promo-code-input');
-            const promoCode = promoInput.value.trim().toUpperCase();
-            
-            if (promoCode === 'NIGHT25') {
-                // Apply 25% discount
-                const subtotal = parseFloat(document.getElementById('subtotal').textContent);
-                const discount = subtotal * 0.25;
-                document.getElementById('discount').textContent = discount.toFixed(2);
-                
-                // Update total
-                const shipping = parseFloat(document.getElementById('shipping').textContent);
-                const total = subtotal + shipping - discount;
-                document.getElementById('total').textContent = total.toFixed(2);
-                
-                // Show success message
-                promoInput.value = '';
-                alert('Nuolaidos kodas pritaikytas! 25% nuolaida pritaikyta jūsų užsakymui.');
-                
-                // Disable promo code button after successful application
-                this.disabled = true;
-                this.textContent = 'Pritaikytas';
-                this.style.background = '#28a745';
-            } else {
-                alert('Neteisingas nuolaidos kodas. Bandykite dar kartą.');
-                promoInput.focus();
-            }
-        });
-        
-        // Update shipping method when country changes
-        document.getElementById('country').addEventListener('change', function() {
-            const country = this.value;
-            let shippingRate = 5.99; // Default for Lithuania
-            
-            // Adjust shipping based on country
-            if (country === 'lv' || country === 'ee') {
-                shippingRate = 9.99;
-            } else if (country === 'other') {
-                shippingRate = 19.99;
-            }
-            
-            // Update shipping cost and total
-            const subtotal = parseFloat(document.getElementById('subtotal').textContent);
-            const discount = parseFloat(document.getElementById('discount').textContent);
-            
-            // Free shipping for orders over 150€ (only for Baltic countries)
-            if (subtotal > 150 && (country === 'lt' || country === 'lv' || country === 'ee')) {
-                shippingRate = 0;
-                document.querySelector('.shipping-info p').textContent = "Jūs kvalifikavote nemokamam pristatymui! Pristatymas trunka 1-3 darbo dienas.";
-            } else {
-                document.querySelector('.shipping-info p').textContent = `Standartinis pristatymas ${country === 'lt' ? 'Lietuvoje' : country === 'lv' ? 'Latvijoje' : country === 'ee' ? 'Estijoje' : 'užsienyje'} trunka ${country === 'other' ? '5-10' : '1-3'} darbo dienas.`;
-            }
-            
-            document.getElementById('shipping').textContent = shippingRate.toFixed(2);
-            const total = subtotal + shippingRate - discount;
-            document.getElementById('total').textContent = total.toFixed(2);
-        });
-        
-        // Save user data to local storage when fields change
-        const formFields = document.querySelectorAll('.checkout-form input, .checkout-form select, .checkout-form textarea');
-        formFields.forEach(field => {
-            // Load saved data if available
-            const savedValue = localStorage.getItem(`checkout_${field.id}`);
-            if (savedValue) {
-                if (field.type === 'checkbox') {
-                    field.checked = savedValue === 'true';
-                } else {
-                    field.value = savedValue;
-                }
-            }
-            
-            // Save data on change
-            field.addEventListener('change', function() {
-                const value = field.type === 'checkbox' ? field.checked : field.value;
-                localStorage.setItem(`checkout_${field.id}`, value);
-            });
-        });
-    });
-    </script>
-    
+    updateCartUI();
+  }
+  } 
+
+  function updateCartUI() {
+  cartItems.innerHTML = '';
+  let total = 0;
+  cart.forEach((item, index) => {
+    total += item.price * item.qty;
+    const li = document.createElement('li');
+    li.innerHTML = 
+      '<img src="' + item.image + '" alt="">' +
+      '<div class="item-info">' +
+        '<h4>' + item.title + '</h4>' +
+        '<div class="price">€' + (item.price * item.qty).toFixed(2) + '</div>' +
+        '<div class="qty-controls">' +
+          '<button onclick="changeQty(' + index + ', -1)">−</button>' +
+          '<span>' + item.qty + '</span>' +
+          '<button onclick="changeQty(' + index + ', 1)">+</button>' +
+        '</div>' +
+      '</div>' +
+      '<button onclick="removeItem(' + index + ')">❌</button>';
+    cartItems.appendChild(li);
+  });
+  cartTotal.innerText = total.toFixed(2);
+  cartCount.innerText = cart.reduce((sum, item) => sum + item.qty, 0);
+  saveCart();
+  }
+
+  function changeQty(index, delta) {
+  cart[index].qty += delta;
+  if (cart[index].qty <= 0) {
+    cart.splice(index, 1);
+  }
+  updateCartUI();
+  }
+  function removeItem(index) {
+  cart.splice(index, 1);
+  updateCartUI();
+  }
+
+  //  для товаров 
+  function slideImage(btn, direction) {
+  const wrapper = btn.closest('.slider-wrapper');
+  const images = wrapper.querySelectorAll('img');
+  let current = Array.from(images).findIndex(img => img.classList.contains('active'));
+  if (current === -1) return;
+  images[current].classList.remove('active');
+  let next = (current + direction + images.length) % images.length;
+  images[next].classList.add('active');
+}
+</script>
+
 </body>
 </html>
