@@ -513,7 +513,8 @@ footer {
 
 /* === Стили для слайдера изображений === */
 
-  .slider-wrapper {
+/* === Добавляем стили слайдера изображений с ховером === */
+.slider-wrapper {
   position: relative;
   width: 100%;
   height: 200px;
@@ -534,8 +535,8 @@ footer {
   transform: translateY(-50%);
   background: rgba(255, 255, 255, 0.575);
   border-radius: 50%;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -543,7 +544,7 @@ footer {
   z-index: 2;
   color: #000;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
   user-select: none;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -561,130 +562,22 @@ footer {
   right: 10px;
 }
 
-
-/* === Responsive Fixes === */
-
-/* Base responsive fixes */
-html, body {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  min-height: 100vh;
-  background-attachment: fixed; /* Ensures background stays fixed on mobile */
-}
-
-/* Improve header responsiveness */
 @media (max-width: 768px) {
-  header {
-    padding: 15px 10px;
-  }
-  
-  .logo img {
-    width: 40px;
-  }
-  
-  .cart-icon {
-    right: 70px;
-  }
-}
-
-/* Make sections responsive */
-.section {
-  padding: 6rem 10px 3rem;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-/* Product card responsiveness */
-@media (max-width: 576px) {
-  .products {
-    grid-template-columns: 1fr; /* Single column on small devices */
-    gap: 1rem;
-  }
-  
-  .product-card {
-    margin-bottom: 1rem;
-  }
-  
-  .info h3 {
-    font-size: 1rem;
-  }
-}
-
-/* Always show slider arrows on mobile */
-@media (max-width: 992px) {
   .slider-arrow {
-    opacity: 1;
-    width: 36px;
-    height: 36px;
-    font-size: 18px;
-    background: rgba(255, 255, 255, 0.7);
-  }
-  
-  .slider-arrow.left {
-    left: 5px;
-  }
-  
-  .slider-arrow.right {
-    right: 5px;
-  }
-}
-
-/* Cart panel responsiveness */
-@media (max-width: 576px) {
-  .cart-panel {
-    max-width: 90%;
-  }
-  
-  .promo-area {
-    flex-direction: column;
-  }
-  
-  .promo-btn {
-    width: 100%;
-    margin-top: 0.5rem;
-  }
-}
-
-/* Footer responsiveness */
-@media (max-width: 768px) {
-  footer {
-    padding: 1.5rem 10px;
-    font-size: 0.9rem;
-  }
-}
-
-/* Improved product card slider responsiveness */
-.slider-wrapper {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-}
-
-/* Make slider arrows always visible on mobile and tablet */
-@media (max-width: 992px) {
-  .product-card .slider-arrow {
     opacity: 1 !important;
-    display: flex !important;
   }
+}
+.slider-arrow:hover {
+  background:  #dbdbdba9;
+}
+.slider-arrow.left {
+  left: 10px;
+}
+.slider-arrow.right {
+  right: 10px;
 }
 
-/* Only apply hover effects on desktop */
-@media (min-width: 993px) {
-  .product-card .slider-arrow {
-    opacity: 0;
-  }
-  
-  .product-card:hover .slider-arrow {
-    opacity: 1;
-  }
-}
+
 </style>
 </head>
 <body>
@@ -969,27 +862,20 @@ body {
   let next = (current + direction + images.length) % images.length;
   images[next].classList.add('active');
 }
+document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".product-card");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add(window.innerWidth <= 768 ? "animate-left" : "animate-up");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    cards.forEach(card => observer.observe(card));
+  });
 
-  // Остальные скрипты не меняются
-  
-  // Улучшенная функция для слайдера
-  function slideImage(btn, direction) {
-    const wrapper = btn.closest('.slider-wrapper');
-    const images = wrapper.querySelectorAll('img');
-    let current = Array.from(images).findIndex(img => img.classList.contains('active'));
-    if (current === -1) return;
-    
-    // Плавный переход
-    images[current].style.opacity = 0;
-    setTimeout(() => {
-      images[current].classList.remove('active');
-      let next = (current + direction + images.length) % images.length;
-      images[next].classList.add('active');
-      setTimeout(() => {
-        images[next].style.opacity = 1;
-      }, 50);
-    }, 200);
-  }
+
   
   // Убедимся, что все элементы страницы корректно отображаются
   document.addEventListener('DOMContentLoaded', function() {
