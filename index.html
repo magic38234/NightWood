@@ -64,7 +64,7 @@ header.scrolled {
       position: fixed;
       top: 0; left: 0;
       width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.8);
+      background: rgba(0, 0, 0, 0.74);
       z-index: 10000;
       display: flex;
       flex-direction: column;
@@ -614,6 +614,142 @@ header.scrolled {
 }
 .slider-arrow.right {
   right: 10px;
+}
+
+
+/* === Улучшение адаптивности карточек товаров === */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+/* Улучшения для планшетов */
+@media (max-width: 992px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .product-card {
+    min-height: 380px;
+  }
+  
+  .product-card h3 {
+    font-size: 1.1rem;
+  }
+}
+
+/* Улучшения для мобильных устройств */
+@media (max-width: 576px) {
+  .products {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  
+  .product-card {
+    min-height: 350px;
+  }
+  
+  .slider-wrapper {
+    height: 180px;
+  }
+  
+  .slider-wrapper img {
+    height: 180px;
+  }
+  
+  .info {
+    padding: 0.75rem;
+  }
+  
+  .product-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .product-card p {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+  
+  .product-footer {
+    padding: 0.75rem;
+  }
+  
+  .buy-button {
+    width: 100%;
+    padding: 0.6rem 0;
+    font-size: 14px;
+  }
+  
+  /* Увеличиваем размер стрелок для улучшения UX на мобильных */
+  .slider-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    opacity: 0.8;
+  }
+}
+
+/* Улучшения для очень маленьких экранов */
+@media (max-width: 360px) {
+  .section {
+    padding: 3rem 1rem;
+  }
+  
+  .product-card {
+    min-height: 330px;
+  }
+  
+  .slider-wrapper, .slider-wrapper img {
+    height: 160px;
+  }
+}
+
+/* Улучшение анимации при прокрутке */
+@media (max-width: 768px) {
+  .product-card {
+    transform: translateX(-30px);
+  }
+  .product-card.animate-left {
+    transform: translateX(0);
+  }
+  .product-card:hover {
+    transform: translateY(0);
+  }
+  .product-footer div {
+    font-weight: 600;
+    margin-bottom: 0.7rem !important;
+  }
+}
+
+/* Улучшение hover-эффектов */
+.product-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .product-card:hover {
+    transform: translateY(0);
+  }
+}
+
+/* Улучшение доступности для интерактивных элементов */
+.buy-button:focus {
+  outline: 2px solid #c300ff;
+  outline-offset: 2px;
+}
+
+/* Оптимизация отображения цены */
+.product-footer div {
+  font-weight: 600;
+  margin-bottom: 0.7rem !important;
 }
 </style>
 </head>
