@@ -445,8 +445,9 @@ footer {
   }
   .products {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    grid-template-columns: repeat(3, 1fr); /* Фиксированная сетка из 3 колонок */
     gap: 1.5rem;
+    margin-bottom: 2rem;
   }
   .product-card {
     opacity: 0;
@@ -490,7 +491,7 @@ footer {
   footer {
     text-align: center;
     padding: 2rem;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgb(0, 0, 0);
     color: #aaa;
   }
 
@@ -639,8 +640,8 @@ footer {
 <div class="slider-wrapper">
 <div class="slider-arrow left" onclick="slideImage(this, -1)">←</div>
 <div class="slider-arrow right" onclick="slideImage(this, 1)">→</div>
-<img alt="Padėklas" class="active" src="https://i.postimg.cc/HLRt2CqJ/poon.jpg"/>
-<img alt="Padėklas" src="https://i.postimg.cc/VkNBP61r/476231208-1034025892077411-8188252417738116989-n.jpg"/>
+<img alt="Padėklas" class="active" src="https://i.postimg.cc/VkNBP61r/476231208-1034025892077411-8188252417738116989-n.jpg"/>
+<img alt="Padėklas" src="https://i.postimg.cc/HLRt2CqJ/poon.jpg"/>
 </div><div class="info">
 <h3>Gravirotai padėklas</h3>
 <p>Stilingas ir natūralus akcentas jūsų stalo serviravimui.</p>
@@ -678,10 +679,64 @@ footer {
 </div>
 <div class="info">
 <h3>Paprastas padėklas</h3>
-<p>Stilingas ir natūralus akcentas jūsų stalo serviravimui.</p>
+<p>Stilingas ir natūralus akcentas jūsų stalo serviravimui</p>
 </div>
 <div class="product-footer">
-<div style="color:#ccc; font-size: 0.95rem; margin-bottom: 0.5rem;">€ 30</div>
+<div style="color:#ccc; font-size: 0.95rem; margin-bottom: 0.5rem;">€ 36</div>
+<div style="display: flex; gap: 0.5rem; justify-content: center;">
+<button class="buy-button add-to-cart" onclick="window.location.href='/cart.html'">PIRKTI</button>
+<button class="buy-button add-to-cart">PRIDĖTI</button>
+</div></div></div>
+
+<div class="product-card visible">
+<div class="slider-wrapper">
+<div class="slider-arrow left" onclick="slideImage(this, -1)">←</div>
+<div class="slider-arrow right" onclick="slideImage(this, 1)">→</div>
+<img alt="Padėklas" class="active" src="https://i.postimg.cc/FsX38rzB/nightwood-graviravimai-13-AGBjlj-Jp-X8-Tnn-ORV.jpg"/>
+<img alt="Padėklas" src="https://i.postimg.cc/BZYRBzvb/nightwood-graviravimai-2-YD05-G5-Na-Zy-IZ5-DNX.jpg"/>
+</div><div class="info">
+<h3>Padėklas</h3>
+<p>....</p>
+</div>
+<div class="product-footer">
+<div style="color:#ccc; font-size: 0.95rem; margin-bottom: 0.5rem;">€ 46</div>
+<div style="display: flex; gap: 0.5rem; justify-content: center;">
+<button class="buy-button add-to-cart"  onclick="window.location.href='/cart.html'">PIRKTI</button>
+<button class="buy-button add-to-cart">PRIDĖTI</button>
+</div></div></div>
+
+<div class="product-card visible">
+<div class="slider-wrapper">
+<div class="slider-arrow left" onclick="slideImage(this, -1)">←</div>
+<div class="slider-arrow right" onclick="slideImage(this, 1)">→</div>
+<img alt="Padėklas" class="active" src="https://i.postimg.cc/mk5zspzL/photo-2025-05-04-19-59-23.jpg"/>
+<img alt="Padėklas" src="https://i.postimg.cc/CKT852vd/photo-2025-05-04-19-59-21.jpg"/>
+</div><div class="info">
+<h3>Lentelė Night Wood </h3>
+<p>Matmenys: Apie 35.5 cm Ilgis apytiksliai 15.7 cm plotis. 
+  "Nerekomenduojame plauti indaplovėje"
+</p>
+</div>
+<div class="product-footer">
+<div style="color:#ccc; font-size: 0.95rem; margin-bottom: 0.5rem;">€ 18</div>
+<div style="display: flex; gap: 0.5rem; justify-content: center;">
+<button class="buy-button add-to-cart" onclick="window.location.href='/cart.html'">PIRKTI</button>
+<button class="buy-button add-to-cart">PRIDĖTI</button>
+</div></div></div>
+
+<div class="product-card visible">
+<div class="slider-wrapper">
+<div class="slider-arrow left" onclick="slideImage(this, -1)">←</div>
+<div class="slider-arrow right" onclick="slideImage(this, 1)">→</div>
+<img alt="Padėklas" class="active" src="https://i.postimg.cc/jd6LxhW4/photo-2025-05-04-20-11-34.jpg"/>
+<img alt="Padėklas" src="https://i.postimg.cc/qRtNpVnN/photo-2025-05-04-20-11-31.jpg"/>
+</div>
+<div class="info">
+<h3>Kepimo akmuo virtuvei su pagrindu</h3>
+<p>Night Wood kepimo akmuo virtuvei su nerūdijančio plieno pagrindu.</p>
+</div>
+<div class="product-footer">
+<div style="color:#ccc; font-size: 0.95rem; margin-bottom: 0.5rem;">€ 100</div>
 <div style="display: flex; gap: 0.5rem; justify-content: center;">
 <button class="buy-button add-to-cart" onclick="window.location.href='/cart.html'">PIRKTI</button>
 <button class="buy-button add-to-cart">PRIDĖTI</button>
