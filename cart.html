@@ -18,6 +18,7 @@
       min-height: 100vh;
     }
 
+
     /* === Хедер и логотип === */
     header {
       background: #0e0e10;
@@ -844,7 +845,7 @@
             
             <div class="shipping-info">
                 <h4>Pristatymo informacija</h4>
-                <p>Standartinis pristatymas Lietuvoje trunka 1-3 darbo dienas. Užsakymai virš 150€ pristatomi nemokamai.</p>
+                <p>Standartinis pristatymas Lietuvoje trunka 1-3 darbo dienas. Užsakymai virš 100€ pristatomi nemokamai.</p>
             </div>
             
             <div class="form-group">
@@ -867,7 +868,7 @@
             <div class="payment-methods">
                 <label class="payment-method active">
                     <input type="radio" name="payment" class="payment-method-radio" checked>
-                    <img src="https://i.postimg.cc/d3KpkbqK/bank-transfer.png" alt="Banko pavedimas" class="payment-method-icon">
+                    <img src="https://i.postimg.cc/CKPyX9vz/Mastercard-Logo-wine.png" alt="Banko pavedimas" class="payment-method-icon">
                     <div class="payment-method-info">
                         <div class="payment-method-title">Banko pavedimas</div>
                         <div class="payment-method-description">Mokėkite tiesiai į mūsų banko sąskaitą</div>
@@ -876,16 +877,16 @@
                 
                 <label class="payment-method">
                     <input type="radio" name="payment" class="payment-method-radio">
-                    <img src="https://i.postimg.cc/hvs2C0k6/credit-card.png" alt="Kortelės" class="payment-method-icon">
+                    <img src="https://i.postimg.cc/FRq31sK3/channels4-profile-removebg-preview.png" alt="Kortelės" class="payment-method-icon">
                     <div class="payment-method-info">
-                        <div class="payment-method-title">Kredito / debeto kortelė</div>
+                        <div class="payment-method-title">Paysera</div>
                         <div class="payment-method-description">Saugus mokėjimas per Paysera sistemą</div>
                     </div>
                 </label>
                 
                 <label class="payment-method">
                     <input type="radio" name="payment" class="payment-method-radio">
-                    <img src="https://i.postimg.cc/MpC92jbV/paypal.png" alt="PayPal" class="payment-method-icon">
+                    <img src="https://i.postimg.cc/xjt8njQk/paypal.png" alt="PayPal" class="payment-method-icon">
                     <div class="payment-method-info">
                         <div class="payment-method-title">PayPal</div>
                         <div class="payment-method-description">Greitas ir saugus mokėjimas su PayPal</div>
@@ -1014,8 +1015,8 @@
         // Format the values
         subtotalEl.textContent = subtotal.toFixed(2);
         
-        // Shipping logic: free if order over 150€
-        let shipping = subtotal > 150 ? 0 : 5.99;
+        // Shipping logic: free if order over 100€
+        let shipping = subtotal > 100 ? 0 : 5.99;
         shippingEl.textContent = shipping.toFixed(2);
         
         // Discount (would come from promo code application)
@@ -1027,7 +1028,7 @@
         totalEl.textContent = total.toFixed(2);
         
         // Update shipping message
-        if (subtotal > 150) {
+        if (subtotal > 100) {
             shippingEl.textContent = "0.00";
             document.querySelector('.shipping-info p').textContent = "Jūs kvalifikavote nemokamam pristatymui! Standartinis pristatymas Lietuvoje trunka 1-3 darbo dienas.";
         }
