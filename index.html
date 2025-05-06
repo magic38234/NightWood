@@ -212,12 +212,178 @@ header.scrolled {
     .buy-button:hover { background: #fafafa; }
 
     /* === Подвал === */
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background: #0e0e10;
-      color: #888;
-    }
+/* === Footer Styles === */
+footer {
+  background: #111;
+  color: #aaa;
+  padding: 3rem 2rem 1rem;
+  font-family: 'Montserrat', sans-serif;
+  position: relative;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding-bottom: 2rem;
+}
+
+.footer-section {
+  margin-bottom: 1.5rem;
+}
+
+.footer-section h3 {
+  color: #e0e0e0;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.footer-section h3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(90deg, #d3ad7f 0%, #c89c68 100%);
+}
+
+.footer-section p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section ul li {
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-section ul li i {
+  width: 20px;
+  color: #c89c68;
+}
+
+.footer-section a {
+  color: #aaa;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-section a:hover {
+  color: #c89c68;
+}
+
+.footer-social {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.footer-social img {
+  width: 36px;
+  height: 36px;
+  filter: grayscale(100%) brightness(0.8);
+  transition: all 0.3s ease;
+}
+
+.footer-social img:hover {
+  filter: grayscale(0%) brightness(1);
+  transform: translateY(-3px);
+}
+
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.newsletter-form input {
+  padding: 0.8rem;
+  border: none;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.1);
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.newsletter-form input::placeholder {
+  color: #888;
+}
+
+.newsletter-form button {
+  padding: 0.8rem;
+  background: linear-gradient(90deg, #ffc37a , #c89c68 );
+  color: #111;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-radius: 26px;
+}
+
+.newsletter-form button:hover {
+  background: linear-gradient(90deg, #ffc37a, #d3ad7f );
+  transform: translateY(-2px);
+  border-radius: 26px;
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+.payment-methods {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.payment-methods img {
+  height: 24px;
+  filter: grayscale(100%) brightness(1.5);
+  opacity: 0.7;
+  transition: all 0.3s;
+}
+
+.payment-methods img:hover {
+  filter: grayscale(0%) brightness(1);
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .footer-section {
+    margin-bottom: 1rem;
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
 
     /* === Адаптивность === */
     @media (max-width: 768px) {
@@ -854,7 +1020,59 @@ header.scrolled {
 </div>
 </div>
 </section>
-<footer class="footer">© 2025 Night Wood. Visos teisės saugomos.</footer>
+<footer>
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Night Wood</h3>
+      <p>Prabangūs mediniai dirbiniai namams ir dovanoms</p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/NightWood.lt" aria-label="Facebook">
+          <img src="https://i.postimg.cc/G3Z9ZSj4/icons8-facebook-50.png" alt="Facebook">
+        </a>
+        <a href="https://www.instagram.com/nightwood.lt/" aria-label="Instagram">
+          <img src="https://i.postimg.cc/Cdy7WHcW/icons8-instagram-50.png" alt="Instagram">
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-section">
+      <h3>Nuorodos</h3>
+      <ul>
+        <li><a href="/index.html">Pagrindinis</a></li>
+        <li><a href="/catalog.html">Katalogas</a></li>
+        <li><a href="#about">Apie mus</a></li>
+        <li><a href="#contacts">Kontaktai</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Kontaktai</h3>
+      <ul>
+        <li><i class="fas fa-phone"></i> +370 640 81 312</li>
+        <li><i class="fas fa-envelope"></i> info@nightwood.lt</li>
+        <li><i class="fas fa-map-marker-alt"></i> Vilnius, Lietuva</li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Naujienlaiškis</h3>
+      <p>Prenumeruokite naujienas ir gaukite specialius pasiūlymus</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Jūsų el. paštas" required>
+        <button type="submit">Prenumeruoti</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 Night Wood. Visos teisės saugomos.</p>
+    <div class="payment-methods">
+      <img src="https://i.postimg.cc/CKPyX9vz/Mastercard-Logo-wine.png" alt="Visa">
+      <img src="https://i.postimg.cc/FRq31sK3/channels4-profile-removebg-preview.png" alt="Paysera">
+      <img src="https://i.postimg.cc/xjt8njQk/paypal.png" alt="PayPal">
+    </div>
+  </div>
+</footer>
 <script>
   const burgerBtn = document.getElementById('burgerBtn');
   const menuOverlay = document.getElementById('menuOverlay');
