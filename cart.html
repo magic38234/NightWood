@@ -256,128 +256,195 @@
     }
 
     /* Стили для корзины в боковой панели */
+    
+    /* Обновленные стили для корзины в оформлении заказа */
+    .checkout-summary {
+        width: 380px;
+        background: #111;
+        border-radius: 16px;
+        padding: 1.5rem;
+        height: fit-content;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+
     .cart-items {
-      margin-bottom: 1.5rem;
-      max-height: 300px;
-      overflow-y: auto;
+        margin-bottom: 1.5rem;
+        max-height: 300px;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: #c300ff #222;
+    }
+
+    .cart-items::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .cart-items::-webkit-scrollbar-track {
+        background: rgba(255,255,255,0.05);
+    }
+
+    .cart-items::-webkit-scrollbar-thumb {
+        background: linear-gradient(#ff4f81, #c300ff);
+        border-radius: 10px;
     }
 
     .cart-item {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 1rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid #333;
-      align-items: center;
+        display: flex;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+        padding: 0.75rem;
+        background: rgba(255,255,255,0.05);
+        border-radius: 12px;
+        align-items: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        transition: background 0.3s ease;
     }
 
-    .cart-item:last-child {
-      border-bottom: none;
+    .cart-item:hover {
+        background: rgba(255,255,255,0.08);
     }
 
     .cart-item-img {
-      width: 60px;
-      height: 60px;
-      border-radius: 8px;
-      object-fit: cover;
+        width: 60px;
+        height: 60px;
+        border-radius: 8px;
+        object-fit: cover;
     }
 
     .cart-item-info {
-      flex: 1;
+        flex: 1;
     }
 
     .cart-item-title {
-      font-size: 0.95rem;
-      margin-bottom: 0.25rem;
+        font-size: 0.95rem;
+        margin-bottom: 0.25rem;
+        font-weight: 500;
     }
 
     .cart-item-price {
-      font-size: 0.9rem;
-      color: #aaa;
-    }
-
-    .cart-item-qty {
-      font-size: 0.9rem;
-      color: #999;
+        font-size: 0.9rem;
+        color: #aaa;
     }
 
     .quantity-controls {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
-    }
-    .quantity-btn {
-      padding: 0.25rem 0.5rem;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-    .add-to-cart {
-      background: none;
-      border: none;
-      cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
     }
 
+    .quantity-btn {
+        background: #ff4f81;
+        border: none;
+        color: white;
+        width: 24px;
+        height: 24px;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+
+    .quantity-btn:hover {
+        background: #ff7ca3;
+    }
+
+    .quantity-value {
+        min-width: 20px;
+        text-align: center;
+    }
+
+    .remove-item-btn {
+        background: none;
+        border: none;
+        color: #ff4f81;
+        cursor: pointer;
+        transition: color 0.2s;
+        padding: 0.5rem;
+    }
+
+    .remove-item-btn:hover {
+        color: #ff82a8;
+    }
+
+    .remove-item-btn svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    /* Обновленные стили для итоговых сумм */
     .summary-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 0.75rem 0;
-      border-top: 1px solid #333;
+        display: flex;
+        justify-content: space-between;
+        padding: 0.75rem 0;
+        border-top: 1px solid rgba(255,255,255,0.1);
     }
 
     .summary-row:first-child {
-      border-top: none;
+        border-top: none;
     }
 
     .summary-row.total {
-      font-weight: bold;
-      font-size: 1.1rem;
-      color: #fff;
-      border-top: 2px solid #333;
-      margin-top: 0.5rem;
+        font-weight: bold;
+        font-size: 1.1rem;
+        color: #fff;
+        border-top: 2px solid rgba(255,255,255,0.1);
+        margin-top: 0.5rem;
     }
 
-    /* Promo code section */
+    /* Обновленные стили для промокодов */
     .promo-code {
-      margin: 1.5rem 0;
-      padding: 1rem;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 12px;
+        margin: 1.5rem 0;
+        padding: 1rem;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 12px;
+        backdrop-filter: blur(4px);
     }
 
     .promo-code-form {
-      display: flex;
-      gap: 0.5rem;
+        display: flex;
+        gap: 0.5rem;
     }
 
     .promo-code-input {
-      flex: 1;
-      padding: 0.6rem 1rem;
-      border: none;
-      border-radius: 10px;
-      background: #1a1a1c;
-      color: #fff;
-      font-size: 0.95rem;
+        flex: 1;
+        padding: 0.6rem 1rem;
+        border: none;
+        border-radius: 10px;
+        background: #1a1a1c;
+        color: #fff;
+        font-size: 0.95rem;
+        transition: box-shadow 0.3s;
     }
 
     .promo-code-input::placeholder {
-      color: #aaa;
+        color: #aaa;
+    }
+
+    .promo-code-input:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #ff4f81;
     }
 
     .promo-code-btn {
-      padding: 0.6rem 1.2rem;
-      background: linear-gradient(90deg, #ff4f81, #c300ff);
-      color: #fff;
-      font-weight: 600;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 0.95rem;
+        padding: 0.6rem 1.2rem;
+        background: linear-gradient(90deg, #ff4f81, #c300ff);
+        color: #fff;
+        font-weight: 600;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 0.95rem;
+        transition: background 0.3s;
     }
 
     .promo-code-btn:hover {
-      background: linear-gradient(90deg, #ff82a8, #d066ff);
+        background: linear-gradient(90deg, #ff82a8, #d066ff);
     }
 
     /* Payment method selection */
@@ -964,39 +1031,39 @@
         </div>
         
         <div class="checkout-summary">
-            <h2 class="section-title">Jūsų užsakymas</h2>
-            
-            <div class="cart-items" id="checkoutItems">
-                <!-- Cart items will be loaded dynamically from JS -->
-            </div>
-            
-            <div class="promo-code">
-                <form class="promo-code-form">
-                    <input type="text" class="promo-code-input" placeholder="Nuolaidos kodas">
-                    <button type="button" class="promo-code-btn">Taikyti</button>
-                </form>
-            </div>
-            
-            <div class="summary-row">
-                <span>Prekių suma:</span>
-                <span>€<span id="subtotal">0.00</span></span>
-            </div>
-            
-            <div class="summary-row">
-                <span>Pristatymas:</span>
-                <span>€<span id="shipping">5.99</span></span>
-            </div>
-            
-            <div class="summary-row">
-                <span>Nuolaida:</span>
-                <span>-€<span id="discount">0.00</span></span>
-            </div>
-            
-            <div class="summary-row total">
-                <span>Bendra suma:</span>
-                <span>€<span id="total">0.00</span></span>
-            </div>
-        </div>
+          <h2 class="section-title">Jūsų užsakymas</h2>
+          
+          <div class="cart-items" id="checkoutItems">
+              <!-- Cart items will be loaded dynamically from JS -->
+          </div>
+          
+          <div class="promo-code">
+              <form class="promo-code-form">
+                  <input type="text" class="promo-code-input" placeholder="Nuolaidos kodas">
+                  <button type="button" class="promo-code-btn">Taikyti</button>
+              </form>
+          </div>
+          
+          <div class="summary-row">
+              <span>Prekių suma:</span>
+              <span>€<span id="subtotal">0.00</span></span>
+          </div>
+          
+          <div class="summary-row">
+              <span>Pristatymas:</span>
+              <span>€<span id="shipping">4.00</span></span>
+          </div>
+          
+          <div class="summary-row">
+              <span>Nuolaida:</span>
+              <span>-€<span id="discount">0.00</span></span>
+          </div>
+          
+          <div class="summary-row total">
+              <span>Bendra suma:</span>
+              <span>€<span id="total">0.00</span></span>
+          </div>
+      </div>
     </div>
 </div>
 
@@ -1053,24 +1120,49 @@
             return;
         }
         
-        cart.forEach(item => {
-            const itemTotal = item.price * item.qty;
-            subtotal += itemTotal;
-            
-            const cartItemEl = document.createElement('div');
-            cartItemEl.className = 'cart-item';
-            cartItemEl.innerHTML = `
-                <img src="${item.image}" alt="${item.title}" class="cart-item-img">
-                <div class="cart-item-info">
-                    <div class="cart-item-title">${item.title}</div>
-                    <div class="cart-item-price">€${item.price.toFixed(2)}</div>
-                    <div class="cart-item-qty">Kiekis: ${item.qty}</div>
+        function loadCartItems() {
+    const cart = JSON.parse(localStorage.getItem('nightwood_cart')) || [];
+    const checkoutItems = document.getElementById('checkoutItems');
+    
+    checkoutItems.innerHTML = '';
+    
+    if (cart.length === 0) {
+        checkoutItems.innerHTML = '<p style="text-align: center; color: #aaa; padding: 1rem;">Jūsų krepšelis tuščias</p>';
+        updateTotals(0);
+        return;
+    }
+    
+    cart.forEach((item, index) => {
+        const itemTotal = item.price * item.qty;
+        
+        const cartItemEl = document.createElement('div');
+        cartItemEl.className = 'cart-item';
+        cartItemEl.innerHTML = `
+            <img src="${item.image}" alt="${item.title}" class="cart-item-img">
+            <div class="cart-item-info">
+                <div class="cart-item-title">${item.title}</div>
+                <div class="cart-item-price">€${item.price.toFixed(2)}</div>
+                <div class="quantity-controls">
+                    <button class="quantity-btn" onclick="updateCartItemQty(${index}, -1)">−</button>
+                    <span class="quantity-value">${item.qty}</span>
+                    <button class="quantity-btn" onclick="updateCartItemQty(${index}, 1)">+</button>
                 </div>
-                <div class="cart-item-total">€${itemTotal.toFixed(2)}</div>
-            `;
-            
-            checkoutItems.appendChild(cartItemEl);
-        });
+            </div>
+            <div class="cart-item-total">€${itemTotal.toFixed(2)}</div>
+            <button class="remove-item-btn" onclick="removeCartItem(${index})">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                </svg>
+            </button>
+        `;
+        
+        checkoutItems.appendChild(cartItemEl);
+    });
+    
+    // Обновляем итоговые суммы
+    updateCartTotals(cart);
+}
         
         updateTotals(subtotal);
     }
