@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="lt">
 <head>
 <meta charset="utf-8"/>
@@ -9,844 +8,985 @@
 <link href="https://i.postimg.cc/xTbFtq6w/IMG-0546.png" rel="icon" type="image/png"/>
 <style>
     /* === Общие настройки === */
-/* === Общие настройки === */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #0e0e10;
-      color: #fff;
-      min-height: 100vh;
+        font-family: 'Segoe UI', sans-serif;
+        color: #fff;
+        min-height: 100vh;
+        background: url('https://i.postimg.cc/7hQRW2zz/photo-2025-04-17-17-27-30.jpg') no-repeat center center fixed;
+        background-size: cover;
+        position: relative;
     }
-
     body::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.712);
-  z-index: -1;
-}
-
-
+        content: "";
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.712);
+        z-index: -1;
+    }
 
     /* === Хедер и логотип === */
     header {
-      background: #0e0e10;
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 20;
-      height: 70px;
-      transition: background 0.3s ease;
+        background: transparent;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 20;
+        height: 70px;
+        transition: background 0.3s ease;
     }
-
-    .logo img { width: 50px; }
+    header.scrolled {
+        background: #0e0e10;
+    }
+    .logo img { 
+        width: 50px;
+        cursor: pointer;
+    }
 
     /* === Бургер-меню === */
     .burger {
-      width: 36px;
-      height: 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      cursor: pointer;
-      z-index: 10001;
+        width: 36px;
+        height: 28px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        cursor: pointer;
+        z-index: 10001;
     }
     .burger span {
-      height: 4px;
-      background: #fff;
-      border-radius: 2px;
-      transition: 0.3s ease;
+        height: 4px;
+        background: #fff;
+        border-radius: 2px;
+        transition: 0.3s ease;
     }
     .burger:hover { transform: scale(1.1); }
 
     /* === Мобильное меню === */
     #menuOverlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.9);
-      z-index: 10000;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 2rem;
-      transform: translateY(-100%);
-      transition: transform 0.4s ease;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100vw; height: 100vh;
+        background: rgba(0,0,0,0.9);
+        z-index: 10000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        transform: translateY(-100%);
+        transition: transform 0.4s ease;
     }
     #menuOverlay.open { transform: translateY(0); }
     #menuOverlay a {
-      font-size: 2rem;
-      font-weight: 600;
-      color: #fff;
-      text-transform: uppercase;
-      text-decoration: none;
-      letter-spacing: 1.5px;
-      transition: color 0.3s ease;
+        font-size: 2rem;
+        font-weight: 600;
+        color: #fff;
+        text-transform: uppercase;
+        text-decoration: none;
+        letter-spacing: 1.5px;
+        transition: color 0.3s ease;
     }
     #menuOverlay a:hover { color: #c300ff; }
     #menuOverlay .contact { color: #aaa; font-size: 1rem; margin-top: 2rem; }
     #menuOverlay .social-icons {
-      display: flex;
-      gap: 1.5rem;
-      margin-top: 1rem;
+        display: flex;
+        gap: 1.5rem;
+        margin-top: 1rem;
     }
     #menuOverlay .social-icons img {
-      width: 60px;
-      height: 60px;
-      filter: grayscale(100%) brightness(0.9);
-      transition: transform 0.3s ease;
+        width: 60px;
+        height: 60px;
+        filter: grayscale(100%) brightness(0.9);
+        transition: transform 0.3s ease;
     }
     #menuOverlay .social-icons img:hover {
-      transform: scale(1.2);
-      filter: grayscale(0%) brightness(1);
+        transform: scale(1.2);
+        filter: grayscale(0%) brightness(1);
     }
 
     #closeMenuBtn {
-      position: absolute;
-      top: 30px;
-      right: 5%;
-      transform: translateX(50%);
-      font-size: 3rem;
-      font-weight: bold;
-      color: #fff;
-      cursor: pointer;
-      z-index: 10001;
+        position: absolute;
+        top: 30px;
+        right: 5%;
+        transform: translateX(50%);
+        font-size: 3rem;
+        font-weight: bold;
+        color: #fff;
+        cursor: pointer;
+        z-index: 10001;
     }
     #closeMenuBtn:hover {
-      color: #dad7d7;
+        color: #dad7d7;
     }
 
     /* === Основной контент === */
     .main-content {
-      max-width: 1200px;
-      margin: 100px auto 50px;
-      padding: 0 20px;
+        max-width: 1200px;
+        margin: 100px auto 50px;
+        padding: 0 20px;
     }
 
     /* === Стили для страницы оформления заказа === */
     .checkout-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      margin-top: 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        margin-top: 2rem;
     }
 
     .checkout-form {
-      flex: 1;
-      min-width: 300px;
+        flex: 1;
+        min-width: 300px;
+        background: rgba(30, 30, 30, 0.8);
+        padding: 2rem;
+        border-radius: 16px;
+        backdrop-filter: blur(5px);
     }
 
     .checkout-summary {
-      width: 380px;
-      background: #1a1a1c;
-      border-radius: 16px;
-      padding: 1.5rem;
-      height: fit-content;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+        width: 380px;
+        background: rgba(30, 30, 30, 0.8);
+        border-radius: 16px;
+        padding: 1.5rem;
+        height: fit-content;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(5px);
     }
 
     .section-title {
-      color: #e0e0e0;
-      font-size: 1.8rem;
-      margin-bottom: 1.5rem;
-      font-weight: 600;
-      font-family: 'Montserrat', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      position: relative;
+        color: #e0e0e0;
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+        font-family: 'Montserrat', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        position: relative;
     }
 
     .section-title::after {
-      content: "";
-      display: block;
-      width: 60px;
-      height: 3px;
-      background: linear-gradient(90deg, #bf7fd3 0%, #bf7fd3 100%);
-      margin-top: 10px;
-      border-radius: 2px;
+        content: "";
+        display: block;
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(90deg, #bf7fd3 0%, #bf7fd3 100%);
+        margin-top: 10px;
+        border-radius: 2px;
     }
 
     .form-group {
-      margin-bottom: 1.5rem;
+        margin-bottom: 1.5rem;
     }
 
     .form-group label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-size: 0.95rem;
-      color: #ccc;
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: 0.95rem;
+        color: #ccc;
     }
 
     .form-control {
-      width: 100%;
-      padding: 0.8rem 1rem;
-      background: #1a1a1c;
-      border: 1px solid #333;
-      border-radius: 10px;
-      color: #fff;
-      font-size: 1rem;
-      transition: border-color 0.3s, box-shadow 0.3s;
+        width: 100%;
+        padding: 0.8rem 1rem;
+        background: rgba(255,255,255,0.1);
+        border: 1px solid #333;
+        border-radius: 10px;
+        color: #fff;
+        font-size: 1rem;
+        transition: border-color 0.3s, box-shadow 0.3s;
     }
 
     .form-control:focus {
-      outline: none;
-      border-color: #c300ff;
-      box-shadow: 0 0 0 2px rgba(195, 0, 255, 0.2);
+        outline: none;
+        border-color: #c300ff;
+        box-shadow: 0 0 0 2px rgba(195, 0, 255, 0.2);
     }
 
     .form-row {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
     }
 
     .form-row > div {
-      flex: 1;
-      min-width: 150px;
+        flex: 1;
+        min-width: 150px;
     }
 
     .checkbox-group {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin: 1rem 0;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin: 1rem 0;
     }
 
     .checkbox-group input {
-      width: 18px;
-      height: 18px;
-      accent-color: #c300ff;
+        width: 18px;
+        height: 18px;
+        accent-color: #c300ff;
+    }
+
+    .checkbox-group label {
+        margin-bottom: 0;
+        font-size: 0.9rem;
     }
 
     .checkout-btn {
-      width: 100%;
-      padding: 1rem;
-      margin-top: 1rem;
-      background: linear-gradient(90deg, #ff4f81, #c300ff);
-      color: white;
-      font-weight: bold;
-      border: none;
-      border-radius: 50px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.3s ease, transform 0.2s ease;
-      box-shadow: 0 4px 14px rgba(255, 79, 129, 0.4);
-      text-transform: uppercase;
-      letter-spacing: 1px;
+        width: 100%;
+        padding: 1rem;
+        margin-top: 1rem;
+        background: linear-gradient(90deg, #ff4f81, #c300ff);
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 50px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.2s ease;
+        box-shadow: 0 4px 14px rgba(255, 79, 129, 0.4);
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
 
     .checkout-btn:hover {
-      background: linear-gradient(90deg, #ff82a8, #d066ff);
-      transform: translateY(-2px);
-    }
-
-    /* Стили для выпадающих списков */
-    select.form-control {
-      appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23aaa' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: calc(100% - 15px) center;
-      padding-right: 40px;
+        background: linear-gradient(90deg, #ff82a8, #d066ff);
+        transform: translateY(-2px);
     }
 
     /* Стили для корзины в боковой панели */
+    
+    /* Обновленные стили для корзины в оформлении заказа */
+    .checkout-summary {
+        width: 380px;
+        background: #111;
+        border-radius: 16px;
+        padding: 1.5rem;
+        height: fit-content;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+
     .cart-items {
-      margin-bottom: 1.5rem;
-      max-height: 300px;
-      overflow-y: auto;
+        margin-bottom: 1.5rem;
+        max-height: 300px;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: #c300ff #222;
+    }
+
+    .cart-items::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .cart-items::-webkit-scrollbar-track {
+        background: rgba(255,255,255,0.05);
+    }
+
+    .cart-items::-webkit-scrollbar-thumb {
+        background: linear-gradient(#ff4f81, #c300ff);
+        border-radius: 10px;
     }
 
     .cart-item {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 1rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid #333;
-      align-items: center;
+        display: flex;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+        padding: 0.75rem;
+        background: rgba(255,255,255,0.05);
+        border-radius: 12px;
+        align-items: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        transition: background 0.3s ease;
     }
 
-    .cart-item:last-child {
-      border-bottom: none;
+    .cart-item:hover {
+        background: rgba(255,255,255,0.08);
     }
 
     .cart-item-img {
-      width: 60px;
-      height: 60px;
-      border-radius: 8px;
-      object-fit: cover;
+        width: 60px;
+        height: 60px;
+        border-radius: 8px;
+        object-fit: cover;
     }
 
     .cart-item-info {
-      flex: 1;
+        flex: 1;
     }
 
     .cart-item-title {
-      font-size: 0.95rem;
-      margin-bottom: 0.25rem;
+        font-size: 0.95rem;
+        margin-bottom: 0.25rem;
+        font-weight: 500;
     }
 
     .cart-item-price {
-      font-size: 0.9rem;
-      color: #aaa;
-    }
-
-    .cart-item-qty {
-      font-size: 0.9rem;
-      color: #999;
+        font-size: 0.9rem;
+        color: #aaa;
     }
 
     .quantity-controls {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
-    }
-    .quantity-btn {
-      padding: 0.25rem 0.5rem;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-    .add-to-cart {
-      background: none;
-      border: none;
-      cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
     }
 
+    .quantity-btn {
+        background: #ff4f81;
+        border: none;
+        color: white;
+        width: 24px;
+        height: 24px;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+
+    .quantity-btn:hover {
+        background: #ff7ca3;
+    }
+
+    .quantity-value {
+        min-width: 20px;
+        text-align: center;
+    }
+
+    .remove-item-btn {
+        background: none;
+        border: none;
+        color: #ff4f81;
+        cursor: pointer;
+        transition: color 0.2s;
+        padding: 0.5rem;
+    }
+
+    .remove-item-btn:hover {
+        color: #ff82a8;
+    }
+
+    .remove-item-btn svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    /* Обновленные стили для итоговых сумм */
     .summary-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 0.75rem 0;
-      border-top: 1px solid #333;
+        display: flex;
+        justify-content: space-between;
+        padding: 0.75rem 0;
+        border-top: 1px solid rgba(255,255,255,0.1);
     }
 
     .summary-row:first-child {
-      border-top: none;
+        border-top: none;
     }
 
     .summary-row.total {
-      font-weight: bold;
-      font-size: 1.1rem;
-      color: #fff;
-      border-top: 2px solid #333;
-      margin-top: 0.5rem;
+        font-weight: bold;
+        font-size: 1.1rem;
+        color: #fff;
+        border-top: 2px solid rgba(255,255,255,0.1);
+        margin-top: 0.5rem;
     }
 
-    /* Promo code section */
+    /* Обновленные стили для промокодов */
     .promo-code {
-      margin: 1.5rem 0;
-      padding: 1rem;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 12px;
+        margin: 1.5rem 0;
+        padding: 1rem;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 12px;
+        backdrop-filter: blur(4px);
     }
 
     .promo-code-form {
-      display: flex;
-      gap: 0.5rem;
+        display: flex;
+        gap: 0.5rem;
     }
 
     .promo-code-input {
-      flex: 1;
-      padding: 0.6rem 1rem;
-      border: none;
-      border-radius: 10px;
-      background: #1a1a1c;
-      color: #fff;
-      font-size: 0.95rem;
+        flex: 1;
+        padding: 0.6rem 1rem;
+        border: none;
+        border-radius: 10px;
+        background: #1a1a1c;
+        color: #fff;
+        font-size: 0.95rem;
+        transition: box-shadow 0.3s;
     }
 
     .promo-code-input::placeholder {
-      color: #aaa;
+        color: #aaa;
+    }
+
+    .promo-code-input:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #ff4f81;
     }
 
     .promo-code-btn {
-      padding: 0.6rem 1.2rem;
-      background: linear-gradient(90deg, #ff4f81, #c300ff);
-      color: #fff;
-      font-weight: 600;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 0.95rem;
+        padding: 0.6rem 1.2rem;
+        background: linear-gradient(90deg, #ff4f81, #c300ff);
+        color: #fff;
+        font-weight: 600;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 0.95rem;
+        transition: background 0.3s;
     }
 
     .promo-code-btn:hover {
-      background: linear-gradient(90deg, #ff82a8, #d066ff);
+        background: linear-gradient(90deg, #ff82a8, #d066ff);
     }
 
+
+    
     /* Payment method selection */
     .payment-methods {
-      margin: 1.5rem 0;
+        margin: 1.5rem 0;
     }
 
     .payment-method {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      background: #1a1a1c;
-      border: 1px solid #333;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: border-color 0.3s, transform 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid #333;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s;
     }
 
     .payment-method:hover {
-      border-color: #c300ff;
-      transform: translateY(-2px);
+        border-color: #c300ff;
+        transform: translateY(-2px);
     }
 
     .payment-method.active {
-      border-color: #c300ff;
-      box-shadow: 0 0 0 2px rgba(195, 0, 255, 0.2);
+        border-color: #c300ff;
+        box-shadow: 0 0 0 2px rgba(195, 0, 255, 0.2);
     }
 
     .payment-method-radio {
-      width: 20px;
-      height: 20px;
-      accent-color: #c300ff;
+        width: 20px;
+        height: 20px;
+        accent-color: #c300ff;
     }
 
     .payment-method-icon {
-      width: 40px;
-      height: 40px;
-      object-fit: contain;
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
     }
 
     .payment-method-info {
-      flex: 1;
+        flex: 1;
     }
 
     .payment-method-title {
-      font-weight: 600;
-      margin-bottom: 0.25rem;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
     }
 
     .payment-method-description {
-      font-size: 0.85rem;
-      color: #aaa;
+        font-size: 0.85rem;
+        color: #aaa;
     }
 
     /* Footer */
-    .footer {
-      text-align: center;
-      padding: 2rem;
-      background: #0e0e10;
-      color: #888;
-      margin-top: 3rem;
-    }
+    /* === Footer Styles === */
+footer {
+  background: #111;
+  color: #aaa;
+  padding: 3rem 2rem 1rem;
+  font-family: 'Montserrat', sans-serif;
+  position: relative;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding-bottom: 2rem;
+}
+
+.footer-section {
+  margin-bottom: 1.5rem;
+}
+
+.footer-section h3 {
+  color: #e0e0e0;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.footer-section h3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(90deg, hsl(305, 100%, 59%) 0%, #f051ff 100%);
+}
+
+.footer-section p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section ul li {
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-section ul li i {
+  width: 20px;
+  color: hsl(286, 100%, 58%);
+}
+
+.footer-section a {
+  color: #aaaaaa;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-section a:hover {
+  color: linear-gradient(90deg, #c97fd3 0%, #c97fd3 100%)
+}
+
+.footer-social {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.footer-social img {
+  width: 36px;
+  height: 36px;
+  filter: grayscale(100%) brightness(0.8);
+  transition: all 0.3s ease;
+}
+
+.footer-social img:hover {
+  filter: grayscale(0%) brightness(1);
+  transform: translateY(-3px);
+}
+
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.newsletter-form input {
+  padding: 0.8rem;
+  border: none;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.1);
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.newsletter-form input::placeholder {
+  color: #888888;
+}
+
+.newsletter-form button {
+  padding: 0.8rem;
+  background: linear-gradient(90deg, #ff4f81, #c300ff);
+  color: #ececec;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-radius: 26px;
+}
+
+.newsletter-form button:hover {
+  background: linear-gradient(90deg, #ff4f81, #c300ff);
+  transform: translateY(-2px);
+  border-radius: 26px;
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+.payment-methods {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.payment-methods img {
+  height: 24px;
+  filter: grayscale(100%) brightness(1.5);
+  opacity: 0.7;
+  transition: all 0.3s;
+}
+
+.payment-methods img:hover {
+  filter: grayscale(0%) brightness(1);
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .footer-section {
+    margin-bottom: 1rem;
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
 
     /* Стиль для информации о доставке */
     .shipping-info {
-      margin: 1.5rem 0;
-      padding: 1rem;
-      background: rgba(195, 0, 255, 0.1);
-      border-radius: 12px;
-      border-left: 4px solid #c300ff;
+        margin: 1.5rem 0;
+        padding: 1rem;
+        background: rgba(195, 0, 255, 0.1);
+        border-radius: 12px;
+        border-left: 4px solid #c300ff;
     }
 
     .shipping-info h4 {
-      color: #c300ff;
-      margin-bottom: 0.5rem;
+        color: #c300ff;
+        margin-bottom: 0.5rem;
     }
 
     .shipping-info p {
-      font-size: 0.9rem;
-      color: #ccc;
+        font-size: 0.9rem;
+        color: #ccc;
     }
 
     /* Breadcrumbs */
     .breadcrumbs {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 2rem;
-      color: #aaa;
-      font-size: 0.9rem;
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+        color: #aaa;
+        font-size: 0.9rem;
     }
 
     .breadcrumbs a {
-      color: #aaa;
-      text-decoration: none;
-      transition: color 0.3s;
+        color: #aaa;
+        text-decoration: none;
+        transition: color 0.3s;
     }
 
     .breadcrumbs a:hover {
-      color: #c300ff;
+        color: #c300ff;
     }
 
     .breadcrumbs .separator {
-      color: #555;
+        color: #555;
     }
 
     .breadcrumbs .current {
-      color: #c300ff;
+        color: #c300ff;
+    }
+
+    /* Social media input */
+    .social-input-group {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .social-icon {
+        width: 24px;
+        height: 24px;
+        object-fit: contain;
     }
 
     /* === RESPONSIVE STYLES === */
     
     /* Для планшетов (от 768px до 991px) */
     @media (max-width: 991px) {
-      .main-content {
-        padding: 0 15px;
-        margin-top: 80px;
-      }
-      
-      .checkout-container {
-        gap: 1.5rem;
-      }
-      
-      .section-title {
-        font-size: 1.5rem;
-      }
-      
-      .checkout-summary {
-        width: 100%;
-        max-width: 380px;
-      }
+        .main-content {
+            padding: 0 15px;
+            margin-top: 80px;
+        }
+        
+        .checkout-container {
+            gap: 1.5rem;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+        }
+        
+        .checkout-summary {
+            width: 100%;
+            max-width: 380px;
+        }
     }
     
     /* Для мобильных устройств (до 767px) */
     @media (max-width: 767px) {
-      .main-content {
-        margin-top: 70px;
-      }
-      
-      .checkout-container {
-        flex-direction: column;
-      }
-      
-      .checkout-form, .checkout-summary {
-        width: 100%;
-        max-width: none;
-      }
-      
-      .checkout-summary {
-        order: -1; /* Перемещаем корзину наверх на мобильных устройствах */
-      }
-      
-      .form-row {
-        flex-direction: column;
-        gap: 1rem;
-      }
-      
-      .section-title {
-        font-size: 1.3rem;
-      }
-      
-      .breadcrumbs {
-        overflow-x: auto;
-        white-space: nowrap;
-        margin-bottom: 1rem;
-        padding-bottom: 0.5rem;
-        font-size: 0.8rem;
-      }
-      
-      #menuOverlay a {
-        font-size: 1.5rem;
-      }
-      
-      .payment-method {
-        padding: 0.75rem;
-      }
-      
-      .payment-method-title {
-        font-size: 0.85rem;
-      }
-      
-      .payment-method-description {
-        font-size: 0.75rem;
-      }
-      
-      .payment-method-icon {
-        width: 30px;
-        height: 30px;
-      }
-      
-      .cart-item {
-        gap: 0.5rem;
-      }
-      
-      .cart-item-img {
-        width: 50px;
-        height: 50px;
-      }
-      
-      .promo-code-form {
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-      
-      .promo-code-btn {
-        width: 100%;
-      }
+        .main-content {
+            margin-top: 70px;
+            padding: 0 10px;
+        }
+        
+        .checkout-container {
+            flex-direction: column;
+        }
+        
+        .checkout-form, .checkout-summary {
+            width: 100%;
+            max-width: none;
+            padding: 1.5rem;
+        }
+        
+        .checkout-summary {
+            order: -1;
+        }
+        
+        .form-row {
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .section-title {
+            font-size: 1.3rem;
+        }
+        
+        .breadcrumbs {
+            font-size: 0.8rem;
+        }
+        
+        #menuOverlay a {
+            font-size: 1.5rem;
+        }
+        
+        .payment-method {
+            padding: 0.75rem;
+        }
+        
+        .payment-method-title {
+            font-size: 0.85rem;
+        }
+        
+        .payment-method-description {
+            font-size: 0.75rem;
+        }
+        
+        .payment-method-icon {
+            width: 30px;
+            height: 30px;
+        }
+        
+        .cart-item {
+            gap: 0.5rem;
+            padding: 0.75rem;
+        }
+        
+        .cart-item-img {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .promo-code-form {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .promo-code-btn {
+            width: 100%;
+        }
     }
     
     /* Для маленьких мобильных устройств (до 480px) */
     @media (max-width: 480px) {
-      header {
-        padding: 15px;
-        height: 60px;
-      }
-      
-      .logo img {
-        width: 40px;
-      }
-      
-      .burger {
-        width: 30px;
-        height: 24px;
-      }
-      
-      .main-content {
-        margin-top: 60px;
-        padding: 0 10px;
-      }
-      
-      .section-title {
-        font-size: 1.2rem;
-      }
-      
-      .form-control {
-        padding: 0.7rem 0.8rem;
-        font-size: 0.9rem;
-      }
-      
-      .checkout-btn {
-        padding: 0.8rem;
-        font-size: 0.9rem;
-      }
-      
-      .cart-item-title {
-        font-size: 0.85rem;
-      }
-      
-      .cart-item-price, .cart-item-qty {
-        font-size: 0.8rem;
-      }
-      
-      .shipping-info {
-        padding: 0.8rem;
-      }
-      
-      .shipping-info h4 {
-        font-size: 0.9rem;
-      }
-      
-      .shipping-info p {
-        font-size: 0.8rem;
-      }
-      
-      #closeMenuBtn {
-        font-size: 2rem;
-        top: 20px;
-      }
-      
-      #menuOverlay .social-icons img {
-        width: 40px;
-        height: 40px;
-      }
+        header {
+            padding: 15px;
+            height: 60px;
+        }
+        
+        .logo img {
+            width: 40px;
+        }
+        
+        .burger {
+            width: 30px;
+            height: 24px;
+        }
+        
+        .main-content {
+            margin-top: 60px;
+        }
+        
+        .section-title {
+            font-size: 1.2rem;
+        }
+        
+        .form-control {
+            padding: 0.7rem 0.8rem;
+            font-size: 0.9rem;
+        }
+        
+        .checkout-btn {
+            padding: 0.8rem;
+            font-size: 0.9rem;
+        }
+        
+        .cart-item-title {
+            font-size: 0.85rem;
+        }
+        
+        .cart-item-price {
+            font-size: 0.8rem;
+        }
+        
+        .shipping-info {
+            padding: 0.8rem;
+        }
+        
+        .shipping-info h4 {
+            font-size: 0.9rem;
+        }
+        
+        .shipping-info p {
+            font-size: 0.8rem;
+        }
+        
+        #closeMenuBtn {
+            font-size: 2rem;
+            top: 20px;
+        }
+        
+        #menuOverlay .social-icons img {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .quantity-btn {
+            width: 20px;
+            height: 20px;
+            font-size: 0.8rem;
+        }
     }
     
     /* Стили для высокого разрешения (от 1200px) */
     @media (min-width: 1200px) {
-      .main-content {
-        max-width: 1400px;
-      }
-      
-      .checkout-container {
-        gap: 3rem;
-      }
-      
-      .checkout-summary {
-        width: 420px;
-      }
-    }
-    
-    /* Исправления для темной темы и доступности */
-    @media (prefers-color-scheme: dark) {
-      .form-control::placeholder {
-        color: #888;
-      }
-      
-      .checkbox-group label a {
-        text-decoration: underline;
-      }
-    }
-    
-    /* Стили для печати */
-    @media print {
-      body {
-        background-color: white;
-        color: black;
-      }
-      
-      header, .burger, #menuOverlay, .checkout-btn, .footer {
-        display: none;
-      }
-      
-      .main-content {
-        margin-top: 0;
-        padding: 0;
-      }
-      
-      .checkout-container {
-        display: block;
-      }
-      
-      .checkout-summary, .checkout-form {
-        width: 100%;
-        background: none;
-        box-shadow: none;
-        border: 1px solid #ddd;
-        border-radius: 0;
-        margin-bottom: 2rem;
-      }
-      
-      .section-title::after {
-        background: #000;
-      }
-      
-      .cart-item {
-        border-bottom: 1px solid #ddd;
-      }
-      
-      .summary-row {
-        border-top: 1px solid #ddd;
-      }
-      
-      .summary-row.total {
-        border-top: 2px solid #000;
-      }
-    }
-    
-    /* Анимации и переходы */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    
-    .cart-item, .payment-method, .form-control, .checkout-btn {
-      animation: fadeIn 0.5s ease-out;
-    }
-    
-    /* Улучшения для touch-устройств */
-    @media (hover: none) {
-      .payment-method:hover {
-        transform: none;
-      }
-      
-      .checkout-btn:hover {
-        transform: none;
-      }
-    }
-    
-    /* Fix для проблем с прокруткой на iOS */
-    .cart-items {
-      -webkit-overflow-scrolling: touch;
+        .main-content {
+            max-width: 1400px;
+        }
+        
+        .checkout-container {
+            gap: 3rem;
+        }
+        
+        .checkout-summary {
+            width: 420px;
+        }
     }
     
     /* Стили для ошибок формы */
     .form-control.error {
-      border-color: #ff4f81;
-      box-shadow: 0 0 0 2px rgba(255, 79, 129, 0.2);
+        border-color: #ff4f81;
+        box-shadow: 0 0 0 2px rgba(255, 79, 129, 0.2);
     }
     
     .error-message {
-      color: #ff4f81;
-      font-size: 0.8rem;
-      margin-top: 0.25rem;
+        color: #ff4f81;
+        font-size: 0.8rem;
+        margin-top: 0.25rem;
+        display: none;
     }
     
     /* Индикатор загрузки для кнопки */
     .spinner {
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      border: 2px solid rgba(255,255,255,0.3);
-      border-radius: 50%;
-      border-top-color: #fff;
-      animation: spin 1s ease-in-out infinite;
-      margin-right: 8px;
-      vertical-align: middle;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 2px solid rgba(255,255,255,0.3);
+        border-radius: 50%;
+        border-top-color: #fff;
+        animation: spin 1s ease-in-out infinite;
+        margin-right: 8px;
+        vertical-align: middle;
     }
     
     @keyframes spin {
-      to { transform: rotate(360deg); }
+        to { transform: rotate(360deg); }
     }
 
-        /* Окно политики конфиденциальности */
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.6);
-    color: #000;
-  }
-
-  .modal-content {
-    background-color: #fff;
-    margin: 10% auto;
-    padding: 20px;
-    border-radius: 10px;
-    width: 80%;
-    max-width: 600px;
-    position: relative;
-    animation: fadeIn 0.3s ease-in-out;
-  }
-
-  .close {
-    color: #aaa;
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 28px;
-    cursor: pointer;
-  }
-
-  .close:hover {
-    color: #000;
-  }
-
-  @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-  }
+    /* Анимации */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .cart-item, .payment-method, .form-group, .checkout-btn {
+        animation: fadeIn 0.3s ease-out;
+    }
 </style>
 </head>
 <body>
 
 <header>
-<div class="logo">
-<img alt="logotipas" src="https://i.postimg.cc/xTbFtq6w/IMG-0546.png" onclick="window.location.href='/index.html'"/>
-</div>
-
-<div class="burger" id="burgerBtn">
-<span></span><span></span><span></span>
-</div>
+    <div class="logo" onclick="window.location.href='/index.html'">
+        <img alt="logotipas" src="https://i.postimg.cc/xTbFtq6w/IMG-0546.png"/>
+    </div>
+    <div class="burger" id="burgerBtn">
+        <span></span><span></span><span></span>
+    </div>
 </header>
 
 <div id="menuOverlay"><div id="closeMenuBtn">✕</div>
-<a href="/index.html">Pagrindinis</a>
-<a href="/catalog.html">Katalogas</a>
-<a href="#about">Apie mus</a>
-<a href="#contacts">Kontaktai</a>
-<div class="contact">Tel.: +370 640 81 312</div>
-<div class="social-icons">
-<a href="https://www.facebook.com/NightWood.lt"><img alt="Facebook" src="https://i.postimg.cc/G3Z9ZSj4/icons8-facebook-50.png"/></a>
-<a href="https://www.instagram.com/nightwood.lt/"><img alt="Instagram" src="https://i.postimg.cc/Cdy7WHcW/icons8-instagram-50.png"/></a>
-</div>
+    <a href="/index.html">Pagrindinis</a>
+    <a href="/catalog.html">Katalogas</a>
+    <a href="#about">Apie mus</a>
+    <a href="#contacts">Kontaktai</a>
+    <div class="contact">Tel.: +370 640 81 312</div>
+    <div class="social-icons">
+        <a href="https://www.facebook.com/NightWood.lt"><img alt="Facebook" src="https://i.postimg.cc/G3Z9ZSj4/icons8-facebook-50.png"/></a>
+        <a href="https://www.instagram.com/nightwood.lt/"><img alt="Instagram" src="https://i.postimg.cc/Cdy7WHcW/icons8-instagram-50.png"/></a>
+    </div>
 </div>
 
 <div class="main-content">
@@ -865,46 +1005,53 @@
             <h2 class="section-title">Pirkėjo informacija</h2>
             
             <div class="form-group">
-                <label for="email">El. paštas</label>
+                <label for="email">El. paštas *</label>
                 <input type="email" id="email" class="form-control" placeholder="jusu@pastas.lt" required>
+                <div class="error-message" id="email-error">Įveskite teisingą el. pašto adresą</div>
             </div>
             
             <div class="form-row">
                 <div class="form-group">
-                    <label for="firstName">Vardas</label>
+                    <label for="firstName">Vardas *</label>
                     <input type="text" id="firstName" class="form-control" placeholder="Jūsų vardas" required>
+                    <div class="error-message" id="firstName-error">Šis laukas yra privalomas</div>
                 </div>
                 <div class="form-group">
-                    <label for="lastName">Pavardė</label>
+                    <label for="lastName">Pavardė *</label>
                     <input type="text" id="lastName" class="form-control" placeholder="Jūsų pavardė" required>
+                    <div class="error-message" id="lastName-error">Šis laukas yra privalomas</div>
                 </div>
             </div>
             
             <div class="form-group">
-                <label for="phone">Telefono numeris</label>
+                <label for="phone">Telefono numeris *</label>
                 <input type="tel" id="phone" class="form-control" placeholder="+370 XXX XXXXX" required>
+                <div class="error-message" id="phone-error">Įveskite teisingą telefono numerį</div>
             </div>
             
             <h2 class="section-title">Pristatymo informacija</h2>
             
             <div class="form-group">
-                <label for="address">Adresas</label>
+                <label for="address">Adresas *</label>
                 <input type="text" id="address" class="form-control" placeholder="Gatvė, namo numeris, butas" required>
+                <div class="error-message" id="address-error">Šis laukas yra privalomas</div>
             </div>
             
             <div class="form-row">
                 <div class="form-group">
-                    <label for="city">Miestas</label>
+                    <label for="city">Miestas *</label>
                     <input type="text" id="city" class="form-control" placeholder="Miestas" required>
+                    <div class="error-message" id="city-error">Šis laukas yra privalomas</div>
                 </div>
                 <div class="form-group">
-                    <label for="postcode">Pašto kodas</label>
+                    <label for="postcode">Pašto kodas *</label>
                     <input type="text" id="postcode" class="form-control" placeholder="LT-XXXXX" required>
+                    <div class="error-message" id="postcode-error">Įveskite teisingą pašto kodą</div>
                 </div>
             </div>
             
             <div class="form-group">
-                <label for="country">Šalis</label>
+                <label for="country">Šalis *</label>
                 <select id="country" class="form-control" required>
                     <option value="lt" selected>Lietuva</option>
                     <option value="lv">Latvija</option>
@@ -913,9 +1060,27 @@
                 </select>
             </div>
             
+            <div class="form-group">
+                <label for="lp-express">LP Express paštomatas (jei pritaikoma)</label>
+                <input type="text" id="lp-express" class="form-control" placeholder="Pasirinkite paštomatą">
+            </div>
+            
             <div class="shipping-info">
                 <h4>Pristatymo informacija</h4>
-                <p>Standartinis pristatymas Lietuvoje trunka 1-3 darbo dienas. Užsakymai virš 100€ pristatomi nemokamai.</p>
+                <p>Standartinis pristatymas Lietuvoje trunka 1-3 darbo dienas. Kaina 4€. Nemokamas pristatymas užsakymams virš 100€.</p>
+            </div>
+            
+            <h2 class="section-title">Socialiniai tinklai (neprivaloma)</h2>
+            
+            <div class="form-group">
+                <div class="social-input-group">
+                    <img src="https://i.postimg.cc/G3Z9ZSj4/icons8-facebook-50.png" alt="Facebook" class="social-icon">
+                    <input type="text" id="facebook" class="form-control" placeholder="Facebook profilis">
+                </div>
+                <div class="social-input-group">
+                    <img src="https://i.postimg.cc/Cdy7WHcW/icons8-instagram-50.png" alt="Instagram" class="social-icon">
+                    <input type="text" id="instagram" class="form-control" placeholder="Instagram profilis">
+                </div>
             </div>
             
             <div class="form-group">
@@ -928,13 +1093,12 @@
                 <label for="newsletter">Noriu gauti naujienas ir specialius pasiūlymus</label>
             </div>
 
-            
             <h2 class="section-title">Mokėjimo būdas</h2>
             
             <div class="payment-methods">
-                <label class="payment-method active">
-                    <input type="radio" name="payment" class="payment-method-radio" checked>
-                    <img src="https://i.postimg.cc/CKPyX9vz/Mastercard-Logo-wine.png" alt="Banko pavedimas" class="payment-method-icon">
+                <label class="payment-method">
+                    <input type="radio" name="payment" class="payment-method-radio" value="bank" checked>
+                    <img src="https://i.postimg.cc/FRq31sK3/channels4-profile-removebg-preview.png" alt="Banko pavedimas" class="payment-method-icon">
                     <div class="payment-method-info">
                         <div class="payment-method-title">Banko pavedimas</div>
                         <div class="payment-method-description">Mokėkite tiesiai į mūsų banko sąskaitą</div>
@@ -942,8 +1106,8 @@
                 </label>
                 
                 <label class="payment-method">
-                    <input type="radio" name="payment" class="payment-method-radio">
-                    <img src="https://i.postimg.cc/FRq31sK3/channels4-profile-removebg-preview.png" alt="Kortelės" class="payment-method-icon">
+                    <input type="radio" name="payment" class="payment-method-radio" value="paysera">
+                    <img src="https://i.postimg.cc/FRq31sK3/channels4-profile-removebg-preview.png" alt="Paysera" class="payment-method-icon">
                     <div class="payment-method-info">
                         <div class="payment-method-title">Paysera</div>
                         <div class="payment-method-description">Saugus mokėjimas per Paysera sistemą</div>
@@ -951,7 +1115,7 @@
                 </label>
                 
                 <label class="payment-method">
-                    <input type="radio" name="payment" class="payment-method-radio">
+                    <input type="radio" name="payment" class="payment-method-radio" value="paypal">
                     <img src="https://i.postimg.cc/xjt8njQk/paypal.png" alt="PayPal" class="payment-method-icon">
                     <div class="payment-method-info">
                         <div class="payment-method-title">PayPal</div>
@@ -962,7 +1126,6 @@
             
             <button class="checkout-btn" id="placeOrderBtn">Užbaigti užsakymą</button>
         </div>
-        
         <div class="checkout-summary">
             <h2 class="section-title">Jūsų užsakymas</h2>
             
@@ -984,7 +1147,7 @@
             
             <div class="summary-row">
                 <span>Pristatymas:</span>
-                <span>€<span id="shipping">5.99</span></span>
+                <span>€<span id="shipping">4.00</span></span>
             </div>
             
             <div class="summary-row">
@@ -1000,244 +1163,401 @@
     </div>
 </div>
 
-
-
-
-<footer class="footer">© 2025 Night Wood. Visos teisės saugomos.</footer>
-
+<footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Night Wood</h3>
+        <p>Prabangūs mediniai dirbiniai namams ir dovanoms</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/NightWood.lt" aria-label="Facebook">
+            <img src="https://i.postimg.cc/G3Z9ZSj4/icons8-facebook-50.png" alt="Facebook">
+          </a>
+          <a href="https://www.instagram.com/nightwood.lt/" aria-label="Instagram">
+            <img src="https://i.postimg.cc/Cdy7WHcW/icons8-instagram-50.png" alt="Instagram">
+          </a>
+        </div>
+      </div>
+  
+      <div class="footer-section">
+        <h3>Nuorodos</h3>
+        <ul>
+          <li><a href="/index.html">Pagrindinis</a></li>
+          <li><a href="/catalog.html">Katalogas</a></li>
+          <li><a href="#about">Apie mus</a></li>
+          <li><a href="#contacts">Kontaktai</a></li>
+        </ul>
+      </div>
+  
+      <div class="footer-section">
+        <h3>Kontaktai</h3>
+        <ul>
+          <li><i class="fas fa-phone"></i> +370 640 81 312</li>
+          <li><i class="fas fa-envelope"></i> info@nightwood.lt</li>
+          <li><i class="fas fa-map-marker-alt"></i> Vilnius, Lietuva</li>
+        </ul>
+      </div>
+  
+      <div class="footer-section">
+        <h3>Naujienlaiškis</h3>
+        <p>Prenumeruokite naujienas ir gaukite specialius pasiūlymus</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Jūsų el. paštas" required>
+          <button type="submit">Prenumeruoti</button>
+        </form>
+      </div>
+    </div>
+  
+    <div class="footer-bottom">
+      <p>&copy; 2025 Night Wood. Visos teisės saugomos.</p>
+      <div class="payment-methods">
+        <img src="https://i.postimg.cc/CKPyX9vz/Mastercard-Logo-wine.png" alt="Visa">
+        <img src="https://i.postimg.cc/FRq31sK3/channels4-profile-removebg-preview.png" alt="Paysera">
+        <img src="https://i.postimg.cc/xjt8njQk/paypal.png" alt="PayPal">
+      </div>
+    </div>
+  </footer>
 <script>
-    // Open/close mobile menu
-    const burgerBtn = document.getElementById('burgerBtn');
-    const menuOverlay = document.getElementById('menuOverlay');
-    const closeMenuBtn = document.getElementById('closeMenuBtn');
 
-    burgerBtn.addEventListener('click', () => {
-        menuOverlay.classList.toggle('open');
-    });
-
-    closeMenuBtn.addEventListener('click', () => {
-        menuOverlay.classList.remove('open');
-    });
-
-    // Close menu when clicking on a link
-    menuOverlay.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            menuOverlay.classList.remove('open');
-        });
-    });
-
-    // Payment methods selection
-    const paymentMethods = document.querySelectorAll('.payment-method');
-    paymentMethods.forEach(method => {
-        method.addEventListener('click', () => {
-            paymentMethods.forEach(m => m.classList.remove('active'));
-            method.classList.add('active');
-            method.querySelector('input').checked = true;
-        });
-    });
-
-    // Load cart items
-    function loadCartItems() {
-        const cart = JSON.parse(localStorage.getItem('nightwood_cart')) || [];
-        const checkoutItems = document.getElementById('checkoutItems');
-        const subtotalEl = document.getElementById('subtotal');
-        const totalEl = document.getElementById('total');
-        const shippingEl = document.getElementById('shipping');
-        
-        checkoutItems.innerHTML = '';
-        let subtotal = 0;
-        
-        if (cart.length === 0) {
-            checkoutItems.innerHTML = '<p style="text-align: center; color: #aaa;">Jūsų krepšelis tuščias</p>';
-            updateTotals(0);
-            return;
-        }
-        
-        cart.forEach(item => {
-            const itemTotal = item.price * item.qty;
-            subtotal += itemTotal;
-            
-            const cartItemEl = document.createElement('div');
-            cartItemEl.className = 'cart-item';
-            cartItemEl.innerHTML = `
-                <img src="${item.image}" alt="${item.title}" class="cart-item-img">
-                <div class="cart-item-info">
-                    <div class="cart-item-title">${item.title}</div>
-                    <div class="cart-item-price">€${item.price.toFixed(2)}</div>
-                    <div class="cart-item-qty">Kiekis: ${item.qty}</div>
-                </div>
-                <div class="cart-item-total">€${itemTotal.toFixed(2)}</div>
-            `;
-            
-            checkoutItems.appendChild(cartItemEl);
-        });
-        
-        updateTotals(subtotal);
+  window.addEventListener('scroll', function() {
+    const header = document.querySelector('header');
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
     }
-    
-    function updateTotals(subtotal) {
-        const subtotalEl = document.getElementById('subtotal');
-        const totalEl = document.getElementById('total');
-        const shippingEl = document.getElementById('shipping');
-        const discountEl = document.getElementById('discount');
+  });
+
+
+
+// Update cart item quantity
+function updateCartItemQty(index, change) {
+    const cart = JSON.parse(localStorage.getItem('nightwood_cart')) || [];
+    if (cart[index]) {
+        cart[index].qty += change;
         
-        // Format the values
-        subtotalEl.textContent = subtotal.toFixed(2);
-        
-        // Shipping logic: free if order over 100€
-        let shipping = subtotal > 100 ? 0 : 5.99;
-        shippingEl.textContent = shipping.toFixed(2);
-        
-        // Discount (would come from promo code application)
-        let discount = 0;
-        discountEl.textContent = discount.toFixed(2);
-        
-        // Calculate total
-        let total = subtotal + shipping - discount;
-        totalEl.textContent = total.toFixed(2);
-        
-        // Update shipping message
-        if (subtotal > 100) {
-            shippingEl.textContent = "0.00";
-            document.querySelector('.shipping-info p').textContent = "Jūs kvalifikavote nemokamam pristatymui! Standartinis pristatymas Lietuvoje trunka 1-3 darbo dienas.";
-        }
-    }
-    
-    // Handle order placement
-    document.getElementById('placeOrderBtn').addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        // Basic form validation
-        const requiredFields = document.querySelectorAll('[required]');
-        let isFormValid = true;
-        
-        requiredFields.forEach(field => {
-            if (!field.value.trim()) {
-                field.style.borderColor = '#ff4f81';
-                isFormValid = false;
-            } else {
-                field.style.borderColor = '#333';
-            }
-        });
-        
-        // Terms checkbox validation
-        const termsCheckbox = document.getElementById('terms');
-        if (!termsCheckbox.checked) {
-            alert('Prašome sutikti su pirkimo sąlygomis');
-            return;
+        // Remove item if quantity is 0 or less
+        if (cart[index].qty <= 0) {
+            cart.splice(index, 1);
         }
         
-        if (isFormValid) {
-            // Simulate order submission
-            this.innerHTML = '<span class="spinner"></span> Apdorojama...';
-            this.disabled = true;
-            
-            setTimeout(() => {
-                // Clear cart and redirect to success page
-                localStorage.setItem('nightwood_cart', JSON.stringify([]));
-                alert('Užsakymas sėkmingai pateiktas! Jus pervedame į patvirtinimo puslapį.');
-                // In a real scenario, you'd redirect to a success page
-                // window.location.href = '/order-success.html';
-                
-                // For demo purposes, we'll just reset the button
-                this.innerHTML = 'Užsakymas pateiktas!';
-                setTimeout(() => {
-                    window.location.href = '/index.html';
-                }, 1500);
-            }, 2000);
-        } else {
-            alert('Prašome užpildyti visus būtinus laukus');
-        }
-    });
-    
-    // Initialize the page
-    document.addEventListener('DOMContentLoaded', () => {
+        localStorage.setItem('nightwood_cart', JSON.stringify(cart));
         loadCartItems();
+    }
+}
+
+// Remove cart item
+function removeCartItem(index) {
+    const cart = JSON.parse(localStorage.getItem('nightwood_cart')) || [];
+    if (cart[index]) {
+        cart.splice(index, 1);
+        localStorage.setItem('nightwood_cart', JSON.stringify(cart));
+        loadCartItems();
+    }
+}
+
+// Update totals
+function updateTotals(subtotal) {
+    const subtotalEl = document.getElementById('subtotal');
+    const totalEl = document.getElementById('total');
+    const shippingEl = document.getElementById('shipping');
+    const discountEl = document.getElementById('discount');
+    
+    subtotalEl.textContent = subtotal.toFixed(2);
+    
+    // Calculate shipping (free for orders over 100€)
+    let shipping = 4.00;
+    if (subtotal >= 100) {
+        shipping = 0.00;
+    }
+    shippingEl.textContent = shipping.toFixed(2);
+    
+    // Calculate total (subtotal + shipping - discount)
+    const discount = parseFloat(discountEl.textContent) || 0;
+    const total = subtotal + shipping - discount;
+    totalEl.textContent = total.toFixed(2);
+}
+
+// Form validation
+function validateForm() {
+    let isValid = true;
+    const email = document.getElementById('email');
+    const firstName = document.getElementById('firstName');
+    const lastName = document.getElementById('lastName');
+    const phone = document.getElementById('phone');
+    const address = document.getElementById('address');
+    const city = document.getElementById('city');
+    const postcode = document.getElementById('postcode');
+    
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email.value)) {
+        email.classList.add('error');
+        document.getElementById('email-error').style.display = 'block';
+        isValid = false;
+    } else {
+        email.classList.remove('error');
+        document.getElementById('email-error').style.display = 'none';
+    }
+    
+    // Required fields validation
+    [firstName, lastName, phone, address, city, postcode].forEach(field => {
+        if (!field.value.trim()) {
+            field.classList.add('error');
+            document.getElementById(`${field.id}-error`).style.display = 'block';
+            isValid = false;
+        } else {
+            field.classList.remove('error');
+            document.getElementById(`${field.id}-error`).style.display = 'none';
+        }
+    });
+    
+    // Postcode validation for Lithuania (simple check)
+    if (postcode.value && !postcode.value.match(/^LT-\d{5}$/i)) {
+        postcode.classList.add('error');
+        document.getElementById('postcode-error').style.display = 'block';
+        isValid = false;
+    }
+    
+    return isValid;
+}
+
+// Place order button handler
+document.getElementById('placeOrderBtn').addEventListener('click', function() {
+    // Validate form
+    if (!validateForm()) {
+        return;
+    }
+    
+    // Check if cart is not empty
+    const cart = JSON.parse(localStorage.getItem('nightwood_cart')) || [];
+    if (cart.length === 0) {
+        alert('Jūsų krepšelis tuščias!');
+        return;
+    }
+    
+    // Show loading state
+    const btn = this;
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span> Apdorojama...';
+    
+    // Simulate order processing (in real app this would be an AJAX call)
+    setTimeout(() => {
+        // Create order object
+        const order = {
+            customer: {
+                email: document.getElementById('email').value,
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                phone: document.getElementById('phone').value,
+                address: document.getElementById('address').value,
+                city: document.getElementById('city').value,
+                postcode: document.getElementById('postcode').value,
+                country: document.getElementById('country').value,
+                lpExpress: document.getElementById('lp-express').value,
+                facebook: document.getElementById('facebook').value,
+                instagram: document.getElementById('instagram').value,
+                notes: document.getElementById('notes').value,
+                newsletter: document.getElementById('newsletter').checked
+            },
+            payment: document.querySelector('input[name="payment"]:checked').value,
+            items: cart,
+            subtotal: parseFloat(document.getElementById('subtotal').textContent),
+            shipping: parseFloat(document.getElementById('shipping').textContent),
+            discount: parseFloat(document.getElementById('discount').textContent || '0'),
+            total: parseFloat(document.getElementById('total').textContent),
+            date: new Date().toISOString()
+        };
         
-        // Handle promo code application
-        document.querySelector('.promo-code-btn').addEventListener('click', function() {
-            const promoInput = document.querySelector('.promo-code-input');
-            const promoCode = promoInput.value.trim().toUpperCase();
-            
-            if (promoCode === 'NIGHT25') {
-                // Apply 25% discount
-                const subtotal = parseFloat(document.getElementById('subtotal').textContent);
-                const discount = subtotal * 0.25;
-                document.getElementById('discount').textContent = discount.toFixed(2);
-                
-                // Update total
-                const shipping = parseFloat(document.getElementById('shipping').textContent);
-                const total = subtotal + shipping - discount;
-                document.getElementById('total').textContent = total.toFixed(2);
-                
-                // Show success message
-                promoInput.value = '';
-                alert('Nuolaidos kodas pritaikytas! 25% nuolaida pritaikyta jūsų užsakymui.');
-                
-                // Disable promo code button after successful application
-                this.disabled = true;
-                this.textContent = 'Pritaikytas';
-                this.style.background = '#28a745';
-            } else {
-                alert('Neteisingas nuolaidos kodas. Bandykite dar kartą.');
-                promoInput.focus();
+        // Save order to localStorage (in real app this would be sent to server)
+        const orders = JSON.parse(localStorage.getItem('nightwood_orders')) || [];
+        orders.push(order);
+        localStorage.setItem('nightwood_orders', JSON.stringify(orders));
+        
+        // Clear cart
+        localStorage.removeItem('nightwood_cart');
+        
+        // Redirect to thank you page
+        window.location.href = '/thank-you.html';
+    }, 1500);
+});
+
+// Promo code application
+document.querySelector('.promo-code-btn').addEventListener('click', function() {
+    const promoCode = document.querySelector('.promo-code-input').value;
+    const discountEl = document.getElementById('discount');
+    const subtotal = parseFloat(document.getElementById('subtotal').textContent);
+    
+    // Simple promo code check (in real app this would be more complex)
+    if (promoCode.toUpperCase() === 'NIGHT10' && subtotal > 0) {
+        const discount = Math.min(subtotal * 0.1, 20); // 10% discount, max 20€
+        discountEl.textContent = discount.toFixed(2);
+        alert('Nuolaidos kodas sėkmingai pritaikytas!');
+    } else if (promoCode) {
+        alert('Neteisingas nuolaidos kodas');
+    } else {
+        alert('Įveskite nuolaidos kodą');
+    }
+    
+    // Update totals
+    updateTotals(subtotal);
+});
+
+// Initialize page
+document.addEventListener('DOMContentLoaded', function() {
+    // Load cart items
+    loadCartItems();
+    
+    // Auto-fill fields from localStorage if available
+    const savedData = JSON.parse(localStorage.getItem('nightwood_checkout_data')) || {};
+    if (savedData) {
+        Object.keys(savedData).forEach(key => {
+            const field = document.getElementById(key);
+            if (field) {
+                field.value = savedData[key];
             }
         });
-        
-        // Update shipping method when country changes
-        document.getElementById('country').addEventListener('change', function() {
-            const country = this.value;
-            let shippingRate = 5.99; // Default for Lithuania
-            
-            // Adjust shipping based on country
-            if (country === 'lv' || country === 'ee') {
-                shippingRate = 9.99;
-            } else if (country === 'other') {
-                shippingRate = 19.99;
-            }
-            
-            // Update shipping cost and total
-            const subtotal = parseFloat(document.getElementById('subtotal').textContent);
-            const discount = parseFloat(document.getElementById('discount').textContent);
-            
-            // Free shipping for orders over 150€ (only for Baltic countries)
-            if (subtotal > 150 && (country === 'lt' || country === 'lv' || country === 'ee')) {
-                shippingRate = 0;
-                document.querySelector('.shipping-info p').textContent = "Jūs kvalifikavote nemokamam pristatymui! Pristatymas trunka 1-3 darbo dienas.";
-            } else {
-                document.querySelector('.shipping-info p').textContent = `Standartinis pristatymas ${country === 'lt' ? 'Lietuvoje' : country === 'lv' ? 'Latvijoje' : country === 'ee' ? 'Estijoje' : 'užsienyje'} trunka ${country === 'other' ? '5-10' : '1-3'} darbo dienas.`;
-            }
-            
-            document.getElementById('shipping').textContent = shippingRate.toFixed(2);
-            const total = subtotal + shippingRate - discount;
-            document.getElementById('total').textContent = total.toFixed(2);
-        });
-        
-        // Save user data to local storage when fields change
-        const formFields = document.querySelectorAll('.checkout-form input, .checkout-form select, .checkout-form textarea');
-        formFields.forEach(field => {
-            // Load saved data if available
-            const savedValue = localStorage.getItem(`checkout_${field.id}`);
-            if (savedValue) {
-                if (field.type === 'checkbox') {
-                    field.checked = savedValue === 'true';
-                } else {
-                    field.value = savedValue;
-                }
-            }
-            
-            // Save data on change
-            field.addEventListener('change', function() {
-                const value = field.type === 'checkbox' ? field.checked : field.value;
-                localStorage.setItem(`checkout_${field.id}`, value);
-            });
+    }
+    
+    // Save form data on change
+    const formFields = document.querySelectorAll('.checkout-form input, .checkout-form select, .checkout-form textarea');
+    formFields.forEach(field => {
+        field.addEventListener('change', function() {
+            const savedData = JSON.parse(localStorage.getItem('nightwood_checkout_data')) || {};
+            savedData[this.id] = this.value;
+            localStorage.setItem('nightwood_checkout_data', JSON.stringify(savedData));
         });
     });
+});
 
+// LP Express terminal selector (mock functionality)
+document.getElementById('lp-express').addEventListener('focus', function() {
+    // In a real app, this would open a modal with terminal selection
+    this.value = 'Vilnius, Ozo g. 25';
+});
 
+// Функция для загрузки товаров в корзину
+function loadCartItems() {
+    const cart = JSON.parse(localStorage.getItem('nightwood_cart')) || [];
+    const checkoutItems = document.getElementById('checkoutItems');
     
+    checkoutItems.innerHTML = '';
+    
+    if (cart.length === 0) {
+        checkoutItems.innerHTML = '<p style="text-align: center; color: #aaa; padding: 1rem;">Jūsų krepšelis tuščias</p>';
+        updateTotals(0);
+        return;
+    }
+    
+    cart.forEach((item, index) => {
+        const itemTotal = item.price * item.qty;
+        
+        const cartItemEl = document.createElement('div');
+        cartItemEl.className = 'cart-item';
+        cartItemEl.innerHTML = `
+            <img src="${item.image}" alt="${item.title}" class="cart-item-img">
+            <div class="cart-item-info">
+                <div class="cart-item-title">${item.title}</div>
+                <div class="cart-item-price">€${item.price.toFixed(2)}</div>
+                <div class="quantity-controls">
+                    <button class="quantity-btn" onclick="updateCartItemQty(${index}, -1)">−</button>
+                    <span class="quantity-value">${item.qty}</span>
+                    <button class="quantity-btn" onclick="updateCartItemQty(${index}, 1)">+</button>
+                </div>
+            </div>
+            <div class="cart-item-total">€${itemTotal.toFixed(2)}</div>
+            <button class="remove-item-btn" onclick="removeCartItem(${index})">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                </svg>
+            </button>
+        `;
+        
+        checkoutItems.appendChild(cartItemEl);
+    });
+    
+    // Обновляем итоговые суммы
+    updateCartTotals(cart);
+}
 
+// Функция для обновления итоговых сумм
+function updateCartTotals(cart) {
+    const subtotalEl = document.getElementById('subtotal');
+    const totalEl = document.getElementById('total');
+    const shippingEl = document.getElementById('shipping');
+    const discountEl = document.getElementById('discount');
+    
+    // Рассчитываем сумму товаров
+    const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+    subtotalEl.textContent = subtotal.toFixed(2);
+    
+    // Рассчитываем доставку (бесплатно от 100€)
+    let shipping = 4.00;
+    if (subtotal >= 100) {
+        shipping = 0.00;
+    }
+    shippingEl.textContent = shipping.toFixed(2);
+    
+    // Рассчитываем общую сумму (учитывая скидку)
+    const discount = parseFloat(discountEl.textContent) || 0;
+    const total = subtotal + shipping - discount;
+    totalEl.textContent = total.toFixed(2);
+}
+
+// Функция для изменения количества товара
+function updateCartItemQty(index, change) {
+    const cart = JSON.parse(localStorage.getItem('nightwood_cart')) || [];
+    
+    if (cart[index]) {
+        cart[index].qty += change;
+        
+        // Удаляем товар если количество ≤ 0
+        if (cart[index].qty <= 0) {
+            cart.splice(index, 1);
+        }
+        
+        localStorage.setItem('nightwood_cart', JSON.stringify(cart));
+        loadCartItems(); // Перезагружаем корзину
+    }
+}
+
+// Функция для удаления товара из корзины
+function removeCartItem(index) {
+    const cart = JSON.parse(localStorage.getItem('nightwood_cart')) || [];
+    
+    if (cart[index]) {
+        cart.splice(index, 1);
+        localStorage.setItem('nightwood_cart', JSON.stringify(cart));
+        loadCartItems(); // Перезагружаем корзину
+    }
+}
+
+// Инициализация при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+    loadCartItems();
+    
+    // Обработчик для промокода
+    document.querySelector('.promo-code-btn').addEventListener('click', function() {
+        const promoCode = document.querySelector('.promo-code-input').value;
+        const discountEl = document.getElementById('discount');
+        const cart = JSON.parse(localStorage.getItem('nightwood_cart')) || [];
+        const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+        
+        // Пример проверки промокода (в реальном проекте нужно подключить к бэкенду)
+        if (promoCode.toUpperCase() === 'NIGHT10' && subtotal > 0) {
+            const discount = Math.min(subtotal * 0.1, 20); // 10% скидка, но не более 20€
+            discountEl.textContent = discount.toFixed(2);
+            alert('Nuolaidos kodas sėkmingai pritaikytas!');
+        } else if (promoCode) {
+            alert('Neteisingas nuolaidos kodas');
+        } else {
+            alert('Įveskite nuolaidos kodą');
+        }
+        
+        // Обновляем суммы с учетом скидки
+        updateCartTotals(cart);
+    });
+});
 </script>
-
 </body>
 </html>
