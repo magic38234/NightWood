@@ -18,16 +18,6 @@
       min-height: 100vh;
     }
 
-    body::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.712);
-  z-index: -1;
-}
-
-
 
     /* === Хедер и логотип === */
     header {
@@ -255,196 +245,182 @@
       padding-right: 40px;
     }
 
-    /* Стили для корзины в боковой панели */
+    .quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.quantity-btn {
+    width: 25px;
+    height: 25px;
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.quantity-btn:hover {
+    background: #c300ff;
+}
+
+.remove-btn {
+    margin-left: 10px;
+    background: none;
+    border: none;
+    color: #ff4f81;
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.2s;
+}
+
+.remove-btn:hover {
+    transform: scale(1.2);
+}
+
+@media (max-width: 767px) {
+    .quantity-btn {
+        width: 22px;
+        height: 22px;
+        font-size: 12px;
+    }
     
-    /* Обновленные стили для корзины в оформлении заказа */
-    .checkout-summary {
-        width: 380px;
-        background: #111;
-        border-radius: 16px;
-        padding: 1.5rem;
-        height: fit-content;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-        backdrop-filter: blur(5px);
-        border: 1px solid rgba(255,255,255,0.1);
+    .remove-btn {
+        font-size: 14px;
+        margin-left: 5px;
     }
+}
 
+    /* Стили для корзины в боковой панели */
     .cart-items {
-        margin-bottom: 1.5rem;
-        max-height: 300px;
-        overflow-y: auto;
-        scrollbar-width: thin;
-        scrollbar-color: #c300ff #222;
-    }
-
-    .cart-items::-webkit-scrollbar {
-        width: 6px;
-    }
-
-    .cart-items::-webkit-scrollbar-track {
-        background: rgba(255,255,255,0.05);
-    }
-
-    .cart-items::-webkit-scrollbar-thumb {
-        background: linear-gradient(#ff4f81, #c300ff);
-        border-radius: 10px;
+      margin-bottom: 1.5rem;
+      max-height: 300px;
+      overflow-y: auto;
     }
 
     .cart-item {
-        display: flex;
-        gap: 0.75rem;
-        margin-bottom: 1rem;
-        padding: 0.75rem;
-        background: rgba(255,255,255,0.05);
-        border-radius: 12px;
-        align-items: center;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        transition: background 0.3s ease;
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #333;
+      align-items: center;
     }
 
-    .cart-item:hover {
-        background: rgba(255,255,255,0.08);
+    .cart-item:last-child {
+      border-bottom: none;
     }
 
     .cart-item-img {
-        width: 60px;
-        height: 60px;
-        border-radius: 8px;
-        object-fit: cover;
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      object-fit: cover;
     }
 
     .cart-item-info {
-        flex: 1;
+      flex: 1;
     }
 
     .cart-item-title {
-        font-size: 0.95rem;
-        margin-bottom: 0.25rem;
-        font-weight: 500;
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
     }
 
     .cart-item-price {
-        font-size: 0.9rem;
-        color: #aaa;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    .cart-item-qty {
+      font-size: 0.9rem;
+      color: #999;
     }
 
     .quantity-controls {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        margin-top: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
     }
-
     .quantity-btn {
-        background: #ff4f81;
-        border: none;
-        color: white;
-        width: 24px;
-        height: 24px;
-        border-radius: 6px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: background 0.2s;
+      padding: 0.25rem 0.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .add-to-cart {
+      background: none;
+      border: none;
+      cursor: pointer;
     }
 
-    .quantity-btn:hover {
-        background: #ff7ca3;
-    }
-
-    .quantity-value {
-        min-width: 20px;
-        text-align: center;
-    }
-
-    .remove-item-btn {
-        background: none;
-        border: none;
-        color: #ff4f81;
-        cursor: pointer;
-        transition: color 0.2s;
-        padding: 0.5rem;
-    }
-
-    .remove-item-btn:hover {
-        color: #ff82a8;
-    }
-
-    .remove-item-btn svg {
-        width: 18px;
-        height: 18px;
-    }
-
-    /* Обновленные стили для итоговых сумм */
     .summary-row {
-        display: flex;
-        justify-content: space-between;
-        padding: 0.75rem 0;
-        border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+      border-top: 1px solid #333;
     }
 
     .summary-row:first-child {
-        border-top: none;
+      border-top: none;
     }
 
     .summary-row.total {
-        font-weight: bold;
-        font-size: 1.1rem;
-        color: #fff;
-        border-top: 2px solid rgba(255,255,255,0.1);
-        margin-top: 0.5rem;
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: #fff;
+      border-top: 2px solid #333;
+      margin-top: 0.5rem;
     }
 
-    /* Обновленные стили для промокодов */
+    /* Promo code section */
     .promo-code {
-        margin: 1.5rem 0;
-        padding: 1rem;
-        background: rgba(255,255,255,0.05);
-        border: 1px solid rgba(255,255,255,0.08);
-        border-radius: 12px;
-        backdrop-filter: blur(4px);
+      margin: 1.5rem 0;
+      padding: 1rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
     }
 
     .promo-code-form {
-        display: flex;
-        gap: 0.5rem;
+      display: flex;
+      gap: 0.5rem;
     }
 
     .promo-code-input {
-        flex: 1;
-        padding: 0.6rem 1rem;
-        border: none;
-        border-radius: 10px;
-        background: #1a1a1c;
-        color: #fff;
-        font-size: 0.95rem;
-        transition: box-shadow 0.3s;
+      flex: 1;
+      padding: 0.6rem 1rem;
+      border: none;
+      border-radius: 10px;
+      background: #1a1a1c;
+      color: #fff;
+      font-size: 0.95rem;
     }
 
     .promo-code-input::placeholder {
-        color: #aaa;
-    }
-
-    .promo-code-input:focus {
-        outline: none;
-        box-shadow: 0 0 0 2px #ff4f81;
+      color: #aaa;
     }
 
     .promo-code-btn {
-        padding: 0.6rem 1.2rem;
-        background: linear-gradient(90deg, #ff4f81, #c300ff);
-        color: #fff;
-        font-weight: 600;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        font-size: 0.95rem;
-        transition: background 0.3s;
+      padding: 0.6rem 1.2rem;
+      background: linear-gradient(90deg, #ff4f81, #c300ff);
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.95rem;
     }
 
     .promo-code-btn:hover {
-        background: linear-gradient(90deg, #ff82a8, #d066ff);
+      background: linear-gradient(90deg, #ff82a8, #d066ff);
     }
 
     /* Payment method selection */
@@ -1031,39 +1007,39 @@
         </div>
         
         <div class="checkout-summary">
-          <h2 class="section-title">Jūsų užsakymas</h2>
-          
-          <div class="cart-items" id="checkoutItems">
-              <!-- Cart items will be loaded dynamically from JS -->
-          </div>
-          
-          <div class="promo-code">
-              <form class="promo-code-form">
-                  <input type="text" class="promo-code-input" placeholder="Nuolaidos kodas">
-                  <button type="button" class="promo-code-btn">Taikyti</button>
-              </form>
-          </div>
-          
-          <div class="summary-row">
-              <span>Prekių suma:</span>
-              <span>€<span id="subtotal">0.00</span></span>
-          </div>
-          
-          <div class="summary-row">
-              <span>Pristatymas:</span>
-              <span>€<span id="shipping">4.00</span></span>
-          </div>
-          
-          <div class="summary-row">
-              <span>Nuolaida:</span>
-              <span>-€<span id="discount">0.00</span></span>
-          </div>
-          
-          <div class="summary-row total">
-              <span>Bendra suma:</span>
-              <span>€<span id="total">0.00</span></span>
-          </div>
-      </div>
+            <h2 class="section-title">Jūsų užsakymas</h2>
+            
+            <div class="cart-items" id="checkoutItems">
+                <!-- Cart items will be loaded dynamically from JS -->
+            </div>
+            
+            <div class="promo-code">
+                <form class="promo-code-form">
+                    <input type="text" class="promo-code-input" placeholder="Nuolaidos kodas">
+                    <button type="button" class="promo-code-btn">Taikyti</button>
+                </form>
+            </div>
+            
+            <div class="summary-row">
+                <span>Prekių suma:</span>
+                <span>€<span id="subtotal">0.00</span></span>
+            </div>
+            
+            <div class="summary-row">
+                <span>Pristatymas:</span>
+                <span>€<span id="shipping">5.99</span></span>
+            </div>
+            
+            <div class="summary-row">
+                <span>Nuolaida:</span>
+                <span>-€<span id="discount">0.00</span></span>
+            </div>
+            
+            <div class="summary-row total">
+                <span>Bendra suma:</span>
+                <span>€<span id="total">0.00</span></span>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -1073,67 +1049,84 @@
 <footer class="footer">© 2025 Night Wood. Visos teisės saugomos.</footer>
 
 <script>
-    // Open/close mobile menu
-    const burgerBtn = document.getElementById('burgerBtn');
-    const menuOverlay = document.getElementById('menuOverlay');
-    const closeMenuBtn = document.getElementById('closeMenuBtn');
+// Mobile menu functionality
+const burgerBtn = document.getElementById('burgerBtn');
+const menuOverlay = document.getElementById('menuOverlay');
+const closeMenuBtn = document.getElementById('closeMenuBtn');
 
-    burgerBtn.addEventListener('click', () => {
-        menuOverlay.classList.toggle('open');
-    });
+burgerBtn.addEventListener('click', () => {
+    menuOverlay.classList.toggle('open');
+});
 
-    closeMenuBtn.addEventListener('click', () => {
+closeMenuBtn.addEventListener('click', () => {
+    menuOverlay.classList.remove('open');
+});
+
+// Close menu when clicking on a link
+menuOverlay.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
         menuOverlay.classList.remove('open');
     });
+});
 
-    // Close menu when clicking on a link
-    menuOverlay.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            menuOverlay.classList.remove('open');
-        });
+// Payment methods selection
+const paymentMethods = document.querySelectorAll('.payment-method');
+paymentMethods.forEach(method => {
+    method.addEventListener('click', () => {
+        paymentMethods.forEach(m => m.classList.remove('active'));
+        method.classList.add('active');
+        method.querySelector('input').checked = true;
     });
+});
 
-    // Payment methods selection
-    const paymentMethods = document.querySelectorAll('.payment-method');
-    paymentMethods.forEach(method => {
-        method.addEventListener('click', () => {
-            paymentMethods.forEach(m => m.classList.remove('active'));
-            method.classList.add('active');
-            method.querySelector('input').checked = true;
-        });
-    });
+// Cart functionality
+function updateTotals(subtotal) {
+    const subtotalEl = document.getElementById('subtotal');
+    const totalEl = document.getElementById('total');
+    const shippingEl = document.getElementById('shipping');
+    const discountEl = document.getElementById('discount');
+    
+    // Format the values
+    subtotalEl.textContent = subtotal.toFixed(2);
+    
+    // Shipping logic: free if order over 100€
+    let shipping = subtotal > 100 ? 0 : 5.99;
+    shippingEl.textContent = shipping.toFixed(2);
+    
+    // Discount (would come from promo code application)
+    let discount = 0;
+    discountEl.textContent = discount.toFixed(2);
+    
+    // Calculate total
+    let total = subtotal + shipping - discount;
+    totalEl.textContent = total.toFixed(2);
+    
+    // Update shipping message
+    if (subtotal > 100) {
+        shippingEl.textContent = "0.00";
+        document.querySelector('.shipping-info p').textContent = "Jūs kvalifikavote nemokamam pristatymui! Standartinis pristatymas Lietuvoje trunka 1-3 darbo dienas.";
+    }
+}
 
-    // Load cart items
-    function loadCartItems() {
-        const cart = JSON.parse(localStorage.getItem('nightwood_cart')) || [];
-        const checkoutItems = document.getElementById('checkoutItems');
-        const subtotalEl = document.getElementById('subtotal');
-        const totalEl = document.getElementById('total');
-        const shippingEl = document.getElementById('shipping');
-        
-        checkoutItems.innerHTML = '';
-        let subtotal = 0;
-        
-        if (cart.length === 0) {
-            checkoutItems.innerHTML = '<p style="text-align: center; color: #aaa;">Jūsų krepšelis tuščias</p>';
-            updateTotals(0);
-            return;
-        }
-        
-        function loadCartItems() {
+function loadCartItems() {
     const cart = JSON.parse(localStorage.getItem('nightwood_cart')) || [];
     const checkoutItems = document.getElementById('checkoutItems');
+    const subtotalEl = document.getElementById('subtotal');
+    const totalEl = document.getElementById('total');
+    const shippingEl = document.getElementById('shipping');
     
     checkoutItems.innerHTML = '';
+    let subtotal = 0;
     
     if (cart.length === 0) {
-        checkoutItems.innerHTML = '<p style="text-align: center; color: #aaa; padding: 1rem;">Jūsų krepšelis tuščias</p>';
+        checkoutItems.innerHTML = '<p style="text-align: center; color: #aaa;">Jūsų krepšelis tuščias</p>';
         updateTotals(0);
         return;
     }
     
-    cart.forEach((item, index) => {
+    cart.forEach(item => {
         const itemTotal = item.price * item.qty;
+        subtotal += itemTotal;
         
         const cartItemEl = document.createElement('div');
         cartItemEl.className = 'cart-item';
@@ -1143,192 +1136,173 @@
                 <div class="cart-item-title">${item.title}</div>
                 <div class="cart-item-price">€${item.price.toFixed(2)}</div>
                 <div class="quantity-controls">
-                    <button class="quantity-btn" onclick="updateCartItemQty(${index}, -1)">−</button>
-                    <span class="quantity-value">${item.qty}</span>
-                    <button class="quantity-btn" onclick="updateCartItemQty(${index}, 1)">+</button>
+                    <button class="quantity-btn minus" data-id="${item.id}">-</button>
+                    <span class="cart-item-qty">${item.qty}</span>
+                    <button class="quantity-btn plus" data-id="${item.id}">+</button>
+                    <button class="remove-btn" data-id="${item.id}">❌</button>
                 </div>
             </div>
             <div class="cart-item-total">€${itemTotal.toFixed(2)}</div>
-            <button class="remove-item-btn" onclick="removeCartItem(${index})">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="3 6 5 6 21 6"></polyline>
-                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                </svg>
-            </button>
         `;
         
         checkoutItems.appendChild(cartItemEl);
     });
     
-    // Обновляем итоговые суммы
-    updateCartTotals(cart);
-}
-        
-        updateTotals(subtotal);
-    }
-    
-    function updateTotals(subtotal) {
-        const subtotalEl = document.getElementById('subtotal');
-        const totalEl = document.getElementById('total');
-        const shippingEl = document.getElementById('shipping');
-        const discountEl = document.getElementById('discount');
-        
-        // Format the values
-        subtotalEl.textContent = subtotal.toFixed(2);
-        
-        // Shipping logic: free if order over 100€
-        let shipping = subtotal > 100 ? 0 : 5.99;
-        shippingEl.textContent = shipping.toFixed(2);
-        
-        // Discount (would come from promo code application)
-        let discount = 0;
-        discountEl.textContent = discount.toFixed(2);
-        
-        // Calculate total
-        let total = subtotal + shipping - discount;
-        totalEl.textContent = total.toFixed(2);
-        
-        // Update shipping message
-        if (subtotal > 100) {
-            shippingEl.textContent = "0.00";
-            document.querySelector('.shipping-info p').textContent = "Jūs kvalifikavote nemokamam pristatymui! Standartinis pristatymas Lietuvoje trunka 1-3 darbo dienas.";
-        }
-    }
-    
-    // Handle order placement
-    document.getElementById('placeOrderBtn').addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        // Basic form validation
-        const requiredFields = document.querySelectorAll('[required]');
-        let isFormValid = true;
-        
-        requiredFields.forEach(field => {
-            if (!field.value.trim()) {
-                field.style.borderColor = '#ff4f81';
-                isFormValid = false;
-            } else {
-                field.style.borderColor = '#333';
-            }
-        });
-        
-        // Terms checkbox validation
-        const termsCheckbox = document.getElementById('terms');
-        if (!termsCheckbox.checked) {
-            alert('Prašome sutikti su pirkimo sąlygomis');
-            return;
-        }
-        
-        if (isFormValid) {
-            // Simulate order submission
-            this.innerHTML = '<span class="spinner"></span> Apdorojama...';
-            this.disabled = true;
+    // Add event listeners for quantity controls
+    document.querySelectorAll('.quantity-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const id = this.getAttribute('data-id');
+            const cart = JSON.parse(localStorage.getItem('nightwood_cart')) || [];
+            const itemIndex = cart.findIndex(item => item.id === id);
             
-            setTimeout(() => {
-                // Clear cart and redirect to success page
-                localStorage.setItem('nightwood_cart', JSON.stringify([]));
-                alert('Užsakymas sėkmingai pateiktas! Jus pervedame į patvirtinimo puslapį.');
-                // In a real scenario, you'd redirect to a success page
-                // window.location.href = '/order-success.html';
-                
-                // For demo purposes, we'll just reset the button
-                this.innerHTML = 'Užsakymas pateiktas!';
-                setTimeout(() => {
-                    window.location.href = '/index.html';
-                }, 1500);
-            }, 2000);
-        } else {
-            alert('Prašome užpildyti visus būtinus laukus');
-        }
-    });
-    
-    // Initialize the page
-    document.addEventListener('DOMContentLoaded', () => {
-        loadCartItems();
-        
-        // Handle promo code application
-        document.querySelector('.promo-code-btn').addEventListener('click', function() {
-            const promoInput = document.querySelector('.promo-code-input');
-            const promoCode = promoInput.value.trim().toUpperCase();
-            
-            if (promoCode === 'NIGHT25') {
-                // Apply 25% discount
-                const subtotal = parseFloat(document.getElementById('subtotal').textContent);
-                const discount = subtotal * 0.25;
-                document.getElementById('discount').textContent = discount.toFixed(2);
-                
-                // Update total
-                const shipping = parseFloat(document.getElementById('shipping').textContent);
-                const total = subtotal + shipping - discount;
-                document.getElementById('total').textContent = total.toFixed(2);
-                
-                // Show success message
-                promoInput.value = '';
-                alert('Nuolaidos kodas pritaikytas! 25% nuolaida pritaikyta jūsų užsakymui.');
-                
-                // Disable promo code button after successful application
-                this.disabled = true;
-                this.textContent = 'Pritaikytas';
-                this.style.background = '#28a745';
-            } else {
-                alert('Neteisingas nuolaidos kodas. Bandykite dar kartą.');
-                promoInput.focus();
-            }
-        });
-        
-        // Update shipping method when country changes
-        document.getElementById('country').addEventListener('change', function() {
-            const country = this.value;
-            let shippingRate = 5.99; // Default for Lithuania
-            
-            // Adjust shipping based on country
-            if (country === 'lv' || country === 'ee') {
-                shippingRate = 9.99;
-            } else if (country === 'other') {
-                shippingRate = 19.99;
-            }
-            
-            // Update shipping cost and total
-            const subtotal = parseFloat(document.getElementById('subtotal').textContent);
-            const discount = parseFloat(document.getElementById('discount').textContent);
-            
-            // Free shipping for orders over 150€ (only for Baltic countries)
-            if (subtotal > 150 && (country === 'lt' || country === 'lv' || country === 'ee')) {
-                shippingRate = 0;
-                document.querySelector('.shipping-info p').textContent = "Jūs kvalifikavote nemokamam pristatymui! Pristatymas trunka 1-3 darbo dienas.";
-            } else {
-                document.querySelector('.shipping-info p').textContent = `Standartinis pristatymas ${country === 'lt' ? 'Lietuvoje' : country === 'lv' ? 'Latvijoje' : country === 'ee' ? 'Estijoje' : 'užsienyje'} trunka ${country === 'other' ? '5-10' : '1-3'} darbo dienas.`;
-            }
-            
-            document.getElementById('shipping').textContent = shippingRate.toFixed(2);
-            const total = subtotal + shippingRate - discount;
-            document.getElementById('total').textContent = total.toFixed(2);
-        });
-        
-        // Save user data to local storage when fields change
-        const formFields = document.querySelectorAll('.checkout-form input, .checkout-form select, .checkout-form textarea');
-        formFields.forEach(field => {
-            // Load saved data if available
-            const savedValue = localStorage.getItem(`checkout_${field.id}`);
-            if (savedValue) {
-                if (field.type === 'checkbox') {
-                    field.checked = savedValue === 'true';
-                } else {
-                    field.value = savedValue;
+            if (itemIndex !== -1) {
+                if (this.classList.contains('plus')) {
+                    cart[itemIndex].qty += 1;
+                } else if (this.classList.contains('minus') && cart[itemIndex].qty > 1) {
+                    cart[itemIndex].qty -= 1;
                 }
+                
+                localStorage.setItem('nightwood_cart', JSON.stringify(cart));
+                loadCartItems(); // Reload cart
             }
-            
-            // Save data on change
-            field.addEventListener('change', function() {
-                const value = field.type === 'checkbox' ? field.checked : field.value;
-                localStorage.setItem(`checkout_${field.id}`, value);
-            });
         });
     });
 
-
+    document.querySelectorAll('.remove-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const id = this.getAttribute('data-id');
+            let cart = JSON.parse(localStorage.getItem('nightwood_cart')) || [];
+            cart = cart.filter(item => item.id !== id);
+            
+            localStorage.setItem('nightwood_cart', JSON.stringify(cart));
+            loadCartItems(); // Reload cart
+        });
+    });
     
+    updateTotals(subtotal);
+}
 
+// Order placement
+document.getElementById('placeOrderBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    // Basic form validation
+    const requiredFields = document.querySelectorAll('[required]');
+    let isFormValid = true;
+    
+    requiredFields.forEach(field => {
+        if (!field.value.trim()) {
+            field.style.borderColor = '#ff4f81';
+            isFormValid = false;
+        } else {
+            field.style.borderColor = '#333';
+        }
+    });
+    
+    if (isFormValid) {
+        // Simulate order submission
+        this.innerHTML = '<span class="spinner"></span> Apdorojama...';
+        this.disabled = true;
+        
+        setTimeout(() => {
+            // Clear cart and redirect to success page
+            localStorage.setItem('nightwood_cart', JSON.stringify([]));
+            alert('Užsakymas sėkmingai pateiktas! Jus pervedame į patvirtinimo puslapį.');
+            
+            // For demo purposes, we'll just reset the button
+            this.innerHTML = 'Užsakymas pateiktas!';
+            setTimeout(() => {
+                window.location.href = '/index.html';
+            }, 1500);
+        }, 2000);
+    } else {
+        alert('Prašome užpildyti visus būtinus laukus');
+    }
+});
+
+// Initialize the page
+document.addEventListener('DOMContentLoaded', () => {
+    loadCartItems();
+    
+    // Handle promo code application
+    document.querySelector('.promo-code-btn').addEventListener('click', function() {
+        const promoInput = document.querySelector('.promo-code-input');
+        const promoCode = promoInput.value.trim().toUpperCase();
+        
+        if (promoCode === 'NIGHT25') {
+            // Apply 25% discount
+            const subtotal = parseFloat(document.getElementById('subtotal').textContent);
+            const discount = subtotal * 0.25;
+            document.getElementById('discount').textContent = discount.toFixed(2);
+            
+            // Update total
+            const shipping = parseFloat(document.getElementById('shipping').textContent);
+            const total = subtotal + shipping - discount;
+            document.getElementById('total').textContent = total.toFixed(2);
+            
+            // Show success message
+            promoInput.value = '';
+            alert('Nuolaidos kodas pritaikytas! 25% nuolaida pritaikyta jūsų užsakymui.');
+            
+            // Disable promo code button after successful application
+            this.disabled = true;
+            this.textContent = 'Pritaikytas';
+            this.style.background = '#28a745';
+        } else {
+            alert('Neteisingas nuolaidos kodas. Bandykite dar kartą.');
+            promoInput.focus();
+        }
+    });
+    
+    // Update shipping method when country changes
+    document.getElementById('country').addEventListener('change', function() {
+        const country = this.value;
+        let shippingRate = 5.99; // Default for Lithuania
+        
+        // Adjust shipping based on country
+        if (country === 'lv' || country === 'ee') {
+            shippingRate = 9.99;
+        } else if (country === 'other') {
+            shippingRate = 19.99;
+        }
+        
+        // Update shipping cost and total
+        const subtotal = parseFloat(document.getElementById('subtotal').textContent);
+        const discount = parseFloat(document.getElementById('discount').textContent);
+        
+        // Free shipping for orders over 150€ (only for Baltic countries)
+        if (subtotal > 150 && (country === 'lt' || country === 'lv' || country === 'ee')) {
+            shippingRate = 0;
+            document.querySelector('.shipping-info p').textContent = "Jūs kvalifikavote nemokamam pristatymui! Pristatymas trunka 1-3 darbo dienas.";
+        } else {
+            document.querySelector('.shipping-info p').textContent = `Standartinis pristatymas ${country === 'lt' ? 'Lietuvoje' : country === 'lv' ? 'Latvijoje' : country === 'ee' ? 'Estijoje' : 'užsienyje'} trunka ${country === 'other' ? '5-10' : '1-3'} darbo dienas.`;
+        }
+        
+        document.getElementById('shipping').textContent = shippingRate.toFixed(2);
+        const total = subtotal + shippingRate - discount;
+        document.getElementById('total').textContent = total.toFixed(2);
+    });
+    
+    // Save user data to local storage when fields change
+    const formFields = document.querySelectorAll('.checkout-form input, .checkout-form select, .checkout-form textarea');
+    formFields.forEach(field => {
+        // Load saved data if available
+        const savedValue = localStorage.getItem(`checkout_${field.id}`);
+        if (savedValue) {
+            if (field.type === 'checkbox') {
+                field.checked = savedValue === 'true';
+            } else {
+                field.value = savedValue;
+            }
+        }
+        
+        // Save data on change
+        field.addEventListener('change', function() {
+            const value = field.type === 'checkbox' ? field.checked : field.value;
+            localStorage.setItem(`checkout_${field.id}`, value);
+        });
+    });
+});
 </script>
 
 </body>
