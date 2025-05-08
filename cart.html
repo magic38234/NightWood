@@ -1094,8 +1094,7 @@ function updateTotals(subtotal) {
     shippingEl.textContent = shipping.toFixed(2);
     
     // Discount (would come from promo code application)
-    let discount = 0;
-    discountEl.textContent = discount.toFixed(2);
+    let discount = parseFloat(discountEl.textContent) || 0;
     
     // Calculate total
     let total = subtotal + shipping - discount;
@@ -1111,9 +1110,6 @@ function updateTotals(subtotal) {
 function loadCartItems() {
     const cart = JSON.parse(localStorage.getItem('nightwood_cart')) || [];
     const checkoutItems = document.getElementById('checkoutItems');
-    const subtotalEl = document.getElementById('subtotal');
-    const totalEl = document.getElementById('total');
-    const shippingEl = document.getElementById('shipping');
     
     checkoutItems.innerHTML = '';
     let subtotal = 0;
@@ -1192,10 +1188,10 @@ document.getElementById('placeOrderBtn').addEventListener('click', function(e) {
     
     requiredFields.forEach(field => {
         if (!field.value.trim()) {
-            field.style.borderColor = '#ff4f81';
+            field.classList.add('error');
             isFormValid = false;
         } else {
-            field.style.borderColor = '#333';
+            field.classList.remove('error');
         }
     });
     
@@ -1235,10 +1231,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const discount = subtotal * 0.25;
             document.getElementById('discount').textContent = discount.toFixed(2);
             
-            // Update total
-            const shipping = parseFloat(document.getElementById('shipping').textContent);
-            const total = subtotal + shipping - discount;
-            document.getElementById('total').textContent = total.toFixed(2);
+            // Update totals
+            updateTotals(subtotal);
             
             // Show success message
             promoInput.value = '';
@@ -1268,10 +1262,10 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Update shipping cost and total
         const subtotal = parseFloat(document.getElementById('subtotal').textContent);
-        const discount = parseFloat(document.getElementById('discount').textContent);
+        const discount = parseFloat(document.getElementById('discount').textContent) || 0;
         
-        // Free shipping for orders over 150€ (only for Baltic countries)
-        if (subtotal > 150 && (country === 'lt' || country === 'lv' || country === 'ee')) {
+        // Free shipping for orders over 100€ (only for Baltic countries)
+        if (subtotal > 100 && (country === 'lt' || country === 'lv' || country === 'ee')) {
             shippingRate = 0;
             document.querySelector('.shipping-info p').textContent = "Jūs kvalifikavote nemokamam pristatymui! Pristatymas trunka 1-3 darbo dienas.";
         } else {
