@@ -35,8 +35,8 @@
 
 header.scrolled {
   background: #0e0e10; /* затемнённый фон при скролле */
-}
 
+}
 .logo img { width: 50px; }
 
 
@@ -971,172 +971,12 @@ footer {
   }
 }
 
+
+
 /* Оптимизация отображения цены */
 .product-footer div {
   font-weight: 600;
   margin-bottom: 0.7rem !important;
-}
-
-/* === Мобильные улучшения === */
-@media (max-width: 768px) {
-  /* Улучшения для мобильного меню */
-  .burger {
-    width: 44px;
-    height: 44px;
-    padding: 12px;
-  }
-
-  #menuOverlay a {
-    font-size: 2.2rem;
-    padding: 0.5rem;
-  }
-
-  #closeMenuBtn {
-    font-size: 2.5rem;
-    top: 20px;
-  }
-
-  /* Оптимизация герой-секции */
-  .hero-content h1 {
-    font-size: 2.2rem;
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
-  }
-
-  .hero-content p {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-    line-height: 1.5;
-  }
-
-  .hero-btn {
-    padding: 14px 28px;
-    font-size: 1rem;
-  }
-
-  /* Улучшение карточек товаров */
-  .products {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .product-card {
-    min-height: auto;
-    border-radius: 12px;
-  }
-
-  .slider-wrapper, .slider-wrapper img {
-    height: 220px;
-    border-radius: 12px 12px 0 0;
-  }
-
-  .info {
-    padding: 1.2rem;
-  }
-
-  .product-card h3 {
-    font-size: 1.3rem;
-    margin-bottom: 0.8rem;
-  }
-
-  .product-card p {
-    font-size: 1rem;
-    line-height: 1.5;
-  }
-
-  .buy-button {
-    padding: 0.8rem;
-    font-size: 1rem;
-  }
-
-  /* Улучшение футера */
-  .footer-content {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-
-  .footer-section {
-    margin-bottom: 2rem;
-  }
-
-  .footer-section h3 {
-    font-size: 1.4rem;
-  }
-
-  .newsletter-form input,
-  .newsletter-form button {
-    padding: 1rem;
-    font-size: 1rem;
-  }
-
-  .footer-social img {
-    width: 44px;
-    height: 44px;
-  }
-
-  /* Оптимизация корзины */
-  .cart-panel {
-    width: 100%;
-    max-width: 360px;
-  }
-
-  .cart-body li {
-    padding: 1rem;
-  }
-
-  .item-info h4 {
-    font-size: 1.1rem;
-  }
-
-  .qty-controls button {
-    padding: 0.3rem 0.8rem;
-    font-size: 1.1rem;
-  }
-
-  .checkout-btn {
-    padding: 1rem;
-    font-size: 1.1rem;
-  }
-}
-
-/* Улучшение для очень маленьких экранов */
-@media (max-width: 400px) {
-  .hero-content h1 {
-    font-size: 1.8rem;
-  }
-  
-  .hero-content p {
-    font-size: 1rem;
-  }
-  
-  .section h2 {
-    font-size: 1.5rem;
-  }
-  
-  .slider-wrapper, .slider-wrapper img {
-    height: 180px;
-  }
-}
-
-/* Кнопка "Наверх" */
-.back-to-top {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: #c300ff;
-  color: white;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  display: none;
-  z-index: 99;
-}
-
-.back-to-top.visible {
-  display: block;
 }
 </style>
 </head>
