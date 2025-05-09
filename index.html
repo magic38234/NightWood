@@ -978,6 +978,44 @@ footer {
   font-weight: 600;
   margin-bottom: 0.7rem !important;
 }
+
+
+/* Кнопка "Наверх" */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff4f81, #c300ff);
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: none;
+  z-index: 99;
+  box-shadow: 0 4px 15px rgba(195, 0, 255, 0.4);
+  transition: all 0.3s ease;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-to-top.visible {
+  display: flex;
+}
+
+.back-to-top:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(195, 0, 255, 0.5);
+}
+
+/* Показываем только на мобильных */
+@media (min-width: 769px) {
+  .back-to-top {
+    display: none !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -1082,6 +1120,7 @@ footer {
 <button class="buy-button add-to-cart go-to-cart"><svg class="btn-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg> PIRKTI</button></div>
 </div>
 </div>
+<button class="back-to-top" id="backToTop">↑</button>
 </section>
 <footer>
   <div class="footer-content">
@@ -1352,6 +1391,24 @@ if (!hasBackdropSupport) {
     overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
   }
 }
+
+// Кнопка "Наверх"
+const backToTopBtn = document.getElementById('backToTop');
+
+window.addEventListener('scroll', () => {
+  if (window.pageYOffset > 300) {
+    backToTopBtn.classList.add('visible');
+  } else {
+    backToTopBtn.classList.remove('visible');
+  }
+});
+
+backToTopBtn.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
 </script>
 </body>
 </html>
