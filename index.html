@@ -1008,7 +1008,8 @@ footer {
 <h3>Gravirotai padėklas</h3>
 <p>Stilingas ir natūralus akcentas jūsų stalo serviravimui.</p>
 </div>
-<div class="product-footer"><div style="color:#ccc; font-size: 0.95rem; margin-bottom: 0.5rem;">€ 46</div><button class="buy-button add-to-cart" onclick="window.location.href='/cart.html'"><svg class="btn-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg> PIRKTI</button></div>
+<div class="product-footer"><div style="color:#ccc; font-size: 0.95rem; margin-bottom: 0.5rem;">€ 46</div>
+<button class="buy-button add-to-cart go-to-cart"><svg class="btn-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg> PIRKTI</button></div>
 </div>
 <div class="product-card">
   <div class="slider-wrapper">
@@ -1020,7 +1021,8 @@ footer {
 <h3>Metaliniai mangalai</h3>
 <p>Tvirtas dizainas ir puikus funkcionalumas lauko kepimui.</p>
 </div>
-<div class="product-footer"><div style="color:#ccc; font-size: 0.95rem; margin-bottom: 0.5rem;">€ 550</div><button class="buy-button add-to-cart" onclick="window.location.href='/cart.html'"><svg class="btn-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg> PIRKTI</button></div>
+<div class="product-footer"><div style="color:#ccc; font-size: 0.95rem; margin-bottom: 0.5rem;">€ 550</div>
+<button class="buy-button add-to-cart go-to-cart"><svg class="btn-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg> PIRKTI</button></div>
 </div>
 <div class="product-card">
   <div class="slider-wrapper">
@@ -1033,7 +1035,8 @@ footer {
 <h3>Paprastas padėklas</h3>
 <p>Stilingas ir natūralus akcentas jūsų stalo serviravimui.</p>
 </div>
-<div class="product-footer"><div style="color:#ccc; font-size: 0.95rem; margin-bottom: 0.5rem;">€ 30</div><button class="buy-button add-to-cart" onclick="window.location.href='/cart.html'"><svg class="btn-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg> PIRKTI</button></div>
+<div class="product-footer"><div style="color:#ccc; font-size: 0.95rem; margin-bottom: 0.5rem;">€ 36</div>
+<button class="buy-button add-to-cart go-to-cart"><svg class="btn-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg> PIRKTI</button></div>
 </div>
 </div>
 </section>
@@ -1271,6 +1274,29 @@ window.addEventListener('scroll', () => {
   cart.splice(index, 1);
   updateCartUI();
   }
+
+  // Добавляет в корзину и сразу переходит в cart.html
+document.querySelectorAll('.go-to-cart').forEach(button => {
+  button.addEventListener('click', () => {
+    const productCard = button.closest('.product-card');
+    const title = productCard.querySelector('h3').innerText;
+    const priceText = productCard.querySelector('.product-footer div').innerText.replace(/[^\d\.]/g, '');
+    const price = parseFloat(priceText);
+    const image = productCard.querySelector('img').src;
+
+    const savedCart = JSON.parse(localStorage.getItem('nightwood_cart')) || [];
+    const existing = savedCart.find(item => item.title === title);
+    if (existing) {
+      existing.qty += 1;
+    } else {
+      savedCart.push({ id: Date.now().toString(), title, price, image, qty: 1 });
+    }
+
+    localStorage.setItem('nightwood_cart', JSON.stringify(savedCart));
+    window.location.href = '/cart.html';
+  });
+});
+
 </script>
 </body>
 </html>
