@@ -179,6 +179,19 @@ header.scrolled {
       transform: translateY(50px);
       transition: all 0.6s ease-out;
     }
+
+    .product-price {
+  color: #ccc;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.product-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
     .product-card.animate-up,
     .product-card.animate-left {
       opacity: 1;
@@ -200,14 +213,14 @@ header.scrolled {
       padding: 1rem;
     }
     .buy-button {
-      background: #feebe2;
-      color: #181818;
-      font-weight: 600;
-      padding: 0.5rem 1.25rem;
-      border-radius: 16px;
-      font-size: 15px;
-      border: none;
-      cursor: pointer;
+    background-color: #feebe2;
+  color: rgb(24, 24, 24);
+  font-weight: 600;
+  padding: 0.5rem 0.8rem;
+  border-radius: 16px;
+  font-size: 14px;
+  border: none;
+  font-family: 'Segoe UI', sans-serif;
     }
     .buy-button:hover { background: #fafafa; }
 
@@ -448,6 +461,7 @@ footer {
   font-size: 1.2rem;
   padding: 0.1rem 1.3rem;
   border-radius: 16px;
+  -webkit-backdrop-filter: blur(4px); /* Для Safari */
   backdrop-filter: blur(4px);
   color: white;
   position: fixed;
@@ -474,8 +488,9 @@ footer {
   top: 0; left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0,0,0,0.6);
-  backdrop-filter: blur(3px);
+  background-color: rgba(0, 0, 0, 0.8); /* Запасной вариант */
+  -webkit-backdrop-filter: blur(3px); /* Для Safari 9+, iOS 9+ */
+  backdrop-filter: blur(3px); /* Стандартная поддержка */
   z-index: 10001;
   display: none;
 }
@@ -507,13 +522,16 @@ footer {
   padding-bottom: 0.5rem;
   font-family: 'Montserrat', sans-serif;
 }
-.cart-body {
-  flex: 1;
-  overflow-y: auto;
-  margin-top: 1rem;
-  scrollbar-width: thin; /* Для Firefox */
-  scrollbar-color: #c300ff #222; /* Для Firefox */
-  scroll-behavior: smooth;
+/* Добавляем префиксы для лучшей совместимости */
+.cart-body::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.cart-body::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+.cart-body::-webkit-scrollbar-thumb {
+  background: linear-gradient(#ff4f81, #c300ff);
 }
 
 .cart-body::-webkit-scrollbar {
@@ -703,6 +721,7 @@ footer {
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 16px;
+  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
   justify-content: space-between;
   align-items: center;
@@ -759,29 +778,43 @@ footer {
 .slider-arrow {
   position: absolute;
   top: 50%;
+  -webkit-transform: translateY(-50%); /* Для Safari и старых браузеров */
   transform: translateY(-50%);
   background: rgba(255, 255, 255, 0.575);
+  -webkit-backdrop-filter: blur(2px); /* Размытие фона для Safari */
+  backdrop-filter: blur(2px);
   border-radius: 50%;
   width: 36px;
   height: 36px;
+  display: -webkit-box; /* Для старых Safari */
   display: flex;
+  -webkit-box-align: center; /* Для старых Safari */
   align-items: center;
+  -webkit-box-pack: center; /* Для старых Safari */
   justify-content: center;
   cursor: pointer;
   z-index: 2;
   color: #000;
   font-weight: bold;
   font-size: 18px;
+  -webkit-user-select: none; /* Запрет выделения для Safari */
+  -moz-user-select: none; /* Для Firefox */
   user-select: none;
   opacity: 0;
+  -webkit-transition: opacity 0.3s ease; /* Для Safari */
   transition: opacity 0.3s ease;
+  /* Улучшение для тач-устройств */
+  touch-action: manipulation; /* Оптимизация для касаний */
 }
 .product-card:hover .slider-arrow {
   opacity: 1;
 }
-.slider-arrow:hover {
-  background: #dbdbdba9;
+/* Ховер-эффект с учетом тач-устройств */
+.slider-arrow:hover,
+.slider-arrow:active {
+  background: rgba(219, 219, 219, 0.67);
 }
+
 .slider-arrow.left {
   left: 10px;
 }
@@ -791,7 +824,17 @@ footer {
 
 @media (max-width: 768px) {
   .slider-arrow {
-    opacity: 1 !important;
+    width: 40px;
+    height: 40px;
+    opacity: 0.8 !important; /* Всегда видим на мобильных */
+    background: rgba(255, 255, 255, 0.7); /* Более контрастный фон */
+  }
+}
+
+/* Фикс для старых iOS */
+@supports (-webkit-touch-callout: none) {
+  .slider-arrow {
+    -webkit-tap-highlight-color: transparent; /* Убирает подсветку при тапе */
   }
 }
 .slider-arrow:hover {
@@ -1008,7 +1051,7 @@ footer {
 <h3>Gravirotai padėklas</h3>
 <p>Stilingas ir natūralus akcentas jūsų stalo serviravimui.</p>
 </div>
-<div class="product-footer"><div style="color:#ccc; font-size: 0.95rem; margin-bottom: 0.5rem;">€ 46</div>
+<div class="product-footer"><div class="product-price">€ 46</div>
 <button class="buy-button add-to-cart go-to-cart"><svg class="btn-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg> PIRKTI</button></div>
 </div>
 <div class="product-card">
@@ -1021,7 +1064,7 @@ footer {
 <h3>Metaliniai mangalai</h3>
 <p>Tvirtas dizainas ir puikus funkcionalumas lauko kepimui.</p>
 </div>
-<div class="product-footer"><div style="color:#ccc; font-size: 0.95rem; margin-bottom: 0.5rem;">€ 550</div>
+<div class="product-footer"><div class="product-price">€ 550</div>
 <button class="buy-button add-to-cart go-to-cart"><svg class="btn-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg> PIRKTI</button></div>
 </div>
 <div class="product-card">
@@ -1035,7 +1078,7 @@ footer {
 <h3>Paprastas padėklas</h3>
 <p>Stilingas ir natūralus akcentas jūsų stalo serviravimui.</p>
 </div>
-<div class="product-footer"><div style="color:#ccc; font-size: 0.95rem; margin-bottom: 0.5rem;">€ 36</div>
+<div class="product-footer"><div class="product-price">€ 36</div>
 <button class="buy-button add-to-cart go-to-cart"><svg class="btn-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg> PIRKTI</button></div>
 </div>
 </div>
@@ -1297,6 +1340,18 @@ document.querySelectorAll('.go-to-cart').forEach(button => {
   });
 });
 
+// Проверяем поддержку backdrop-filter (включая -webkit- для Safari)
+const hasBackdropSupport = CSS && 
+                          (CSS.supports('backdrop-filter', 'blur(3px)') || 
+                           CSS.supports('-webkit-backdrop-filter', 'blur(3px)'));
+
+// Если не поддерживается — устанавливаем fallback-фон
+if (!hasBackdropSupport) {
+  const overlay = document.querySelector('.cart-overlay');
+  if (overlay) {
+    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+  }
+}
 </script>
 </body>
 </html>
