@@ -975,52 +975,73 @@ footer {
   margin-bottom: 0.7rem !important;
 }
 
-/* Стили для кнопки-свайпа */
-.swipe-up-button {
+/* Стиль кнопки как в мобильных приложениях */
+.up-button {
   position: fixed;
   bottom: 25px;
   left: 50%;
   transform: translateX(-50%);
-  width: 120px;
-  height: 40px;
-  background: rgba(255, 255, 255, 0.15);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
   display: none;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   cursor: pointer;
   z-index: 999;
   opacity: 0;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border: none;
 }
 
-.swipe-up-button::before {
-  content: "";
-  width: 30px;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 2px;
-  margin-bottom: 4px;
+.up-button .arrows {
+  position: relative;
+  width: 20px;
+  height: 24px;
 }
 
-
-
-.swipe-up-button:hover {
-  background: hsla(36, 100%, 74%, 0.25);
+.up-button .arrow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  color: #333;
+  font-size: 20px;
+  text-align: center;
+  animation: floatUp 1.5s infinite ease-in-out;
 }
 
-.swipe-up-button:active {
+.up-button .arrow:nth-child(1) {
+  top: 0;
+}
+
+.up-button .arrow:nth-child(2) {
+  top: 15px;
+  animation-delay: 0.2s;
+  opacity: 0.7;
+}
+
+@keyframes floatUp {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.up-button:hover {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.up-button:active {
   transform: translateX(-50%) scale(0.95);
 }
 
 /* Показываем только на мобильных */
 @media (max-width: 768px) {
-  .swipe-up-button {
+  .up-button {
     display: flex;
   }
 }
@@ -1130,7 +1151,12 @@ footer {
 </div>
 
 <!-- Кнопка "Вверх" -->
-<div class="swipe-up-button" id="swipeUpButton"></div>
+<div class="up-button" id="upButton">
+  <div class="arrows">
+    <div class="arrow">︽</div>
+  
+  </div>
+</div>
 
 </section>
 <footer>
@@ -1403,35 +1429,26 @@ if (!hasBackdropSupport) {
   }
 }
 
-// Кнопка "Вверх" в стиле свайпа
-const swipeUpButton = document.getElementById('swipeUpButton');
+const upButton = document.getElementById('upButton');
 
-function updateSwipeButton() {
+function updateButton() {
   if (window.pageYOffset > 300) {
-    swipeUpButton.style.opacity = '1';
-    swipeUpButton.style.pointerEvents = 'auto';
+    upButton.style.opacity = '1';
   } else {
-    swipeUpButton.style.opacity = '0';
-    swipeUpButton.style.pointerEvents = 'none';
+    upButton.style.opacity = '0';
   }
 }
 
 // Инициализация
-updateSwipeButton();
-window.addEventListener('scroll', updateSwipeButton);
+updateButton();
+window.addEventListener('scroll', updateButton);
 
-// Плавный скролл вверх с анимацией
-swipeUpButton.addEventListener('click', () => {
+// Плавный скролл
+upButton.addEventListener('click', () => {
   window.scrollTo({
     top: 0,
     behavior: 'smooth'
   });
-  
-  // Анимация нажатия
-  swipeUpButton.style.transform = 'translateX(-50%) scale(0.95)';
-  setTimeout(() => {
-    swipeUpButton.style.transform = 'translateX(-50%)';
-  }, 200);
 });
 </script>
 </body>
