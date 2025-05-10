@@ -1587,7 +1587,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const backToTopBtn = document.getElementById('backToTop');
 
 window.addEventListener('scroll', () => {
-  if (window.pageYOffset > 300) {
+  if (window.pageYOffset > 50) {
     backToTopBtn.classList.add('visible');
   } else {
     backToTopBtn.classList.remove('visible');
@@ -1601,5 +1601,6 @@ backToTopBtn.addEventListener('click', () => {
   });
 });
 </script>
+
 </body>
 </html>
