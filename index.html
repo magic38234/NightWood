@@ -398,6 +398,32 @@ footer {
   }
 }
 
+/* Стили для иконок контактов */
+.gradient-icon {
+  background: linear-gradient(90deg, rgb(211, 173, 127), #d3ad7f);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.1rem;
+  width: 20px;
+  text-align: center;
+}
+
+.footer-section ul li i.fas {
+  margin-right: 8px;
+}
+
+/* Анимация для иконок */
+.footer-section ul li:hover .gradient-icon {
+  animation: pulse 0.5s ease;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
     /* === Адаптивность === */
     @media (max-width: 768px) {
       .hero-content h1 { font-size: 36px; }
@@ -1156,7 +1182,7 @@ footer {
         </a>
       </div>
     </div>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <div class="footer-section">
       <h3>Nuorodos</h3>
       <ul>
@@ -1168,13 +1194,13 @@ footer {
     </div>
 
     <div class="footer-section">
-      <h3>Kontaktai</h3>
-      <ul>
-        <li><i class="fas fa-phone"></i> +370 640 81 312</li>
-        <li><i class="fas fa-envelope"></i> info@nightwood.lt</li>
-        <li><i class="fas fa-map-marker-alt"></i> Vilnius, Lietuva</li>
-      </ul>
-    </div>
+  <h3>Kontaktai</h3>
+  <ul>
+    <li><i class="fas fa-phone-alt gradient-icon"></i> +370 640 81 312</li>
+    <li><i class="fas fa-envelope gradient-icon"></i> info@nightwood.lt</li>
+    <li><i class="fas fa-map-marker-alt gradient-icon"></i> Vilnius, Lietuva</li>
+  </ul>
+</div>
 
     <div class="footer-section">
       <h3>Naujienlaiškis</h3>
