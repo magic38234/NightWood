@@ -1027,25 +1027,23 @@ footer {
   width: 55px;
   height: 55px;
   border-radius: 50%;
-  background: linear-gradient(90deg, #ffc37a, #d3ad7f );
-  color: #ffdbaf;
+  background: linear-gradient(90deg, #ffc37a, #d3ad7f);
+  color: #fff;
   border: none;
   font-size: 1.6rem;
   font-weight: bold;
   cursor: pointer;
   display: none;
-  z-index: 99;
+  z-index: 9999; /* Увеличьте z-index */
   box-shadow: 0 4px 15px rgba(200, 156, 104, 0.3);
   transition: all 0.3s ease;
   align-items: center;
   justify-content: center;
-  font-family: 'Montserrat', sans-serif;
 }
 
 .back-to-top.visible {
   display: flex;
 }
-
 .back-to-top:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(200, 156, 104, 0.4);
@@ -1324,8 +1322,11 @@ footer {
         </div>
 
 
-<button class="back-to-top" id="backToTop">▲</button>
+
 </section>
+
+<button class="back-to-top" id="backToTop">▲</button>
+
 <footer>
   <div class="footer-content">
     <div class="footer-section">
@@ -1583,11 +1584,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Кнопка "Наверх"
+// Кнопка "Наверх"
 const backToTopBtn = document.getElementById('backToTop');
 
 window.addEventListener('scroll', () => {
-  if (window.pageYOffset > 50) {
+  if (window.pageYOffset > 10) { // Изменили с 300 на 40
     backToTopBtn.classList.add('visible');
   } else {
     backToTopBtn.classList.remove('visible');
