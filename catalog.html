@@ -819,6 +819,26 @@ footer {
   right: 10px;
 }
 
+/* Добавим в CSS */
+.slider-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.slider-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  cursor: pointer;
+}
+
+.slider-indicator.active {
+  background: #fff;
+}
+
 @media (max-width: 768px) {
   .slider-arrow {
     opacity: 1 !important;
@@ -1173,8 +1193,8 @@ footer {
     <!-- Карточка 1 - Gravirotai padėklas -->
     <div class="product-card visible">
         <div class="slider-wrapper">
-            <div class="slider-arrow left" onclick="slideImage(this, -1)">←</div>
-            <div class="slider-arrow right" onclick="slideImage(this, 1)">→</div>
+ <div class="slider-arrow left" onclick="slideImage(this, -1)" aria-label="Предыдущее изображение">←</div>
+  <div class="slider-arrow right" onclick="slideImage(this, 1)" aria-label="Следующее изображение">→</div>
             <img alt="Padėklas" class="active" src="https://i.postimg.cc/VkNBP61r/476231208-1034025892077411-8188252417738116989-n.jpg"/>
             <img alt="Padėklas" src="https://i.postimg.cc/HLRt2CqJ/poon.jpg"/>
         </div>
@@ -1588,27 +1608,61 @@ footer {
   }
 
   //  для товаров 
-  function slideImage(btn, direction) {
-  const wrapper = btn.closest('.slider-wrapper');
+// Обновим функцию slideImage
+function slideImage(element, direction) {
+  const wrapper = element.classList?.contains('slider-arrow') 
+    ? element.closest('.slider-wrapper') 
+    : element;
+  
   const images = wrapper.querySelectorAll('img');
   let current = Array.from(images).findIndex(img => img.classList.contains('active'));
   if (current === -1) return;
+  
   images[current].classList.remove('active');
   let next = (current + direction + images.length) % images.length;
   images[next].classList.add('active');
+  
+  // Обновляем индикаторы
+  updateIndicators(wrapper, next);
 }
-document.addEventListener("DOMContentLoaded", () => {
-    const cards = document.querySelectorAll(".product-card");
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add(window.innerWidth <= 768 ? "animate-left" : "animate-up");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    cards.forEach(card => observer.observe(card));
+
+function updateIndicators(wrapper, activeIndex) {
+  const indicators = wrapper.querySelectorAll('.slider-indicator');
+  indicators.forEach((ind, i) => {
+    ind.classList.toggle('active', i === activeIndex);
   });
+}
+
+function setupIndicators() {
+  document.querySelectorAll('.slider-wrapper').forEach(wrapper => {
+    const images = wrapper.querySelectorAll('img');
+    if (images.length < 2) return;
+    
+    const indicators = document.createElement('div');
+    indicators.className = 'slider-indicators';
+    
+    images.forEach((_, i) => {
+      const ind = document.createElement('div');
+      ind.className = `slider-indicator ${i === 0 ? 'active' : ''}`;
+      ind.addEventListener('click', () => {
+        const images = wrapper.querySelectorAll('img');
+        images.forEach(img => img.classList.remove('active'));
+        images[i].classList.add('active');
+        updateIndicators(wrapper, i);
+      });
+      indicators.appendChild(ind);
+    });
+    
+    wrapper.appendChild(indicators);
+  });
+}
+
+// Инициализация
+document.addEventListener("DOMContentLoaded", () => {
+  setupSwipeForSliders();
+  setupIndicators();
+  // ... остальной код ...
+});
 
 // Добавляет в корзину и сразу переходит в cart.html
 document.querySelectorAll('.go-to-cart').forEach(button => {
