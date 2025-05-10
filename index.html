@@ -753,7 +753,58 @@ footer {
   display: inline-block;
 }
 
+/* Адаптация корзины для мобильных */
+  @media (max-width: 768px) {
+    .cart-panel {
+      width: 100%;
+      max-width: 100%;
+    }
+    
+    .cart-body li {
+      padding: 0.5rem;
+    }
+    
+    .cart-body img {
+      width: 50px;
+      height: 50px;
+    }
+    
+    .item-info h4 {
+      font-size: 0.85rem;
+    }
+    
+    .qty-controls button {
+      padding: 0.15rem 0.4rem;
+      font-size: 0.9rem;
+    }
+    
+    .cart-count-badge {
+      font-size: 11px;
+      padding: 1px 4px;
+      top: -6px;
+      right: 5px;
+    }
+    
+    .cart-img {
+      width: 28px;
+      height: 28px;
+    }
+  }
 
+  @media (max-width: 576px) {
+    .cart-header h2 {
+      font-size: 1.2rem;
+    }
+    
+    .close-cart {
+      font-size: 1.2rem;
+    }
+    
+    .checkout-btn {
+      padding: 0.7rem;
+      font-size: 0.9rem;
+    }
+  }
 
 /* === Добавляем стили слайдера изображений с ховером === */
 .slider-wrapper {
@@ -1450,6 +1501,18 @@ upButton.addEventListener('click', () => {
     behavior: 'smooth'
   });
 });
+
+
+// Исправление для мобильных устройств
+  document.addEventListener('DOMContentLoaded', function() {
+    function fixHeight() {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+    
+    fixHeight();
+    window.addEventListener('resize', fixHeight);
+  });
 </script>
 </body>
 </html>
