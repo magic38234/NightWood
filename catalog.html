@@ -764,11 +764,7 @@ footer {
   width: 100%;
   height: 200px;
   overflow: hidden;
-      touch-action: pan-y; /* Разрешаем только вертикальные жесты (для предотвращения конфликтов с горизонтальной прокруткой страницы) */
-    -webkit-user-drag: none; /* Запрещаем перетаскивание в iOS */
-user-select: none; /* Запрещаем выделение текста при касании */
 }
-    
 .slider-wrapper img {
   width: 100%;
   height: 200px;
@@ -1731,57 +1727,7 @@ upButton.addEventListener('click', () => {
 });
 
 
-// Функции для обработки свайпа
-let touchStartX = 0;
-let touchEndX = 0;
 
-function handleTouchStart(e) {
-    touchStartX = e.changedTouches[0].screenX;
-}
-
-function handleTouchEnd(e) {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-}
-
-function handleSwipe() {
-    const SWIPE_THRESHOLD = 50; // Минимальная дистанция свайпа
-    
-    if (touchEndX < touchStartX - SWIPE_THRESHOLD) {
-        // Свайп влево - следующее изображение
-        slideImage(this, 1);
-    }
-    
-    if (touchEndX > touchStartX + SWIPE_THRESHOLD) {
-        // Свайп вправо - предыдущее изображение
-        slideImage(this, -1);
-    }
-}
-
-// Добавляем обработчики событий ко всем слайдерам
-document.querySelectorAll('.slider-wrapper').forEach(slider => {
-    slider.addEventListener('touchstart', handleTouchStart, false);
-    slider.addEventListener('touchend', handleTouchEnd, false);
-});
-function slideImage(btn, direction) {
-    let wrapper;
-    
-    // Проверяем, был ли передан элемент или это вызов из свайпа
-    if (btn instanceof HTMLElement) {
-        wrapper = btn.closest('.slider-wrapper');
-    } else {
-        // Если это вызов из свайпа, используем this (контекст)
-        wrapper = this;
-    }
-    
-    const images = wrapper.querySelectorAll('img');
-    let current = Array.from(images).findIndex(img => img.classList.contains('active'));
-    if (current === -1) return;
-    
-    images[current].classList.remove('active');
-    let next = (current + direction + images.length) % images.length;
-    images[next].classList.add('active');
-}
 </script>
 
 </body>
