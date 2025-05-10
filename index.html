@@ -975,61 +975,53 @@ footer {
   margin-bottom: 0.7rem !important;
 }
 
-
-/* Кнопка "Наверх" в стиле Bilresta */
-.back-to-top {
+/* Стили для кнопки-свайпа */
+.swipe-up-button {
   position: fixed;
   bottom: 25px;
-  right: 25px;
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  background: linear-gradient(90deg, #ffc37a, #d3ad7f );
-  color: #fff;
-  border: none;
-  font-size: 1.6rem;
-  font-weight: bold;
-  cursor: pointer;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.15);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   display: none;
-  z-index: 99;
-  box-shadow: 0 4px 15px rgba(200, 156, 104, 0.3);
-  transition: all 0.3s ease;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+  z-index: 999;
+  opacity: 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.back-to-top.visible {
-  display: flex;
+.swipe-up-button::before {
+  content: "";
+  width: 30px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 2px;
+  margin-bottom: 4px;
 }
 
-.back-to-top:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(200, 156, 104, 0.4);
-  background: linear-gradient(135deg, #e0b98b, #d3ad7f);
+
+
+.swipe-up-button:hover {
+  background: rgba(195, 0, 255, 0.25);
 }
 
-/* Анимация пульсации */
-@keyframes pulse-bilresta {
-  0% {
-    box-shadow: 0 0 0 0 rgba(211, 173, 127, 0.7);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(211, 173, 127, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(211, 173, 127, 0);
-  }
-}
-
-.back-to-top:hover {
-  animation: pulse-bilresta 1.5s infinite;
+.swipe-up-button:active {
+  transform: translateX(-50%) scale(0.95);
 }
 
 /* Показываем только на мобильных */
-@media (min-width: 769px) {
-  .back-to-top {
-    display: none !important;
+@media (max-width: 768px) {
+  .swipe-up-button {
+    display: flex;
   }
 }
 </style>
@@ -1136,7 +1128,10 @@ footer {
 <button class="buy-button go-to-cart"><svg class="btn-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg> PIRKTI</button></div>
 </div>
 </div>
-<button class="back-to-top" id="backToTop">▲</button>
+
+<!-- Кнопка "Вверх" -->
+<div class="swipe-up-button" id="swipeUpButton"></div>
+
 </section>
 <footer>
   <div class="footer-content">
@@ -1408,22 +1403,35 @@ if (!hasBackdropSupport) {
   }
 }
 
-// Кнопка "Наверх"
-const backToTopBtn = document.getElementById('backToTop');
+// Кнопка "Вверх" в стиле свайпа
+const swipeUpButton = document.getElementById('swipeUpButton');
 
-window.addEventListener('scroll', () => {
+function updateSwipeButton() {
   if (window.pageYOffset > 300) {
-    backToTopBtn.classList.add('visible');
+    swipeUpButton.style.opacity = '1';
+    swipeUpButton.style.pointerEvents = 'auto';
   } else {
-    backToTopBtn.classList.remove('visible');
+    swipeUpButton.style.opacity = '0';
+    swipeUpButton.style.pointerEvents = 'none';
   }
-});
+}
 
-backToTopBtn.addEventListener('click', () => {
+// Инициализация
+updateSwipeButton();
+window.addEventListener('scroll', updateSwipeButton);
+
+// Плавный скролл вверх с анимацией
+swipeUpButton.addEventListener('click', () => {
   window.scrollTo({
     top: 0,
     behavior: 'smooth'
   });
+  
+  // Анимация нажатия
+  swipeUpButton.style.transform = 'translateX(-50%) scale(0.95)';
+  setTimeout(() => {
+    swipeUpButton.style.transform = 'translateX(-50%)';
+  }, 200);
 });
 </script>
 </body>
