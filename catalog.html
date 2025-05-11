@@ -328,7 +328,7 @@ footer {
     }
 
     @media (max-width: 768px) {
-  #closeMenuBtn {
+#closeMenuBtn {
   position: absolute;
   top: 30px;
   right: 10%;
@@ -829,13 +829,15 @@ footer {
 .slider-arrow:hover {
   background: #dbdbdba9;
 }
-.slider-arrow.left {
-  left: 10px;
-}
-.slider-arrow.right {
-  right: 10px;
+.slider-arrow.left::after {
+  content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="16" height="16"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg>');
+  display: block;
 }
 
+.slider-arrow.right::after {
+  content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="16" height="16"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>');
+  display: block;
+}
 /* Добавим в CSS */
 .slider-indicators {
   display: flex;
@@ -1178,8 +1180,8 @@ footer {
     <!-- Карточка 1 - Gravirotai padėklas -->
     <div class="product-card visible">
         <div class="slider-wrapper">
- <div class="slider-arrow left" onclick="slideImage(this, -1)" aria-label="Предыдущее изображение">←</div>
-  <div class="slider-arrow right" onclick="slideImage(this, 1)" aria-label="Следующее изображение">→</div>
+ <div class="slider-arrow left" onclick="slideImage(this, -1)" aria-label="Предыдущее изображение"></div>
+  <div class="slider-arrow right" onclick="slideImage(this, 1)" aria-label="Следующее изображение"></div>
             <img alt="Padėklas" class="active" src="https://i.postimg.cc/VkNBP61r/476231208-1034025892077411-8188252417738116989-n.jpg"/>
             <img alt="Padėklas" src="https://i.postimg.cc/HLRt2CqJ/poon.jpg"/>
         </div>
@@ -1210,8 +1212,8 @@ footer {
     <!-- Карточка 2 - Metaliniai mangalai -->
     <div class="product-card visible">
         <div class="slider-wrapper">
-            <div class="slider-arrow left" onclick="slideImage(this, -1)">←</div>
-            <div class="slider-arrow right" onclick="slideImage(this, 1)">→</div>
+            <div class="slider-arrow left" onclick="slideImage(this, -1)"></div>
+            <div class="slider-arrow right" onclick="slideImage(this, 1)"></div>
             <img alt="Padėklas" class="active" src="https://i.postimg.cc/GhV6HZ2p/mangalas.jpg"/>
             <img alt="Padėklas" src="https://i.postimg.cc/xjswSkVM/photo-2025-04-21-23-03-50.jpg"/>
         </div>
@@ -1242,8 +1244,8 @@ footer {
     <!-- Карточка 3 - Paprastas padėklas -->
     <div class="product-card visible">
         <div class="slider-wrapper">
-            <div class="slider-arrow left" onclick="slideImage(this, -1)">←</div>
-            <div class="slider-arrow right" onclick="slideImage(this, 1)">→</div>
+            <div class="slider-arrow left" onclick="slideImage(this, -1)"></div>
+            <div class="slider-arrow right" onclick="slideImage(this, 1)"></div>
             <img alt="Padėklas" class="active" src="https://i.postimg.cc/fypZWypz/IMG-0832.jpg"/>
             <img alt="Padėklas" src="https://i.postimg.cc/4NHsLvHm/1453368273-121412851-1263882373960351-7394105723998329079-n.jpg"/>
         </div>
@@ -1274,8 +1276,8 @@ footer {
     <!-- Карточка 4 - Padėklas -->
     <div class="product-card visible">
         <div class="slider-wrapper">
-            <div class="slider-arrow left" onclick="slideImage(this, -1)">←</div>
-            <div class="slider-arrow right" onclick="slideImage(this, 1)">→</div>
+            <div class="slider-arrow left" onclick="slideImage(this, -1)"></div>
+            <div class="slider-arrow right" onclick="slideImage(this, 1)"></div>
             <img alt="Padėklas" class="active" src="https://i.postimg.cc/FsX38rzB/nightwood-graviravimai-13-AGBjlj-Jp-X8-Tnn-ORV.jpg"/>
             <img alt="Padėklas" src="https://i.postimg.cc/BZYRBzvb/nightwood-graviravimai-2-YD05-G5-Na-Zy-IZ5-DNX.jpg"/>
         </div>
@@ -1306,8 +1308,8 @@ footer {
     <!-- Карточка 5 - Lentelė Night Wood -->
     <div class="product-card visible">
         <div class="slider-wrapper">
-            <div class="slider-arrow left" onclick="slideImage(this, -1)">←</div>
-            <div class="slider-arrow right" onclick="slideimage(this, 1)">→</div>
+            <div class="slider-arrow left" onclick="slideImage(this, -1)"></div>
+            <div class="slider-arrow right" onclick="slideimage(this, 1)"></div>
             <img alt="Padėklas" class="active" src="https://i.postimg.cc/mk5zspzL/photo-2025-05-04-19-59-23.jpg"/>
             <img alt="Padėklas" src="https://i.postimg.cc/CKT852vd/photo-2025-05-04-19-59-21.jpg"/>
         </div>
@@ -1338,8 +1340,8 @@ footer {
     <!-- Карточка 6 - Kepimo akmuo virtuvei su pagrindu -->
     <div class="product-card visible">
         <div class="slider-wrapper">
-            <div class="slider-arrow left" onclick="slideImage(this, -1)">←</div>
-            <div class="slider-arrow right" onclick="slideImage(this, 1)">→</div>
+            <div class="slider-arrow left" onclick="slideImage(this, -1)"></div>
+            <div class="slider-arrow right" onclick="slideImage(this, 1)"></div>
             <img alt="Padėklas" class="active" src="https://i.postimg.cc/jd6LxhW4/photo-2025-05-04-20-11-34.jpg"/>
             <img alt="Padėklas" src="https://i.postimg.cc/qRtNpVnN/photo-2025-05-04-20-11-31.jpg"/>
         </div>
