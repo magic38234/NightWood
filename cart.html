@@ -37,22 +37,99 @@
     .logo img { width: 50px; }
 
     /* === Бургер-меню === */
-    .burger {
-      width: 36px;
-      height: 28px;
+/* === Бургер-меню === */
+.burger {
+  width: 36px;
+  height: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 10001;
+      
+  }
+.burger span {
+  height: 4px;
+  background: #fff;
+  border-radius: 2px;
+  transition: 0.3s ease;
+  }
+.burger:hover { transform: scale(1.1); }
+
+    /* === Мобильное меню === */
+    #menuOverlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: #100f0b;
+      z-index: 10000;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      transform: translateY(-100%);
+      transition: transform 0.4s ease;
+    }
+    #menuOverlay.open { transform: translateY(0); }
+    #menuOverlay a {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #fff;
+      text-transform: uppercase;
+      text-decoration: none;
+      letter-spacing: 1.5px;
+      transition: color 0.3s ease;
+    }
+    #menuOverlay a:hover { color: #c300ff; }
+    #menuOverlay .contact { color: #aaa; font-size: 1rem; margin-top: 2rem; }
+    #menuOverlay .social-icons {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    #menuOverlay .social-icons img {
+      width: 60px;
+      height: 60px;
+      filter: grayscale(100%) brightness(0.9);
+      transition: transform 0.3s ease;
+    }
+    #menuOverlay .social-icons img:hover {
+      transform: scale(1.2);
+      filter: grayscale(0%) brightness(1);
+    }
+
+    #closeMenuBtn {
+      position: absolute;
+      top: 30px;
+      right: 5%;
+      transform: translateX(50%);
+      font-size: 3rem;
+      font-weight: bold;
+      color: #fff;
       cursor: pointer;
       z-index: 10001;
     }
-    .burger span {
-      height: 4px;
-      background: #fff;
-      border-radius: 2px;
-      transition: 0.3s ease;
+    #closeMenuBtn:hover {
+      color: #dad7d7;
     }
-    .burger:hover { transform: scale(1.1); }
+
+    @media (max-width: 768px) {
+#closeMenuBtn {
+  position: absolute;
+  top: 30px;
+  right: 10%;
+  transform: translateX(50%);
+  font-size: 3rem;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  z-index: 10001;
+}
+#closeMenuBtn:hover {
+  color: #dad7d7;
+}   
+}  
 
     /* === Footer Styles === */
 footer {
@@ -252,63 +329,7 @@ footer {
   50% { transform: scale(1.1); }
   100% { transform: scale(1); }
 }
-    /* === Мобильное меню === */
-    #menuOverlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.9);
-      z-index: 10000;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 2rem;
-      transform: translateY(-100%);
-      transition: transform 0.4s ease;
-    }
-    #menuOverlay.open { transform: translateY(0); }
-    #menuOverlay a {
-      font-size: 2rem;
-      font-weight: 600;
-      color: #fff;
-      text-transform: uppercase;
-      text-decoration: none;
-      letter-spacing: 1.5px;
-      transition: color 0.3s ease;
-    }
-    #menuOverlay a:hover { color: #c300ff; }
-    #menuOverlay .contact { color: #aaa; font-size: 1rem; margin-top: 2rem; }
-    #menuOverlay .social-icons {
-      display: flex;
-      gap: 1.5rem;
-      margin-top: 1rem;
-    }
-    #menuOverlay .social-icons img {
-      width: 60px;
-      height: 60px;
-      filter: grayscale(100%) brightness(0.9);
-      transition: transform 0.3s ease;
-    }
-    #menuOverlay .social-icons img:hover {
-      transform: scale(1.2);
-      filter: grayscale(0%) brightness(1);
-    }
 
-    #closeMenuBtn {
-      position: absolute;
-      top: 30px;
-      right: 5%;
-      transform: translateX(50%);
-      font-size: 3rem;
-      font-weight: bold;
-      color: #fff;
-      cursor: pointer;
-      z-index: 10001;
-    }
-    #closeMenuBtn:hover {
-      color: #dad7d7;
-    }
 
     /* === Основной контент === */
     .main-content {
@@ -1069,14 +1090,15 @@ footer {
 <div id="menuOverlay"><div id="closeMenuBtn">✕</div>
 <a href="/index.html">Pagrindinis</a>
 <a href="/catalog.html">Katalogas</a>
+<a href="/cart.html">Krepšelis</a>
 <a href="#about">Apie mus</a>
-<a href="#contacts">Kontaktai</a>
 <div class="contact">Tel.: +370 640 81 312</div>
 <div class="social-icons">
 <a href="https://www.facebook.com/NightWood.lt"><img alt="Facebook" src="https://i.postimg.cc/G3Z9ZSj4/icons8-facebook-50.png"/></a>
 <a href="https://www.instagram.com/nightwood.lt/"><img alt="Instagram" src="https://i.postimg.cc/Cdy7WHcW/icons8-instagram-50.png"/></a>
 </div>
 </div>
+
 
 <div class="main-content">
     <div class="breadcrumbs">
