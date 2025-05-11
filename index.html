@@ -882,13 +882,15 @@ footer {
   background: rgba(219, 219, 219, 0.67);
 }
 
-.slider-arrow.left {
-  left: 10px;
-}
-.slider-arrow.right {
-  right: 10px;
+.slider-arrow.left::after {
+  content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="16" height="16"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg>');
+  display: block;
 }
 
+.slider-arrow.right::after {
+  content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="16" height="16"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>');
+  display: block;
+}
 @media (max-width: 768px) {
   .slider-arrow {
     width: 40px;
@@ -1160,8 +1162,8 @@ footer {
 <div class="products">
 <div class="product-card">
   <div class="slider-wrapper">
-    <div class="slider-arrow left" onclick="slideImage(this, -1)">&#8592;</div>
-    <div class="slider-arrow right" onclick="slideImage(this, 1)">&#8594;</div>
+    <div class="slider-arrow left" onclick="slideImage(this, -1)"></div>
+    <div class="slider-arrow right" onclick="slideImage(this, 1)"></div>
     <img class="active" src="https://i.postimg.cc/HLRt2CqJ/poon.jpg" alt="Padėklas"/>
     <img src="https://i.postimg.cc/VkNBP61r/476231208-1034025892077411-8188252417738116989-n.jpg" alt="Padėklas"/>
   </div>
@@ -1174,8 +1176,8 @@ footer {
 </div>
 <div class="product-card">
   <div class="slider-wrapper">
-    <div class="slider-arrow left" onclick="slideImage(this, -1)">&#8592;</div>
-    <div class="slider-arrow right" onclick="slideImage(this, 1)">&#8594;</div>
+    <div class="slider-arrow left" onclick="slideImage(this, -1)"></div>
+    <div class="slider-arrow right" onclick="slideImage(this, 1)"></div>
     <img class="active" src="https://i.postimg.cc/GhV6HZ2p/mangalas.jpg" alt="Padėklas"/>
     <img src="https://i.postimg.cc/xjswSkVM/photo-2025-04-21-23-03-50.jpg" alt="Padėklas"/>
   </div><div class="info">
@@ -1187,8 +1189,8 @@ footer {
 </div>
 <div class="product-card">
   <div class="slider-wrapper">
-    <div class="slider-arrow left" onclick="slideImage(this, -1)">&#8592;</div>
-    <div class="slider-arrow right" onclick="slideImage(this, 1)">&#8594;</div>
+    <div class="slider-arrow left" onclick="slideImage(this, -1)"></div>
+    <div class="slider-arrow right" onclick="slideImage(this, 1)"></div>
     <img class="active" src="https://i.postimg.cc/fypZWypz/IMG-0832.jpg" alt="Padėklas"/>
     <img src="https://i.postimg.cc/4NHsLvHm/1453368273-121412851-1263882373960351-7394105723998329079-n.jpg" alt="Padėklas"/>
   </div>
