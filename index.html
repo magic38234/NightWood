@@ -774,57 +774,80 @@ footer {
 }
 
 /* Адаптация корзины для мобильных */
-  @media (max-width: 768px) {
-    .cart-panel {
-      width: 100%;
-      max-width: 100%;
-    }
-    
-    .cart-body li {
-      padding: 0.5rem;
-    }
-    
-    .cart-body img {
-      width: 50px;
-      height: 50px;
-    }
-    
-    .item-info h4 {
-      font-size: 0.85rem;
-    }
-    
-    .qty-controls button {
-      padding: 0.15rem 0.4rem;
-      font-size: 0.9rem;
-    }
-    
-    .cart-count-badge {
-      font-size: 11px;
-      padding: 1px 4px;
-      top: -6px;
-      right: 5px;
-    }
-    
-    .cart-img {
-      width: 28px;
-      height: 28px;
-    }
-  }
 
-  @media (max-width: 576px) {
-    .cart-header h2 {
-      font-size: 1.2rem;
-    }
-    
-    .close-cart {
-      font-size: 1.2rem;
-    }
-    
-    .checkout-btn {
-      padding: 0.7rem;
-      font-size: 0.9rem;
-    }
+@media (max-width: 768px) {
+  .cart-panel {
+    width: 100%;
+    max-width: 100%;
+    right: -100%;
   }
+  
+  .cart-body li {
+    padding: 0.75rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .cart-body img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .item-info {
+    width: 100%;
+  }
+  
+  .qty-controls {
+    width: 100%;
+    justify-content: flex-start;
+    margin-top: 0.75rem;
+  }
+  
+  .cart-count-badge {
+    font-size: 11px;
+    padding: 2px 5px;
+    top: -6px;
+    right: 5px;
+  }
+  
+  .cart-img {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .cart-icon {
+    right: 60px;
+    top: 18px;
+  }
+}
+
+@media (max-width: 576px) {
+  .cart-header h2 {
+    font-size: 1.2rem;
+  }
+  
+  .close-cart {
+    font-size: 1.2rem;
+  }
+  
+  .checkout-btn {
+    padding: 0.7rem;
+    font-size: 0.9rem;
+  }
+  
+  .cart-body li {
+    padding: 0.6rem;
+  }
+  
+  .item-info h4 {
+    font-size: 0.9rem;
+  }
+  
+  .item-info .price {
+    font-size: 0.8rem;
+  }
+}
 
 /* === Добавляем стили слайдера изображений с ховером === */
 .slider-wrapper {
@@ -1132,19 +1155,23 @@ footer {
 </div>
 
 <!--Kорзинa-->
+<!--Kорзинa-->
 <div class="cart-overlay" id="cartOverlay"></div>
 <div class="cart-panel" id="cartPanel">
-<div class="cart-header">
-<h2>Jūsų krepšelis</h2>
-<button class="close-cart" id="closeCartBtn">✕</button>
-</div>
-<div class="cart-body">
-<ul id="cartItems"></ul>
-</div>
-<div class="cart-footer">
-<div class="total-line">
-<span>Iš viso:</span>
-<span>€<span id="cartTotal">0</span></span>
+  <div class="cart-header">
+    <h2>Jūsų krepšelis</h2>
+    <button class="close-cart" id="closeCartBtn">✕</button>
+  </div>
+  <div class="cart-body">
+    <ul id="cartItems"></ul>
+  </div>
+  <div class="cart-footer">
+    <div class="total-line">
+      <span>Iš viso:</span>
+      <span>€<span id="cartTotal">0</span></span>
+    </div>
+    <button class="checkout-btn" onclick="window.location.href='/cart.html'">Tęsti apmokėjimą</button>
+  </div>
 </div>
 
 <button class="checkout-btn" onclick="window.location.href='/cart.html'">Tęsti apmokėjimą</button>
@@ -1470,8 +1497,8 @@ document.querySelectorAll('.go-to-cart').forEach(button => {
 
 // Проверяем поддержку backdrop-filter (включая -webkit- для Safari)
 const hasBackdropSupport = CSS && 
-                          (CSS.supports('backdrop-filter', 'blur(3px)') || 
-                           CSS.supports('-webkit-backdrop-filter', 'blur(3px)'));
+                         (CSS.supports('backdrop-filter', 'blur(3px)') || 
+                          CSS.supports('-webkit-backdrop-filter', 'blur(3px)'));
 
 // Если не поддерживается — устанавливаем fallback-фон
 if (!hasBackdropSupport) {
@@ -1480,6 +1507,17 @@ if (!hasBackdropSupport) {
     overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
   }
 }
+
+// Исправление для мобильных устройств
+document.addEventListener('DOMContentLoaded', function() {
+  function fixHeight() {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }
+  
+  fixHeight();
+  window.addEventListener('resize', fixHeight);
+});
 
 const upButton = document.getElementById('upButton');
 
