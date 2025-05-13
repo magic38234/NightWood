@@ -420,7 +420,13 @@ footer {
   /* scrollbar-color: #c300ff #222; */
   scroll-behavior: smooth;
 }
-
+.cart-footer {
+  padding-bottom: env(safe-area-inset-bottom, 20px); /* Учитывает безопасную зону */
+  position: sticky;
+  bottom: 0;
+  background: #111;
+  z-index: 10;
+}
 /* Keep the WebKit scrollbar styling which works in most browsers */
 .cart-body::-webkit-scrollbar {
   width: 6px;
@@ -621,53 +627,63 @@ footer {
   text-align: center;
   display: inline-block;
 }
-/*=== Корзина для товаров Промокоды ===*/
-.promo-area {
-  display: flex;
-  gap: 0.5rem;
-  margin: 1rem 0;
-  padding: 0.75rem 1rem;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 16px;  
-  -webkit-backdrop-filter: blur(4px); /* Для Safari */
-  backdrop-filter: blur(4px);
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+  .cart-panel {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .cart-body li {
+    padding: 0.5rem;
+  }
+  
+  .cart-body img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .item-info h4 {
+    font-size: 0.85rem;
+  }
+  
+  .qty-controls button {
+    padding: 0.15rem 0.4rem;
+    font-size: 0.9rem;
+  }
+  
+  .cart-count-badge {
+    font-size: 11px;
+    padding: 1px 4px;
+    top: -6px;
+    right: 5px;
+  }
+  
+  .cart-img {
+    width: 35px;
+    height: 35px;
+  }
+    .cart-icon {
+    right: 70px;
+  }
 }
-.promo-area input {
-  flex: 1;
-  min-width: 100px;
-  padding: 0.6rem 1rem;
-  border: none;
-  border-radius: 12px;
-  background: #1a1a1c;
-  color: #fff;
-  font-size: 0.95rem;
-  transition: box-shadow 0.3s;
+
+@media (max-width: 576px) {
+  .cart-header h2 {
+    font-size: 1.2rem;
+  }
+  
+  .close-cart {
+    font-size: 1.2rem;
+  }
+  
+  .checkout-btn {
+    padding: 0.7rem;
+    font-size: 0.9rem;
+  }
 }
-.promo-area input::placeholder {
-  color: #aaa;
-}
-.promo-area input:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px #ff4f81;
-}
-.promo-btn {
-  padding: 0.6rem 1.2rem;
-  background: linear-gradient(90deg, #ff4f81, #c300ff);
-  color: #fff;
-  font-weight: bold;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  font-size: 0.95rem;
-  transition: background 0.3s;
-}
-.promo-btn:hover {
-  background: linear-gradient(90deg, #ff82a8, #d066ff);
-}
+
 
 /*=== Карточка товаров ===*/
 .section {
@@ -770,10 +786,6 @@ footer {
     opacity: 1;
     transform: translateY(0);
   }
-
-
-
-/* === Стили для слайдера изображений === */
 
 /* === Добавляем стили слайдера изображений с ховером === */
 .slider-wrapper {
@@ -910,9 +922,6 @@ footer {
     padding: 0.4rem 1rem;
     font-size: 13px;
   }
-  .cart-icon {
-    right: 70px;
-  }
 }
 
 @media (max-width: 576px) {
@@ -944,9 +953,6 @@ footer {
   }
   
   /* Корзина на весь экран на мобильных */
-  .cart-panel {
-    max-width: 100%;
-  }
 }
 
 /* === Улучшения для очень маленьких экранов === */
@@ -976,21 +982,6 @@ footer {
 }
 
 /* === Исправления для корзины === */
-@media (max-width: 768px) {
-  .cart-body li {
-    padding: 0.5rem;
-  }
-  .cart-body img {
-    width: 50px;
-    height: 50px;
-  }
-  .item-info h4 {
-    font-size: 0.85rem;
-  }
-  .qty-controls button {
-    padding: 0.15rem 0.4rem;
-  }
-}
 
 /* === Анимации для карточек === */
 @media (max-width: 768px) {
@@ -1048,10 +1039,6 @@ footer {
     padding-bottom: 0.6rem;
   }
   
-  /* Увеличиваем высоту интерактивных элементов для тапа */
-  .cart-body li button {
-    padding: 6px;
-  }
 }
 
 /* === Улучшения для больших экранов === */
