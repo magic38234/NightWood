@@ -16,6 +16,7 @@
       color: #fff;
       cursor: pointer;
       min-height: 100vh;
+      padding-bottom: 80px; /* Добавляем место для браузерных элементов */
     }
 
  /* === Хедер и логотип === */
@@ -592,7 +593,13 @@ footer {
   /* scrollbar-color: #c300ff #222; */
   scroll-behavior: smooth;
 }
-
+.cart-footer {
+  padding-bottom: env(safe-area-inset-bottom, 20px); /* Учитывает безопасную зону */
+  position: sticky;
+  bottom: 0;
+  background: #111;
+  z-index: 10;
+}
 /* Keep the WebKit scrollbar styling which works in most browsers */
 .cart-body::-webkit-scrollbar {
   width: 6px;
@@ -801,6 +808,18 @@ footer {
     max-width: 100%;
   }
   
+    .cart-panel {
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  .cart-footer {
+    position: sticky;
+    bottom: 0;
+    background: #111;
+    padding: 15px;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.3);
+  }
+
   .cart-body li {
     padding: 0.5rem;
   }
