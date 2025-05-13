@@ -588,6 +588,9 @@ footer {
   flex: 1;
   overflow-y: auto;
   margin-top: 1rem;
+  /* Remove these two lines as they're not well supported */
+  /* scrollbar-width: thin; */
+  /* scrollbar-color: #c300ff #222; */
   scroll-behavior: smooth;
 }
 .cart-footer {
@@ -805,18 +808,6 @@ footer {
     max-width: 100%;
   }
   
-    .cart-panel {
-    max-height: 80vh;
-    overflow-y: auto;
-  }
-  .cart-footer {
-    position: sticky;
-    bottom: 0;
-    background: #111;
-    padding: 15px;
-    box-shadow: 0 -5px 15px rgba(0,0,0,0.3);
-  }
-
   .cart-body li {
     padding: 0.5rem;
   }
@@ -860,21 +851,10 @@ footer {
     font-size: 1.2rem;
   }
   
-  @media (max-width: 576px) {
-  .cart-panel {
-    height: auto;
-    max-height: 70vh;
-  }
-  
-  .cart-footer {
-    padding: 10px;
-  }
-  
   .checkout-btn {
-    padding: 12px;
-    font-size: 14px;
+    padding: 0.7rem;
+    font-size: 0.9rem;
   }
-}
 }
 
 /* === Добавляем стили слайдера изображений с ховером === */
@@ -1376,20 +1356,6 @@ window.addEventListener('scroll', () => {
   const cartItems = document.getElementById('cartItems');
   const cartTotal = document.getElementById('cartTotal');
   const closeCartBtn = document.getElementById('closeCartBtn');
-
-  // В начале скрипта добавьте:
-function adjustCartHeight() {
-  const cartPanel = document.getElementById('cartPanel');
-  if (window.innerWidth <= 768) {
-    const vh = window.innerHeight * 0.01;
-    cartPanel.style.height = `calc(${vh * 80}px)`;
-  } else {
-    cartPanel.style.height = '100vh';
-  }
-}
-
-window.addEventListener('resize', adjustCartHeight);
-adjustCartHeight(); // Вызвать при загрузке
 
   function openCart() {
   cartPanel.classList.add('open');
