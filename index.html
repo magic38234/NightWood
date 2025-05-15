@@ -526,7 +526,7 @@ footer {
   backdrop-filter: blur(4px);
   color: white;
   position: fixed;
-  top: 13px;
+  top: 18px;
   right: 60px;
   z-index: 10003;
 }
@@ -1135,143 +1135,16 @@ footer {
 }
 
 
-
-
-/* Стили для виджета поддержки */
-.support-widget {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  z-index: 999;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-
-.support-icon {
-  width: 56px;
-  height: 56px;
-  background: linear-gradient(135deg, #ff4f81, #c300ff);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 4px 20px rgba(195, 0, 255, 0.3);
-  transition: all 0.3s ease;
-}
-
-.support-icon:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 25px rgba(195, 0, 255, 0.4);
-}
-
-.support-icon svg {
-  width: 28px;
-  height: 28px;
-  fill: white;
-}
-
-.support-tooltip {
-  width: 260px;
-  background: #1a1a1c;
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px);
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.support-icon:hover + .support-tooltip,
-.support-tooltip:hover {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.support-tooltip h4 {
-  color: #e0e0e0;
-  font-size: 1.1rem;
-  margin-bottom: 1rem;
-  font-family: 'Montserrat', sans-serif;
-  position: relative;
-}
-
-.support-tooltip h4::after {
-  content: "";
-  display: block;
-  width: 40px;
-  height: 2px;
-  background: linear-gradient(90deg, #ff4f81, #c300ff);
-  margin-top: 8px;
-  border-radius: 2px;
-}
-
-.support-tooltip p {
-  color: #aaa;
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-}
-
-.support-tooltip a {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #ccc;
-  text-decoration: none;
-  font-size: 0.9rem;
-  margin-bottom: 0.75rem;
-  transition: color 0.3s;
-}
-
-.support-tooltip a:hover {
-  color: #c300ff;
-}
-
-.support-tooltip a i {
-  width: 20px;
-  text-align: center;
-  color: #c300ff;
-}
-
-@media (max-width: 768px) {
-  .support-widget {
-    bottom: 20px;
-    right: 15px;
-  }
-  
-  .support-icon {
-    width: 50px;
-    height: 50px;
-  }
-  
-  .support-icon svg {
-    width: 24px;
-    height: 24px;
-  }
-  
-  .support-tooltip {
-    width: 240px;
-    padding: 1.2rem;
-    right: 0;
-  }
-}
 </style>
 </head>
 <body>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 <header>
 <div class="logo">
 <img alt="logotipas" src="https://i.postimg.cc/xTbFtq6w/IMG-0546.png"/>
 </div>
 
 <div id="scrollLine"></div>
-
-
 
 <div class="cart-icon" id="cartIcon">
   <img alt="cart" class="cart-img" src="https://i.postimg.cc/9fs6JGmx/icons8-bag-50.png"/>
@@ -1295,20 +1168,7 @@ footer {
 </div>
 </div>
 
-<!-- Добавить перед закрывающим тегом -->
-<div class="support-widget">
-  <div class="support-icon">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/>
-    </svg>
-  </div>
-  <div class="support-tooltip">
-    <h4>Reikia pagalbos?</h4>
-    <p>Susisiekite su mumis:</p>
-    <a href="tel:+37064081312"><i class="fas fa-phone"></i> +370 640 81 312</a>
-    <a href="mailto:info@nightwood.lt"><i class="fas fa-envelope"></i> info@nightwood.lt</a>
-  </div>
-</div>
+
 
 <!--Kорзинa-->
 <div class="cart-overlay" id="cartOverlay"></div>
@@ -1704,13 +1564,6 @@ upButton.addEventListener('click', () => {
     window.addEventListener('resize', fixHeight);
   });
 
-
-
-document.querySelector('.support-link').addEventListener('click', function(e) {
-  e.preventDefault();
-  alert("Свяжитесь с нами: support@example.com");
-  // Или открыть модальное окно / чат
-});
 </script>
 </body>
 </html>
